@@ -35,12 +35,9 @@ a:active {
 .nav_wrapper {
   width:800px;
   height:40px;
-  padding-top:10px;
   margin:0 auto;
   text-align:left;
   color: white;
-  list-style-type: none;
-  text-decoration: none;
 }
 
 #l_item_1 {
@@ -68,7 +65,7 @@ h1 {
   padding-left:25px;
 }
 
-.active_wrapper{
+.top_wrapper{
   -moz-border-radius: 12px;
   -webkit-border-radius: 12px;
   border-radius: 12px;
@@ -79,15 +76,7 @@ h1 {
   margin-top:55px;
 }
 
-.active_posts{
-  width:650px;
-  height:300px;
-  padding-left:25px;
-  padding-right:25px;
-  float:left;
-}
-
-.pending_wrapper{
+.general_wrapper{
   -moz-border-radius: 12px;
   -webkit-border-radius: 12px;
   border-radius: 12px;
@@ -98,47 +87,9 @@ h1 {
   margin-top:35px;
 }
 
-.pending_posts{
+.content_bubble{
   width:650px;
-  height:200px;
-  padding-left:25px;
-  padding-right:25px;
-  float:left;
-}
-
-.drops_wrapper{
-  -moz-border-radius: 12px;
-  -webkit-border-radius: 12px;
-  border-radius: 12px;
-  -moz-box-shadow: 4px 4px 14px #000;
-  -webkit-box-shadow: 4px 4px 14px #000;
-  box-shadow: 4px 4px 14px #000;
-  float:left;
-  margin-top:35px;
-}
-
-.drops{
-  width:650px;
-  height:50px;
-  padding-left:25px;
-  padding-right:25px;
-  float:left;
-}
-
-.locations_wrapper{
-  -moz-border-radius: 12px;
-  -webkit-border-radius: 12px;
-  border-radius: 12px;
-  -moz-box-shadow: 4px 4px 14px #000;
-  -webkit-box-shadow: 4px 4px 14px #000;
-  box-shadow: 4px 4px 14px #000;
-  float:left;
-  margin-top:35px;
-}
-
-.locations{
-  width:650px;
-  height:900px;
+  height:100%;
   padding-left:25px;
   padding-right:25px;
   float:left;
@@ -147,9 +98,10 @@ h1 {
 .individual_location_wrapper{
   background-color: black;
   float:left;
-  height:96px;
-  width:96px;
+  height:150px;
+  width:150px;
   margin:2px;
+  text-align:center;
 }
 
 }
@@ -163,7 +115,7 @@ h1 {
   
   .nav_bar {
     width:101%;
-    height:50px;
+    height:100px;
     margin-left:-8px;
     margin-top:-8px;
     background-color: black;
@@ -172,8 +124,7 @@ h1 {
   
   .nav_wrapper {
     width:341px;
-    height:40px;
-    padding-top:10px;
+    height:90px;
     margin:0 auto;
     text-align:left;
     color: white;
@@ -203,7 +154,7 @@ h1 {
     padding-left:15px;
   }
   
-  .active_wrapper{
+  .top_wrapper{
     -moz-border-radius: 12px;
     -webkit-border-radius: 12px;
     border-radius: 12px;
@@ -211,18 +162,10 @@ h1 {
     -webkit-box-shadow: 4px 4px 14px #000;
     box-shadow: 4px 4px 14px #000;
     float:left;
-    margin-top:55px;
-  }
+    margin-top:105px;
+  } 
   
-  .active_posts{
-    width:300px;
-    height:300px;
-    padding-left:25px;
-    padding-right:25px;
-    float:left;
-  }
-  
-  .pending_wrapper{
+  .general_wrapper{
     -moz-border-radius: 12px;
     -webkit-border-radius: 12px;
     border-radius: 12px;
@@ -232,48 +175,10 @@ h1 {
     float:left;
     margin-top:35px;
   }
-  
-  .pending_posts{
+
+  .content_bubble {
     width:300px;
-    height:200px;
-    padding-left:25px;
-    padding-right:25px;
-    float:left;
-  }
-  
-  .drops_wrapper{
-    -moz-border-radius: 12px;
-    -webkit-border-radius: 12px;
-    border-radius: 12px;
-    -moz-box-shadow: 4px 4px 14px #000;
-    -webkit-box-shadow: 4px 4px 14px #000;
-    box-shadow: 4px 4px 14px #000;
-    float:left;
-    margin-top:35px;
-  }
-  
-  .drops{
-    width:300px;
-    height:50px;
-    padding-left:25px;
-    padding-right:25px;
-    float:left;
-  }
-  
-  .locations_wrapper{
-    -moz-border-radius: 12px;
-    -webkit-border-radius: 12px;
-    border-radius: 12px;
-    -moz-box-shadow: 4px 4px 14px #000;
-    -webkit-box-shadow: 4px 4px 14px #000;
-    box-shadow: 4px 4px 14px #000;
-    float:left;
-    margin-top:35px;
-  }
-  
-  .locations{
-    width:300px;
-    height:900px;
+    height:100%;
     padding-left:25px;
     padding-right:25px;
     float:left;
@@ -285,7 +190,7 @@ h1 {
     height:96px;
     width:96px;
     margin:2px;
+    text-align:center;
   }
-
 
 }
