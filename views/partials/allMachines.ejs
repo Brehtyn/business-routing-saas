@@ -1,0 +1,12 @@
+<div>
+    <% if (allMachinesArray != null) { %>
+        <%  allMachinesArray.forEach(machine => { %>
+        <a href="/machines/<%= machine._id%>">
+            <div class="individual_location_wrapper">
+            <div>Machine ID: <%= machine._id  %> </div>
+            <div>Location: <%= machine.location %> </div>
+            </div>
+        </a>
+    <% }) %>
+    <% } %> 
+    </div>
