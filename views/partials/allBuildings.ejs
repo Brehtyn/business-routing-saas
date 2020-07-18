@@ -1,0 +1,9 @@
+<div>
+    <% if (allBuildingsArray != null) { %>
+        <%  allBuildingsArray.forEach(building => { %>
+        <a href="/buildings/<%= building._id%>">
+            <div class="individual_location_wrapper"> <%= building.location  %> </div>
+        </a>
+    <% }) %>
+    <% } %> 
+</div>
