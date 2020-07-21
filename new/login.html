@@ -1,0 +1,57 @@
+
+<link href="main.css" rel="stylesheet" type="text/css">
+
+<script>
+
+function openForm() {
+  document.getElementById("privateForm").style.display = "block";
+  document.getElementById("backgroundForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("privateForm").style.display = "none";
+  document.getElementById("backgroundForm").style.display = "none";
+}
+
+function validateForm() {
+  var x = document.forms["privateForm"]["private_name"].value;
+  if (x == "") {
+    alert(" Please enter a username. ");
+    return false;
+  }
+  var y = document.forms["privateForm"]["private_pass"].value;
+  if (y == "") {
+    alert(" Please enter a password. ");
+    return false;
+  }
+}
+
+</script>
+
+<div class="entree">
+
+<p> Welcome, thank you for you service! </p>
+
+<br/>
+
+<a class="open_button" onclick="openForm()"> Login </a>
+
+<div class="form-popup" id="privateForm">
+  <form name="privateForm" method="post" class="form-container" action="">
+
+    Username: 
+    <input type="text" class="private_form" name="private_name" placeholder="">
+
+    Password:
+    <input type="text"" class="private_form" name="private_pass" placeholder="">
+    
+    <button type="submit" class="btn" onclick="return validateForm()" >Submit</button>
+    <button class="btn_cancel" onclick="closeForm()">Close</button>
+
+  </form>
+  
+</div>
+
+</div>
+
+<div class="form-background" id="backgroundForm"></div>
