@@ -1,0 +1,21 @@
+<div>
+    <label>City</label>
+    <input type="text" name="city" value="<%= machine.city %>">
+</div>
+<div>
+    <label>Location</label>
+    <input type="text" name="location" value="<%= machine.location %>">
+</div>
+<div>
+    <label>Status</label>
+    <input type="text" name="status" value="<%= machine.status %>">
+</div>
+<div>
+    <label>Urgent?</label>
+    <input type="text" name="urgent" value="<%= machine.urgent %>">
+</div>
+<div>
+    <label>Created At Date</label>
+    <input type="date" name="createdAt"
+        value="<%= machine.createdAt == null ? '' : machine.createdAt.toISOString().split('T')[0] %>">
+</div>

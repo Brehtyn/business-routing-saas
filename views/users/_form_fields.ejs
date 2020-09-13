@@ -1,0 +1,21 @@
+<div>
+    <label>Name</label>
+    <input type="text" name="location" value="<%= user.name %>">
+</div>
+<div>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" value="<%= user.password %>">
+</div>
+<div>
+    <label for="authorization">Authorization</label>
+    <input type="number" id="authorizationLevel" name="authorizationLevel"
+       min="1" max="5" value="<%= user.authorizationLevel %> ">
+    </div>
+<div>
+    <label>Telephone Number</label>
+    <input type="number" name="cell_number" min="1" value="<%= user.cell_number %>">
+</div>
+<div>
+    <label>Group</label>
+    <input type="text" name="group" value="<%= user.group %>">
+</div>
