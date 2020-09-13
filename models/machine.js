@@ -30,7 +30,8 @@ const machineSchema = new mongoose.Schema({
         required: true
     },
     description: {
-        type: String    },
+        type: String    
+    },
     createdAt:{
         type: Date,
         required: true,

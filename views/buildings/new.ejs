@@ -1,5 +1,6 @@
 <h2>New Building</h2>
-<form action="/buildings" method="POST">
+<form action="/buildings/new" method="POST">
+    <%- include('_form_fields') %> 
     <a href="/buildings">Cancel</a>
     <button type="submit">Create Building</button>
 </form>

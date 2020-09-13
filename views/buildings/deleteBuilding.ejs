@@ -1,0 +1,9 @@
+        <% if (allBuildingsArray != null) { %>
+            <%  allBuildingsArray.forEach(building => { %>
+                <h1><%= building.location%></h1>
+                <%- include('../partials/deleteForm', 
+                        {url: `/buildings/remove/${building._id}`}) %>
+        <% }) %>
+        <% } %> 
+    
+    

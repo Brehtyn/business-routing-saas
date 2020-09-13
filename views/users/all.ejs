@@ -1,0 +1,7 @@
+<h2>Recently Added</h2>
+<div>
+    <% users.forEach(user => {%>
+        <%- include('show', {user: user}) %>
+        <a href="/users/<%= user._id %>"></a>
+    <% }) %>
+</div>
