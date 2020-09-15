@@ -37,6 +37,7 @@ router.post('/new', async(req, res) =>{
 
         const user = new User({
             name: req.body.name,
+            username: req.body.username,
             password: hashedPassword,
             authorzationLevel: req.body.authorzationLevel,
             cell_number: req.body.cell_number,
@@ -88,6 +89,7 @@ router.post('/edit/:id', async(req, res) =>{
     try{
         const user = await User.findById(req.params.id)
             user.name =  req.body.name,
+            user.username = req.body.username,
             user.password =  req.body.password,
             user.authorizationLevel = req.body.authorzationLevel,
             user.cell_number = req.body.cell_number,
