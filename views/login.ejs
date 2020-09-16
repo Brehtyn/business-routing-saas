@@ -1,12 +1,26 @@
-<h1>Login</h1>
-<form action="/login" method="POST">
-    <div>
-        <label for="username">User Name</label>
-        <input type="text" id="username" name="username" required>
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link href="../public/stylesheets/style.css/" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="main_login">
+        <h1>Welcome !</h1>
+        <form action="/login" method="POST">
+            <div class="login_wrapper">
+                <div>
+                    <label for="username">User Name</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Login</button>
+            </div>
+        </form>
     </div>
-    <div>
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
-    </div>
-    <button type="submit">Login</button>
-</form>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.login_wrapper {
+
+  padding-left:50px;
+  height: 200px;
+
+}
+
+/*  ~~~~~~~~~~~~~~~~~~~~~~~  PC Viewing  ~~~~~~~~~~~~~~~~~~~~~~~  */
+
+@media screen and (min-width:845px) {
+
+}
+
+/*  ~~~~~~~~~~~~~~~~~~~~~~~  Mobile Viewing  ~~~~~~~~~~~~~~~~~~~~~~~  */
+
+@media screen and (max-width:844px) {
+
+}
