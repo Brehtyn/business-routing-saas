@@ -12,22 +12,39 @@ initializePassport(
 )
 
 //index router page
-router.get('/', checkAuthenticated,(req, res) => {
+router.get('/', checkAuthenticated, async (req, res) => {
     try{
     var app = req.app;
     const allBuildingsArray = (app.get('allBuildings'))
+    
+    const user = await User.findById(req.params.id)
+     res.render('index', { allBuildingsArray: allBuildingsArray , user: user})
+    }catch{
+        res.redirect('/login')
+    }
+})
 
-     res.render('index', { allBuildingsArray: allBuildingsArray })
+router.get('/index/:id', checkAuthenticated, async (req, res) => {
+    try{
+    var app = req.app;
+    const allBuildingsArray = (app.get('allBuildings'))
+    
+    const user = await User.findById(req.params.id)
+     res.render('index', { allBuildingsArray: allBuildingsArray , user: user})
     }catch{
         res.redirect('/login')
     }
 })
 
 //logout
-router.delete('/logout', (res, req) =>{
-    req.logOut();
-    res.redirect('/login')
-})
+router.get('/index/:id/logout', (req, res) => {
+    req.session.destroy(() => {
+      req.logOut();
+      res.clearCookie('graphNodeCookie');
+      res.status(200);
+      res.redirect('/login');
+    });
+  });
 
 router.post('/login', checkNotAuthenticated, passport.authenticate('local', {
     failureRedirect:'/login',
@@ -35,7 +52,7 @@ router.post('/login', checkNotAuthenticated, passport.authenticate('local', {
         if(req.isAuthenticated() === true){
             try{
                 const user = await User.findOne({username: req.body.username})
-                res.redirect('/')
+                res.redirect(`/index/${user.id}`)
             }catch{
                 res.redirect('/login')
             }
