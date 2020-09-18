@@ -21,15 +21,14 @@ app.set('views', __dirname + '/views')
 app.set('layout', 'layouts/layout')
 app.use(expressLayouts)
 app.use(express.static('public'))
-
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 app.use(methodOverride('_method'))
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
-    resave:false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    resave: false
 }))
 
 app.use(passport.initialize())
