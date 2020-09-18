@@ -1,24 +1,37 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-    <link href="../public/stylesheets/style.css/" rel="stylesheet" type="text/css">
-</head>
+<link href="../stylesheets/style.css" rel="stylesheet" type="text/css" />
+
+<script>
+    function openForm() {
+        document.getElementById("popup_form").style.display = "block";
+        document.getElementById("form_background").style.display = "block";
+    }
+    function closeForm() {
+        document.getElementById("popup_form").style.display = "none";
+        document.getElementById("form_background").style.display = "none";
+    }
+</script>
 
 <body>
-    <div class="main_login">
-        <h1>Welcome !</h1>
-        <form action="/login" method="POST">
-            <div class="login_wrapper">
-                <div>
-                    <label for="username">User Name</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div>
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <button type="submit">Login</button>
+    <div class="login_wrapper">
+        <div class="title"> <h1> "Example Business" Routing </h1> </div>
+        <h2>Thank you for your service!</h2>
+        <button id="btn_accept" onclick="openForm()">Employee Access</button>
+            <div class="popup_form" id="popup_form">
+                <form action="/login" method="POST">
+                    <div>
+                        <div id="form_element">
+                            <label for="username">Employee ID:</label>
+                            <input type="text" id="username" name="username" required>
+                        </div>
+                        <div id="form_element">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        <button id="btn_accept" type="submit">Login</button>
+                        <button id="btn_cancel" onclick="closeForm()">Close</button>
+                    </div>
             </div>
+            <div id="form_background"></div>
         </form>
     </div>
 </body>
