@@ -4,12 +4,13 @@ const User = require('../models/user')
 const bcrypt = require('bcrypt')
 
 //Users index route
-router.get('/', async (req, res) =>{
+router.get('/', checkAuthenticated,async (req, res) =>{
+    console.log(req.user.name)
     res.render('users/index')
 })
 
 //Get all users route
-router.get('/all', async (req, res) =>{
+router.get('/all', checkAuthenticated,async (req, res) =>{
     let users = []
     try{
         users = await User.find().sort({createdAt: 'desc'}).limit(10).exec()
@@ -22,7 +23,7 @@ router.get('/all', async (req, res) =>{
 })
 
 //New user route page
-router.get('/new', async(req, res) =>{
+router.get('/new', checkAuthenticated,async(req, res) =>{
     try{
     res.render('users/new',  {user: new User()})
     }catch(err){
@@ -31,7 +32,7 @@ router.get('/new', async(req, res) =>{
 })
 
 //New user Route
-router.post('/new', async(req, res) =>{
+router.post('/new', checkAuthenticated,async(req, res) =>{
     try{
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
 
@@ -53,7 +54,7 @@ router.post('/new', async(req, res) =>{
 })
 
 //Shows single user page
-router.get('/:id', async (req, res) =>{
+router.get('/:id', checkAuthenticated,async (req, res) =>{
     try{
         const user = await User.findById(req.params.id)
         res.render('users/show', {user: user})
@@ -63,7 +64,7 @@ router.get('/:id', async (req, res) =>{
 })
 
 //Delete User
-router.delete('/delete/:id', async(req, res) => {
+router.delete('/delete/:id', checkAuthenticated,async(req, res) => {
     try{
         const user = await User.findById(req.params.id)
         await user.remove()
@@ -75,7 +76,7 @@ router.delete('/delete/:id', async(req, res) => {
 })
 
 //Edit user Route
-router.get('/edit/:id', async(req, res) =>{
+router.get('/edit/:id', checkAuthenticated,async(req, res) =>{
     try{
         const user = await User.findById(req.params.id)
         res.render('users/show', {user: user})
@@ -85,7 +86,7 @@ router.get('/edit/:id', async(req, res) =>{
 })
 
 //Edit user Route
-router.post('/edit/:id', async(req, res) =>{
+router.post('/edit/:id', checkAuthenticated,async(req, res) =>{
     try{
         const user = await User.findById(req.params.id)
             user.name =  req.body.name,
@@ -102,5 +103,13 @@ router.post('/edit/:id', async(req, res) =>{
         console.log(err)
     }
 })
+
+function checkAuthenticated( req, res, next){
+    if(req.isAuthenticated()){
+        return next()
+    }
+    res.redirect('/login')
+}
+
 
 module.exports = router

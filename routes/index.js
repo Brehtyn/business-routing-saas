@@ -16,28 +16,15 @@ router.get('/', checkAuthenticated, async (req, res) => {
     try{
     var app = req.app;
     const allBuildingsArray = (app.get('allBuildings'))
-    
-    const user = await User.findById(req.params.id)
-     res.render('index', { allBuildingsArray: allBuildingsArray , user: user})
-    }catch{
-        res.redirect('/login')
-    }
-})
-
-router.get('/index/:id', checkAuthenticated, async (req, res) => {
-    try{
-    var app = req.app;
-    const allBuildingsArray = (app.get('allBuildings'))
-    
-    const user = await User.findById(req.params.id)
-     res.render('index', { allBuildingsArray: allBuildingsArray , user: user})
+    var user = req.user
+     res.render('index', { allBuildingsArray: allBuildingsArray, user: user})
     }catch{
         res.redirect('/login')
     }
 })
 
 //logout
-router.get('/index/:id/logout', (req, res) => {
+router.get('/logout', (req, res) => {
     req.session.destroy(() => {
       req.logOut();
       res.clearCookie('graphNodeCookie');
@@ -51,8 +38,10 @@ router.post('/login', checkNotAuthenticated, passport.authenticate('local', {
     failureFlash: true}), async (req, res) => {
         if(req.isAuthenticated() === true){
             try{
-                const user = await User.findOne({username: req.body.username})
-                res.redirect(`/index/${user.id}`)
+                req.logIn(req.user, function(err) {
+                    if (err) { return next(err); }
+                    return res.redirect('/');
+                  });
             }catch{
                 res.redirect('/login')
             }

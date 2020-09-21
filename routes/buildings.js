@@ -3,12 +3,12 @@ const router = express.Router()
 const Building = require('../models/building');
 
 //index to create buildings
-router.get('/', (req, res) => {
+router.get('/', checkAuthenticated, (req, res) => {
     res.render('buildings/createindex')
 })
 
 //page to delete buildings
-router.get('/remove', (req, res) => {
+router.get('/remove', checkAuthenticated, (req, res) => {
     var app = req.app;
     const allBuildingsArray = (app.get('allBuildings'))
 
@@ -22,7 +22,7 @@ router.get('/remove', (req, res) => {
 })
 
 //Gets all buildings
-router.get('/allbuildings', (req, res) => {
+router.get('/allbuildings', checkAuthenticated, (req, res) => {
     var app = req.app;
     const allBuildingsArray = (app.get('allBuildings'))
 
@@ -35,12 +35,12 @@ router.get('/allbuildings', (req, res) => {
 })
 
 //New Machine Route, just the form for making a new machine
-router.get('/new',async (req,res) => {
+router.get('/new',checkAuthenticated, async (req,res) => {
     res.render('buildings/new', {building: new Building()})
 })
 
 // //creates the machine by sending it to the database
-router.post('/new', async (req,res) => {
+router.post('/new',checkAuthenticated , async (req,res) => {
     try{
         const building = new Building({
             location: req.body.location,
@@ -57,7 +57,7 @@ router.post('/new', async (req,res) => {
     }
 })
 
-router.get('/:id', async (req,res) => {
+router.get('/:id', checkAuthenticated, async (req,res) => {
     var app = req.app;
     const allMachinesArray = (app.get('allMachines'))
 
@@ -69,7 +69,7 @@ router.get('/:id', async (req,res) => {
     }
 })
 
-router.delete('/remove/:id', async(req, res) =>{
+router.delete('/remove/:id', checkAuthenticated, async(req, res) =>{
     try{
         const building = await Building.findById(req.params.id)
         await building.remove()
@@ -86,7 +86,7 @@ router.delete('/remove/:id', async(req, res) =>{
 })
 
 //Edit Building Route
-router.get('/edit/:id', async (req, res) => {
+router.get('/edit/:id', checkAuthenticated, async (req, res) => {
     try{
         const building = await Building.findById(req.params.id)
         res.render('buildings/edit', {building: building})
@@ -95,7 +95,7 @@ router.get('/edit/:id', async (req, res) => {
     }
 })
 
-router.put('/edit/:id',async (req, res) => {
+router.put('/edit/:id',checkAuthenticated, async (req, res) => {
     try{
         const building = await Building.findById(req.params.id)
         building.location = req.body.location,
@@ -108,5 +108,12 @@ router.put('/edit/:id',async (req, res) => {
         res.redirect('/buildings')
     }
 })
+
+function checkAuthenticated( req, res, next){
+    if(req.isAuthenticated()){
+        return next()
+    }
+    res.redirect('/login')
+}
 
 module.exports = router
