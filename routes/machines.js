@@ -6,17 +6,17 @@ const Machine = require('../models/machine')
 
 
 //index to create machines
-router.get('/', async (req, res) => {
+router.get('/', checkAuthenticated, async (req, res) => {
     res.render('machines/createMachIndex')
 })
 
 //index to create new machines
-router.get('/new', async(req, res) =>{
+router.get('/new',checkAuthenticated,  async(req, res) =>{
     res.render('machines/newmachine', {machine: new Machine()})
 })
 
 //creates new machine
-router.post('/new', async(req, res) =>{
+router.post('/new', checkAuthenticated,async(req, res) =>{
     try{
         const machine = new Machine({
             city: req.body.city,
@@ -35,7 +35,7 @@ router.post('/new', async(req, res) =>{
 })
 
 //to delete a machine
-router.get('/remove', (req, res) => {
+router.get('/remove', checkAuthenticated, (req, res) => {
     var app = req.app;
     const allMachinesArray = (app.get('allMachines'))
 
@@ -48,7 +48,7 @@ router.get('/remove', (req, res) => {
     }
 })
 
-router.delete('/remove/:id', async(req, res) =>{
+router.delete('/remove/:id', checkAuthenticated, async(req, res) =>{
     try{
         const machine = await Machine.findById(req.params.id)
         await machine.remove()
@@ -66,7 +66,7 @@ router.delete('/remove/:id', async(req, res) =>{
 
 //to get all machines
 
-router.get('/allmachines', async( req, res) => {
+router.get('/allmachines', checkAuthenticated,  async( req, res) => {
     var app = req.app
     const allMachinesArray = (app.get('allMachines'))
 
@@ -78,7 +78,7 @@ router.get('/allmachines', async( req, res) => {
 })
 
 //gets all machines
-router.get('/:id', async (req,res) => {
+router.get('/:id', checkAuthenticated, async (req,res) => {
     try{
         const machine = await Machine.findById(req.params.id)
         res.render('machines/index', {machine: machine})
@@ -88,7 +88,7 @@ router.get('/:id', async (req,res) => {
 })
 
 //Edit Building Route
-router.get('/edit/:id', async (req, res) => {
+router.get('/edit/:id', checkAuthenticated,  async (req, res) => {
     try{
         const machine = await Machine.findById(req.params.id)
         res.render('machines/edit', {machine: machine})
@@ -97,7 +97,7 @@ router.get('/edit/:id', async (req, res) => {
     }
 })
 
-router.put('/edit/:id',async (req, res) => {
+router.put('/edit/:id', checkAuthenticated, async (req, res) => {
     try{
         const machine = await Machine.findById(req.params.id)
         machine.city = req.body.city,
@@ -111,5 +111,13 @@ router.put('/edit/:id',async (req, res) => {
         res.redirect('/machines')
     }
 })
+
+function checkAuthenticated( req, res, next){
+    if(req.isAuthenticated()){
+        return next()
+    }
+    res.redirect('/login')
+}
+
 
 module.exports = router

@@ -10,6 +10,7 @@ const methodOverride = require('method-override')
 const bcrypt = require('bcrypt')
 const passport = require('passport')
 const session = require('express-session')
+const cookieParser = require('cookie-parser')
 
 const indexRouter = require('./routes/index')
 const buildingsRouter = require('./routes/buildings')
@@ -24,6 +25,7 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 app.use(methodOverride('_method'))
+app.use(cookieParser(process.env.SESSION_SECRET))
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
