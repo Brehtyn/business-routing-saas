@@ -6,21 +6,24 @@
 @media screen and (min-width:845px) {
 
   body{
-  background-image: url(../assets/);
+  background-image: url(../assets/login.jpg);
   background-repeat:none;
   background-position:center;
   }
   .wrapper {
     text-align: center;
-    padding-top: 50px;
+  }
+  .wrapper {
+    text-align: center;
+    
   }
   .title{
-    padding: 50px 0 50px 0;
+    padding: 100px 0 50px 0;
   }
-  h1, h2 {    
+  h1, h2 {
+    color:white;
     text-shadow: 5px 5px 5px #000000;
   }
-
   #popup_form {
     display:none;
   }
@@ -76,6 +79,8 @@
     -webkit-border-radius: 10px;
   }
 
+  .nav_bar {
+    display: none;
 }
 
 /*  ~~~~~~~~~~~~~~~~~~~~~~~  Mobile Viewing  ~~~~~~~~~~~~~~~~~~~~~~~  */

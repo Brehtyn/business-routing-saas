@@ -4,7 +4,6 @@ const Building = require('../models/building')
 const Machine = require('../models/machine')
 
 
-
 //index to create machines
 router.get('/', checkAuthenticated, async (req, res) => {
     res.render('machines/createMachIndex')

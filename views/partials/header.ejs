@@ -1,20 +1,37 @@
-<div class="nav_bar">
-  <div class="nav_wrapper">
+<link href="../../public/stylesheets/style.css" rel="stylesheet" type="text/css" />
 
-    <div class="left_nav_bar">
+<style>
+.nav_bar {
+  text-align: center;
+  width: 100%;
+  position: fixed;
+}
+
+.left_nav {
+  float:left;
+  padding-left:25px;
+}
+.right_nav {
+  float:right;
+  padding-right:25px;
+}
+</style>
+
+<div class="nav_bar" id="nav_bar">
+
+    <div class="left_nav">
       <p id="l_item_1">
-        <a href="/" style="text-decoration: none;"> Home </a>
-        <a href="/buildings" style="text-decoration: none;"> Building Page </a>
-        <a href="/machines" style="text-decoration: none;"> Machine Page </a>
+        <a href="/" style="text-decoration: none;"> Dashboard </a> |
+        <a href="/buildings" style="text-decoration: none;"> Locations </a> |
+        <a href="/machines" style="text-decoration: none;"> All Machines </a> |
         <a href="/users" style="text-decoration: none;"> User Page </a>
       </p>
     </div>
 
-    <div class="right_nav_bar">
+    <div class="right_nav">
       <p id="l_item_2">
         [TIME]|[ACTIVE COUNTER]
       </p>
     </div>
 
-  </div>
 </div>
