@@ -1,26 +1,53 @@
 <link href="../../public/stylesheets/style.css" rel="stylesheet" type="text/css" />
 
 <style>
+
 .nav_bar {
   text-align: center;
   width: 100%;
   position: fixed;
+  height:50px;
+  background-image: url(../assets/nav_bar.jpg);
+  background-repeat: repeat-x;
+  margin-top: -8px;
+  margin-left: -8px;
+  color: teal;
 }
-
 .left_nav {
   float:left;
-  padding-left:25px;
+  padding-left:45px;
 }
 .right_nav {
   float:right;
-  padding-right:25px;
+  padding-right:45px;
+}
+
+/* unvisited link */
+a:link {
+  color: teal;
+}
+
+/* visited link */
+a:visited {
+  color:teal;
+}
+
+/* mouse over link */
+a:hover {
+  color:bisque;
+}
+
+/* selected link */
+a:active {
+  color:purple;
 }
 </style>
 
+<div>
 <div class="nav_bar" id="nav_bar">
 
     <div class="left_nav">
-      <p id="l_item_1">
+      <p>
         <a href="/" style="text-decoration: none;"> Dashboard </a> |
         <a href="/buildings" style="text-decoration: none;"> Locations </a> |
         <a href="/machines" style="text-decoration: none;"> All Machines </a> |
@@ -29,9 +56,10 @@
     </div>
 
     <div class="right_nav">
-      <p id="l_item_2">
-        [TIME]|[ACTIVE COUNTER]
+      <p>
+      [time]|[active calls]
       </p>
     </div>
 
+</div>
 </div>

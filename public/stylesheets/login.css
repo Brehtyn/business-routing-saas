@@ -19,10 +19,12 @@
   }
   .title{
     padding: 100px 0 50px 0;
+    font-size: 34px;
   }
   h1, h2 {
     color:white;
     text-shadow: 5px 5px 5px #000000;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
   #popup_form {
     display:none;
@@ -67,6 +69,7 @@
     margin-top:10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
+    border-radius: 10px;
   }
   #btn_cancel {
     background-color: red;
@@ -77,10 +80,12 @@
     cursor: pointer;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
+    border-radius: 10px;
   }
 
   .nav_bar {
     display: none;
+  }
 }
 
 /*  ~~~~~~~~~~~~~~~~~~~~~~~  Mobile Viewing  ~~~~~~~~~~~~~~~~~~~~~~~  */

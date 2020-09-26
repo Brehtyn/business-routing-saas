@@ -1,24 +1,32 @@
 @charset "UTF-8";
 /* CSS Document */
 
+@font-face {
+  font-family:titleFont;
+  src:url(.../assets/BebasNeue)
+}
+
 /*  ~~~~~~~~~~~~~~~~~~~~~~~  PC Viewing  ~~~~~~~~~~~~~~~~~~~~~~~  */
 
 @media screen and (min-width:845px) {
 
   body{
-  background-image: url(../assets/);
-  background-repeat:none;
+  background-image: url(../assets/background.png);
+  background-repeat:repeat-y;
   background-position:center;
   }
   .wrapper {
-    text-align: center;
     padding-top: 50px;
+    margin:0 auto;
+    text-align: center;
+    width:800px;
   }
   .title{
     padding: 50px 0 50px 0;
   }
   h1, h2 {    
     text-shadow: 5px 5px 5px #000000;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
 
   #popup_form {
@@ -64,6 +72,7 @@
     margin-top:10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
+    border-radius: 10px;
   }
   #btn_cancel {
     background-color: red;
@@ -74,6 +83,7 @@
     cursor: pointer;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
+    border-radius: 10px;
   }
 
 }
