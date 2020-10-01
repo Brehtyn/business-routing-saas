@@ -1,40 +1,10 @@
-<div class="wrapper">
-
-    <div class="top_wrapper">
-      <h1>Location Info: </h1>
-    
-      <div class="content_bubble"> 
-        
-        <p> 
-          Address: <%= building.address %>
-          <br/> 
-          Cell: (<%= building.telephone_number %>)
-          <br/>
-          <%= building.tech_service %>
-    
-        </p>
-        
-        <div class="individual_location_wrapper"> <a href=""> FRONT DESK </a></div> 
-        <div class="individual_location_wrapper"> <a href=""> VAULT </a></div> 
-        <div class="individual_location_wrapper"> <a href=""> CARD_PRINTER </a></div> 
-    
-      </div>
-    </div>
-    
-    <div class="general_wrapper">
-      <h1>Drop Day(s): </h1>
-      
-      <div class="content_bubble"> MON, FRI </div>
-    </div>
-    
-    <div class="general_wrapper">
-      <h1>Machines : </h1>
-      
-      <div class="content_bubble">
-        <%- include('../partials/allMachines') %>
-      </div>
-    
-      </div>
-    </div>
-    
-    </div>
+<div>
+    <nav>
+        <a href="/">Stuff Stuff</a>
+        <ul>
+            <li><a href="/buildings/show">Buildings</a></li>
+            <li><a href="/buildings/new">Add Building</a></li>
+            <li><a href="/buildings/delete">Delete Building</a></li> 
+        </ul>
+    </nav>
+</div>

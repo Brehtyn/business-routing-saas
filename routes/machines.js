@@ -6,12 +6,12 @@ const Machine = require('../models/machine')
 
 //index to create machines
 router.get('/', checkAuthenticated, async (req, res) => {
-    res.render('machines/createMachIndex')
+    res.render('machines/index')
 })
 
 //index to create new machines
 router.get('/new',checkAuthenticated,  async(req, res) =>{
-    res.render('machines/newmachine', {machine: new Machine()})
+    res.render('machines/new', {machine: new Machine()})
 })
 
 //creates new machine
@@ -34,7 +34,7 @@ router.post('/new', checkAuthenticated,async(req, res) =>{
 })
 
 //to delete a machine
-router.get('/remove', checkAuthenticated, (req, res) => {
+router.get('/delete', checkAuthenticated, (req, res) => {
     var app = req.app;
     const allMachinesArray = (app.get('allMachines'))
 
@@ -47,7 +47,7 @@ router.get('/remove', checkAuthenticated, (req, res) => {
     }
 })
 
-router.delete('/remove/:id', checkAuthenticated, async(req, res) =>{
+router.delete('/delete/:id', checkAuthenticated, async(req, res) =>{
     try{
         const machine = await Machine.findById(req.params.id)
         await machine.remove()
@@ -58,29 +58,31 @@ router.delete('/remove/:id', checkAuthenticated, async(req, res) =>{
         }
         else{
             console.log('could not remove book')
-            res.redirect('/machines/remove')
+            res.redirect('/machines/delete')
         }
     }
 })
 
 //to get all machines
 
-router.get('/allmachines', checkAuthenticated,  async( req, res) => {
+router.get('/show', checkAuthenticated,  async( req, res) => {
     var app = req.app
     const allMachinesArray = (app.get('allMachines'))
 
     try{
-        res.render('machines/allmachines', {allMachinesArray: allMachinesArray})
+        res.render('machines/show', {allMachinesArray: allMachinesArray})
     }catch{
         res.redirect('/')
     }
 })
 
 //gets all machines
+//Have to fix this route eventually with indexMachines
+//Will probably make this new index once project expands
 router.get('/:id', checkAuthenticated, async (req,res) => {
     try{
         const machine = await Machine.findById(req.params.id)
-        res.render('machines/index', {machine: machine})
+        res.render('indexMachines', {machine: machine})
     }catch{
         res.redirect('/')
     }
