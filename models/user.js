@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
             require: true
         },
         authorizationLevel: {
-            type: Number,
+            type: String,
             require: true
         },
         shiftTime: {// DAY, SWING, NIGHT, or CUSTOM

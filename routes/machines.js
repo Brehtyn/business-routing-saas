@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Building = require('../models/building')
 const Machine = require('../models/machine')
-
+const { checkAuthenticated } = require('../permissions/basicAuth')
 
 //index to create machines
 router.get('/', checkAuthenticated, async (req, res) => {
@@ -112,13 +112,6 @@ router.put('/edit/:id', checkAuthenticated, async (req, res) => {
         res.redirect('/machines')
     }
 })
-
-function checkAuthenticated( req, res, next){
-    if(req.isAuthenticated()){
-        return next()
-    }
-    res.redirect('/login')
-}
 
 
 module.exports = router
