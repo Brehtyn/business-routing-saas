@@ -4,17 +4,16 @@ const Building = require('../models/building');
 
 //index to create buildings
 router.get('/', checkAuthenticated, (req, res) => {
-    res.render('buildings/createindex')
+    res.render('buildings/index')
 })
 
 //page to delete buildings
-router.get('/remove', checkAuthenticated, (req, res) => {
+router.get('/delete', checkAuthenticated, (req, res) => {
     var app = req.app;
     const allBuildingsArray = (app.get('allBuildings'))
 
     try{
-        console.log(allBuildingsArray)
-        res.render('buildings/deleteBuilding', {allBuildingsArray: allBuildingsArray})
+        res.render('buildings/delete', {allBuildingsArray: allBuildingsArray})
 
     }catch{
         res.redirect('/')
@@ -22,12 +21,12 @@ router.get('/remove', checkAuthenticated, (req, res) => {
 })
 
 //Gets all buildings
-router.get('/allbuildings', checkAuthenticated, (req, res) => {
+router.get('/show', checkAuthenticated, (req, res) => {
     var app = req.app;
     const allBuildingsArray = (app.get('allBuildings'))
 
     try{
-        res.render('buildings/allbuildings', {allBuildingsArray: allBuildingsArray})
+        res.render('buildings/show', {allBuildingsArray: allBuildingsArray})
 
     }catch{
         res.redirect('/')
@@ -57,19 +56,22 @@ router.post('/new',checkAuthenticated , async (req,res) => {
     }
 })
 
+
+//Fix this route and find better name than indexHome but first get all shit working
+//Probably will get fixed in the views instead of on here but we shall see
 router.get('/:id', checkAuthenticated, async (req,res) => {
     var app = req.app;
     const allMachinesArray = (app.get('allMachines'))
 
     try{
         const building = await Building.findById(req.params.id)
-        res.render('buildings/index', {building: building, allMachinesArray: allMachinesArray})
+        res.render('indexBuildings', {building: building, allMachinesArray: allMachinesArray})
     }catch{
         res.redirect('/')
     }
 })
 
-router.delete('/remove/:id', checkAuthenticated, async(req, res) =>{
+router.delete('/delete/:id', checkAuthenticated, async(req, res) =>{
     try{
         const building = await Building.findById(req.params.id)
         await building.remove()
@@ -80,7 +82,7 @@ router.delete('/remove/:id', checkAuthenticated, async(req, res) =>{
         }
         else{
             console.log('could not remove book')
-            res.redirect('/buildings/remove')
+            res.redirect('/buildings/delete')
         }
     }
 })

@@ -2,7 +2,7 @@
     <%  allMachinesArray.forEach(machine => { %>
         <h1><%= machine.location%></h1>
         <%- include('../partials/deleteForm', 
-                {url: `/machines/remove/${machine._id}`}) %>
+                {url: `/machines/delete/${machine._id}`}) %>
 <% }) %>
 <% } %> 
 
