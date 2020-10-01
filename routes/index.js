@@ -4,6 +4,7 @@ const User = require('../models/user')
 const passport = require('passport')
 const initializePassport = require('../public/passport-config')
 const flash = require('express-flash')
+const { checkAuthenticated } = require('../permissions/basicAuth')
 
 initializePassport(
     passport,
@@ -55,13 +56,6 @@ router.post('/login', checkNotAuthenticated, passport.authenticate('local', {
 router.get('/login', checkNotAuthenticated, (req, res) => {
     res.render('login')
 })
-
-function checkAuthenticated( req, res, next){
-    if(req.isAuthenticated()){
-        return next()
-    }
-    res.redirect('/login')
-}
 
 function checkNotAuthenticated(req, res, next){
     if(req.isAuthenticated()){
