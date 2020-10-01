@@ -1,20 +1,46 @@
-<div class="nav_bar">
-  <div class="nav_wrapper">
+<link href="../../public/stylesheets/style.css" rel="stylesheet" type="text/css" />
 
-    <div class="left_nav_bar">
-      <p id="l_item_1">
-        <a href="/" style="text-decoration: none;"> Home </a>
-        <a href="/buildings" style="text-decoration: none;"> Building Page </a>
-        <a href="/machines" style="text-decoration: none;"> Machine Page </a>
-        <a href="/users" style="text-decoration: none;"> User Page </a>
+<style>
+
+.nav_bar {
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  height:50px;
+  background-image: url(../assets/nav_bar.jpg);
+  background-repeat: repeat-x;
+  margin-top: -8px;
+  margin-left: -8px;
+  letter-spacing: 1px;
+  color: white;
+}
+.left_nav {
+  float:left;
+  padding-left:65px;
+}
+.right_nav {
+  float:right;
+  padding-right:65px;
+}
+</style>
+
+<div>
+<div class="nav_bar" id="nav_bar">
+
+    <div class="left_nav">
+      <p>
+        <a href="/" style="text-decoration: none; color:white;"> Dashboard </a> |
+        <a href="/buildings" style="text-decoration: none; color:white;"> Locations </a> |
+        <a href="/machines" style="text-decoration: none; color:white;"> All Machines </a> |
+        <a href="/users" style="text-decoration: none; color:white;"> User Page </a>
       </p>
     </div>
 
-    <div class="right_nav_bar">
-      <p id="l_item_2">
-        [TIME]|[ACTIVE COUNTER]
+    <div class="right_nav">
+      <p>
+      [time]|[active calls]
       </p>
     </div>
 
-  </div>
+</div>
 </div>
