@@ -40,7 +40,7 @@ router.post('/new', checkAuthenticated,async(req, res) =>{
             name: req.body.name,
             username: req.body.username,
             password: hashedPassword,
-            authorzationLevel: req.body.authorzationLevel,
+            authorizationLevel: req.body.authorizationLevel,
             cell_number: req.body.cell_number,
             group: req.body.group
         })
