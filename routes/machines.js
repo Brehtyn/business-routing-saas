@@ -3,6 +3,7 @@ const router = express.Router()
 const Building = require('../models/building')
 const Machine = require('../models/machine')
 const { checkAuthenticated } = require('../permissions/basicAuth')
+const { canEditMachine} = require('../permissions/machineAuth')
 
 //index to create machines
 router.get('/', checkAuthenticated, async (req, res) => {
@@ -89,7 +90,7 @@ router.get('/:id', checkAuthenticated, async (req,res) => {
 })
 
 //Edit Building Route
-router.get('/edit/:id', checkAuthenticated,  async (req, res) => {
+router.get('/edit/:id', checkAuthenticated, authEditProject, async (req, res) => {
     try{
         const machine = await Machine.findById(req.params.id)
         res.render('machines/edit', {machine: machine})
@@ -98,7 +99,7 @@ router.get('/edit/:id', checkAuthenticated,  async (req, res) => {
     }
 })
 
-router.put('/edit/:id', checkAuthenticated, async (req, res) => {
+router.put('/edit/:id', checkAuthenticated, authEditProject, async (req, res) => {
     try{
         const machine = await Machine.findById(req.params.id)
         machine.city = req.body.city,
@@ -113,5 +114,13 @@ router.put('/edit/:id', checkAuthenticated, async (req, res) => {
     }
 })
 
+//checks if user is authorized to edit project
+function authEditProject(req, res, next) {
+    if(!canEditMachine(req.user)){
+        res.redirect('/machines')
+        return res.end()
+    }
+    next()
+}
 
 module.exports = router
