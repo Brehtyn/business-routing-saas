@@ -1,14 +1,15 @@
 const express = require('express')
 const router = express.Router()
 const Building = require('../models/building');
-
+const { checkAuthenticated } = require('../permissions/basicAuth')
+const { canEditBuilding, canDeleteBuilding, canCreateBuilding} = require('../permissions/buildingAuth')
 //index to create buildings
 router.get('/', checkAuthenticated, (req, res) => {
     res.render('buildings/index')
 })
 
 //page to delete buildings
-router.get('/delete', checkAuthenticated, (req, res) => {
+router.get('/delete', checkAuthenticated, authDeleteLocation, (req, res) => {
     var app = req.app;
     const allBuildingsArray = (app.get('allBuildings'))
 
@@ -34,12 +35,12 @@ router.get('/show', checkAuthenticated, (req, res) => {
 })
 
 //New Machine Route, just the form for making a new machine
-router.get('/new',checkAuthenticated, async (req,res) => {
+router.get('/new',checkAuthenticated, authCreateLocation, async (req,res) => {
     res.render('buildings/new', {building: new Building()})
 })
 
 // //creates the machine by sending it to the database
-router.post('/new',checkAuthenticated , async (req,res) => {
+router.post('/new',checkAuthenticated, authCreateLocation, async (req,res) => {
     try{
         const building = new Building({
             location: req.body.location,
@@ -71,7 +72,7 @@ router.get('/:id', checkAuthenticated, async (req,res) => {
     }
 })
 
-router.delete('/delete/:id', checkAuthenticated, async(req, res) =>{
+router.delete('/delete/:id', checkAuthenticated, authDeleteLocation, async(req, res) =>{
     try{
         const building = await Building.findById(req.params.id)
         await building.remove()
@@ -88,7 +89,7 @@ router.delete('/delete/:id', checkAuthenticated, async(req, res) =>{
 })
 
 //Edit Building Route
-router.get('/edit/:id', checkAuthenticated, async (req, res) => {
+router.get('/edit/:id', checkAuthenticated, authEditLocation, async (req, res) => {
     try{
         const building = await Building.findById(req.params.id)
         res.render('buildings/edit', {building: building})
@@ -97,7 +98,7 @@ router.get('/edit/:id', checkAuthenticated, async (req, res) => {
     }
 })
 
-router.put('/edit/:id',checkAuthenticated, async (req, res) => {
+router.put('/edit/:id',checkAuthenticated, authEditLocation, async (req, res) => {
     try{
         const building = await Building.findById(req.params.id)
         building.location = req.body.location,
@@ -111,11 +112,30 @@ router.put('/edit/:id',checkAuthenticated, async (req, res) => {
     }
 })
 
-function checkAuthenticated( req, res, next){
-    if(req.isAuthenticated()){
-        return next()
+//checks if user is authorized to edit project
+function authEditLocation(req, res, next) {
+    if(!canEditBuilding(req.user)){
+        res.redirect('/buildings')
+        return res.end()
     }
-    res.redirect('/login')
+    next()
 }
+
+function authCreateLocation(req, res, next) {
+    if(!canCreateBuilding(req.user)){
+        res.redirect('/buildings')
+        return res.end()
+    }
+    next()
+}
+
+function authDeleteLocation(req, res, next) {
+    if(!canDeleteBuilding(req.user)){
+        res.redirect('/buildings')
+        return res.end()
+    }
+    next()
+}
+
 
 module.exports = router
