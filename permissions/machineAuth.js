@@ -10,6 +10,31 @@ function canEditMachine(user) {
     )
 }
 
+function canCreateMachine(user) {
+    return (
+        user.authorizationLevel === "ADMIN" ||
+        user.authorizationLevel === "MANAGER"
+    )
+}
+
+function canDeleteMachine(user) {
+    return (
+        user.authorizationLevel === "ADMIN" ||
+        user.authorizationLevel === "MANAGER" 
+    )
+}
+
+function canUpdateMachine(user) {
+    return (
+        user.authorizationLevel === "ADMIN" ||
+        user.authorizationLevel === "MANAGER" ||
+        user.authorizationLevel === "TECH"
+    )
+}
+
 module.exports = {
-    canEditMachine
+    canEditMachine,
+    canDeleteMachine,
+    canCreateMachine,
+    canUpdateMachine
 }

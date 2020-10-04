@@ -3,7 +3,7 @@ const router = express.Router()
 const Building = require('../models/building')
 const Machine = require('../models/machine')
 const { checkAuthenticated } = require('../permissions/basicAuth')
-const { canEditMachine} = require('../permissions/machineAuth')
+const { canEditMachine, canDeleteMachine, canCreateMachine} = require('../permissions/machineAuth')
 
 //index to create machines
 router.get('/', checkAuthenticated, async (req, res) => {
@@ -11,12 +11,12 @@ router.get('/', checkAuthenticated, async (req, res) => {
 })
 
 //index to create new machines
-router.get('/new',checkAuthenticated,  async(req, res) =>{
+router.get('/new',checkAuthenticated, authCreateProject,  async(req, res) =>{
     res.render('machines/new', {machine: new Machine()})
 })
 
 //creates new machine
-router.post('/new', checkAuthenticated,async(req, res) =>{
+router.post('/new', checkAuthenticated, authCreateProject, async(req, res) =>{
     try{
         const machine = new Machine({
             city: req.body.city,
@@ -35,7 +35,7 @@ router.post('/new', checkAuthenticated,async(req, res) =>{
 })
 
 //to delete a machine
-router.get('/delete', checkAuthenticated, (req, res) => {
+router.get('/delete', checkAuthenticated, authDeleteProject, (req, res) => {
     var app = req.app;
     const allMachinesArray = (app.get('allMachines'))
 
@@ -48,7 +48,7 @@ router.get('/delete', checkAuthenticated, (req, res) => {
     }
 })
 
-router.delete('/delete/:id', checkAuthenticated, async(req, res) =>{
+router.delete('/delete/:id', checkAuthenticated, authDeleteProject, async(req, res) =>{
     try{
         const machine = await Machine.findById(req.params.id)
         await machine.remove()
@@ -122,5 +122,25 @@ function authEditProject(req, res, next) {
     }
     next()
 }
+
+function authCreateProject(req, res, next) {
+    if(!canCreateMachine(req.user)){
+        res.redirect('/machines')
+        return res.end()
+    }
+    next()
+}
+
+function authDeleteProject(req, res, next) {
+    if(!canDeleteMachine(req.user)){
+        res.redirect('/machines')
+        return res.end()
+    }
+    next()
+}
+
+
+
+
 
 module.exports = router
