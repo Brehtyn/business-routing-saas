@@ -1,7 +1,7 @@
 <link href="/stylesheets/style.css" rel="stylesheet" type="text/css" />
 
 <div class="wrapper">
-  <h1>Location Info: </h1>
+  <h1><%= building.location%></h1>
 
   <div class="content_bubble">
 
@@ -19,17 +19,12 @@
     <div class="individual_desk_wrapper"> <a href=""> CARD_PRINTER </a></div>
 
   </div>
+  <h2>Drop Day(s): </h1>
 
-  <div class="general_wrapper">
-    <h1>Drop Day(s): </h1>
+  <div class="content_bubble"> Ect </div>
 
-    <div class="content_bubble"> Ect </div>
-  </div>
-
-  <div class="general_wrapper">
-    <h1>Machines : </h1>
-    <div class="content_bubble">
-      <%- include('partials/allMachines') %>
-    </div>
+  <h2>Machines : </h1>
+  <div class="content_bubble">
+    <%- include('partials/allMachines') %>
   </div>
 </div>

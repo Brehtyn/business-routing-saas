@@ -31,10 +31,11 @@ a:active {
 @media screen and (min-width:845px) {
 
   body{
-  background-image: url(../assets/background.png);
+  background-image: url(../assets/background.jpg);
   background-repeat:repeat-y;
   background-position:center;
   font-family: 'Arial', 'Arial Narrow', Arial, sans-serif;
+  background-color: black;
   }
   .wrapper {
     padding-top: 50px;
@@ -108,7 +109,6 @@ a:active {
     -webkit-border-radius: 10px;
     border-radius: 10px;
   }
-
   .content_bubble {
     width: 750px;
     height: 100%;
@@ -120,6 +120,28 @@ a:active {
     -webkit-box-shadow: 4px 4px 14px #000;
     box-shadow: 4px 4px 14px #000;
     margin-bottom: 50px;
+  }
+  .database_wrapper {
+    width:760px;
+    height: 100%;
+    border-style:double;
+    border-width: 5px;
+    margin-left: 14.5px;
+  }
+  .database_label {
+    text-align: left;
+    padding-left: 20px;
+    margin-top:20px;
+    margin-bottom:20px;
+    text-decoration: underline;
+  }
+  .database_item {
+    width:756px;
+    height:30px;
+    border-style:solid;
+    border-width: 2px;
+    margin-top:5px;
+    padding-top:10px;
   }
   .individual_location_wrapper {
     text-align: center;
@@ -157,6 +179,7 @@ a:active {
     padding-top:20px;
     -moz-border-radius: 55px;
     -webkit-border-radius: 55px;
+    border-radius: 10px;
     -moz-box-shadow: 4px 4px 14px #000;
     -webkit-box-shadow: 4px 4px 14px #000;
     box-shadow: 4px 4px 14px #000;
@@ -169,6 +192,7 @@ a:active {
     margin-bottom: 18px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
+    border-radius: 10px;
     -moz-box-shadow: 4px 4px 14px #000;
     -webkit-box-shadow: 4px 4px 14px #000;
     box-shadow: 4px 4px 14px #000;

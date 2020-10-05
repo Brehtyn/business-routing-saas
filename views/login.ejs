@@ -13,27 +13,29 @@
 
 <body>
     <div class="wrapper">
-        <div class="title"> <h1> "Example Business" Routing </h1> </div>
+        <div class="title">
+            <h1> Eclipse Routing </h1>
+        </div>
         <button id="btn_accept" onclick="openForm()">[ Employee Access ]</button>
-            <div class="popup_form" id="popup_form">
-                <form action="/login" method="POST">
-                    <div>
-                        <div id="form_element">
-                            <label for="username">Employee ID:</label>
-                            <input type="text" id="username" name="username" required>
-                        </div>
-                        <div id="form_element">
-                            <label for="password">Password:</label>
-                            <input type="password" id="password" name="password" required>
-                        </div>
-                        <button id="btn_accept" type="submit">Login</button>
-                        <button id="btn_cancel" onclick="closeForm()">Close</button>
+        <div class="popup_form" id="popup_form">
+            <form action="/login" method="POST">
+                <div>
+                    <div id="form_element">
+                        <label for="username">Employee ID:</label>
+                        <input type="text" id="username" name="username" required>
                     </div>
-            </div>
-            <div id="form_background"></div>
+                    <div id="form_element">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button id="btn_accept" type="submit">Login</button>
+                    <button id="btn_cancel" onclick="closeForm()">Close</button>
+                </div>
+        </div>
+        <div id="form_background"></div>
         </form>
-        <br/>  <br/>  <br/>
-        <h2>Thank you for your service!</h2>
+        <br /> <br /> <br />
+        <h2>Thank you & be safe!</h2>
     </div>
 </body>
 

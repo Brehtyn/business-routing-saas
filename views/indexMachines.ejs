@@ -1,31 +1,22 @@
 <link href="/stylesheets/style.css" rel="stylesheet" type="text/css" />
 
 <div class="wrapper">
-    <div class="top_wrapper">
-      <h1>Machine # 1 </h1>
-      
-      <div class="content_bubble"> 
+  <div class="top_wrapper">
+    <h1>Machine Name / Asset # </h1>
+    <h2>Machine Type </h1>
+
+      <div class="content_bubble"> Status: <%= machine.status %> </div>
+
+      <div class="content_bubble">
         <h2>Overview: </h2>
         <p>
-            this machine does blah and blach
-          <br />
-          PICTURE!
-          <br />
-  
+          this machine does blah and blach
         </p>
       </div>
-    </div>
-  
-    <div class="general_wrapper">
-    <h1>Active: </h1>
-  
-    <div class="content_bubble"> <%= machine.status %> </div>
-    </div>
-  
-    <div class="general_wrapper">
-    <h1>Machine Info: </h1>
-    
-    <div class="content_bubble"> <%= machine.description  %>
-    </div>
-    </div>
   </div>
+
+  <div class="content_bubble">
+    <h2>Machine Info: </h1>
+      <%= machine.description  %>
+  </div>
+</div>
