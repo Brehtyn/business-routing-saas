@@ -10,6 +10,13 @@
   background-repeat: no-repeat;
   background-position:center;
   background-color: black;
+  text-decoration: none;
+  }
+  ul {
+    text-decoration: none;
+    list-style-type: none;
+    margin: none;
+    padding: none;
   }
   .wrapper {
     text-align: center;

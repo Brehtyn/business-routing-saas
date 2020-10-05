@@ -1,8 +1,7 @@
-h2>Edit Building</h2>
+<h2>Edit Building</h2>
 <form action="/machines/edit/<%= machine._id %>?_method=PUT" method="POST">
 
     <%- include('_form_fields') %>
-    <a href="/machines">Cancel</a>
     <button type="submit">Update</button>
-
+    <a href="/machines">Cancel</a>
 </form>
