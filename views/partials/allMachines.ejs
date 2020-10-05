@@ -1,13 +1,15 @@
-<div class="wrapper">
-    <% if (allMachinesArray != null) { %>
-        <%  allMachinesArray.forEach(machine => { %>
-        <a href="/machines/<%= machine._id%>">
-            <div class="individual_location_wrapper">
-            <div>Machine ID: <%= machine._id  %> </div>
-            <div>Location: <%= machine.location %> </div>
-            </div>
-        </a>
-        <a href="/machines/edit/<%= machine._id%>">Edit</a>
-    <% }) %>
-    <% } %> 
-    </div>
+<% if (allMachinesArray != null) { %>
+<%  allMachinesArray.forEach(machine => { %>
+<div class="individual_machine_wrapper">
+    <a href="/machines/<%= machine._id%>">
+        <div>Asset #: </div>
+        <div id="machine_pic"> </div>
+        <div>Machine ID: <%= machine._id  %> </div>
+        <div>Location: <%= machine.location %> </div>
+    </a>
+    <br />
+    <a href="/machines/edit/<%= machine._id%>">Edit</a>
+    <br /> <br />
+</div>
+<% }) %>
+<% } %>

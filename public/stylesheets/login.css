@@ -7,8 +7,9 @@
 
   body{
   background-image: url(../assets/login.jpg);
-  background-repeat:none;
+  background-repeat: no-repeat;
   background-position:center;
+  background-color: black;
   }
   .wrapper {
     text-align: center;
