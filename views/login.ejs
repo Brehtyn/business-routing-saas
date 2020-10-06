@@ -16,19 +16,19 @@
         <div class="title">
             <h1> Eclipse Routing </h1>
         </div>
-        <button id="btn_accept" onclick="openForm()">[ Employee Access ]</button>
+        <button id="btn_accept" onclick="openForm()"> Employee Login </button>
         <div class="popup_form" id="popup_form">
             <form action="/login" method="POST">
                 <div>
                     <div id="form_element">
-                        <label for="username">Employee ID:</label>
+                        <label for="username">Username:</label>
                         <input type="text" id="username" name="username" required>
                     </div>
                     <div id="form_element">
                         <label for="password">Password:</label>
                         <input type="password" id="password" name="password" required>
                     </div>
-                    <button id="btn_accept" type="submit">Login</button>
+                    <button id="btn_accept" type="submit">Submit</button>
                     <button id="btn_cancel" onclick="closeForm()">Close</button>
                 </div>
         </div>

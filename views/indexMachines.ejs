@@ -3,20 +3,27 @@
 <div class="wrapper">
   <div class="top_wrapper">
     <h1>Machine Name / Asset # </h1>
-    <h2>Machine Type </h1>
-
-      <div class="content_bubble"> Status: <%= machine.status %> </div>
-
-      <div class="content_bubble">
-        <h2>Overview: </h2>
-        <p>
-          this machine does blah and blach
-        </p>
+    <div class="machine_header">
+      <div id="left_side">
+        <h2> Machine Type </h2>
       </div>
+      <div id="right_side">
+        <h2> Status: <%= machine.status %> </h2>
+      </div>
+    </div>
   </div>
 
   <div class="content_bubble">
-    <h2>Machine Info: </h1>
+    <h2>Overview: </h2>
+    <div id="machine_overview">Service Type: TODO: ADD SERVICE TYPES TO INDIVIDUAL MACHINES</div>
+    <div id="machine_overview">Machine ID: <%= machine._id  %> </div>
+    <p>
       <%= machine.description  %>
+    </p>
+  </div>
+
+  <div class="content_bubble">
+    <h2>Datasheet: </h1>
+      TODO: DATASHEET LOADED FROM PDF
   </div>
 </div>

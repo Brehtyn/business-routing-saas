@@ -53,6 +53,7 @@
     -moz-box-shadow: 4px 4px 14px #000;
     -webkit-box-shadow: 4px 4px 14px #000;
     box-shadow: 4px 4px 14px #000;
+    border-style: double;
   }
   #form_element {
     padding-bottom:8px;
@@ -78,9 +79,10 @@
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     border-radius: 10px;
+    border-style:solid;
   }
   #btn_cancel {
-    background-color: red;
+    background-color:black;
     margin-top:10px;
     color: white;
     padding: 16px 20px;
