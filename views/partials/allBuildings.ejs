@@ -2,8 +2,9 @@
     <% if (allBuildingsArray != null) { %>
     <%  allBuildingsArray.forEach(building => { %>
     <div class="individual_location_wrapper">
+        <a href="/buildings/<%= building._id%>"> 
         <div id="location_pic"> <img src="/assets/locations/jackpotjoanies.jpg" height="50px" width="120px" alt="jackpot joanies logo"> </div>
-        <a href="/buildings/<%= building._id%>"> <%= building.location  %> </a>
+        <%= building.location  %> </a>
     </div>
     <% }) %>
     <% } %>
