@@ -1,0 +1,10 @@
+<h2><%= post.post %></h2>
+<% if ( comments != null) { %>
+    <% if (comments.length > 0){ %>
+        <% comments.forEach(comment => { %>
+            <h2> <%= comment.comment %>  </h2>
+        <% }) %>
+    <% } %>
+<% } %>
+
+<a href="/posts/comment/<%= post._id%>">Comment</a>

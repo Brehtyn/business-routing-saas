@@ -1,0 +1,8 @@
+<h2><%= post.post %></h2>
+
+<h2>New Comment</h2>
+<form action="/posts/comment/<%= post._id %> " method="POST">
+    <textarea name="comment" id="comment"></textarea>
+    <a href="/posts">Cancel</a>
+    <button type="submit">Comment</button>
+</form>
