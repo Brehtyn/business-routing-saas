@@ -1,40 +1,31 @@
-<div class="wrapper">
+<link href="/stylesheets/style.css" rel="stylesheet" type="text/css" />
 
-    <div class="top_wrapper">
-      <h1>Location Info: </h1>
-    
-      <div class="content_bubble"> 
-        
-        <p> 
-          Address: <%= building.address %>
-          <br/> 
-          Cell: (<%= building.telephone_number %>)
-          <br/>
-          <%= building.tech_service %>
-    
-        </p>
-        
-        <div class="individual_location_wrapper"> <a href=""> FRONT DESK </a></div> 
-        <div class="individual_location_wrapper"> <a href=""> VAULT </a></div> 
-        <div class="individual_location_wrapper"> <a href=""> CARD_PRINTER </a></div> 
-    
-      </div>
-    </div>
-    
-    <div class="general_wrapper">
-      <h1>Drop Day(s): </h1>
-      
-      <div class="content_bubble"> MON, FRI </div>
-    </div>
-    
-    <div class="general_wrapper">
-      <h1>Machines : </h1>
-      
-      <div class="content_bubble">
-        <%- include('partials/allMachines') %>
-      </div>
-    
-      </div>
-    </div>
-    
-    </div>
+<div class="wrapper">
+  <h1><%= building.location%></h1>
+  <h2> <a href="/buildings/edit/<%= building._id%>">Edit</a> </h2>
+
+  <div class="content_bubble">
+
+    <p>
+      Address: <%= building.address %>
+      <br />
+      Cell: (<%= building.telephone_number %>)
+      <br />
+      Service: <%= building.tech_service %>
+
+    </p>
+
+    <div class="individual_desk_wrapper"> <a href=""> FRONT DESK </a></div>
+    <div class="individual_desk_wrapper"> <a href=""> VAULT </a></div>
+    <div class="individual_desk_wrapper"> <a href=""> CARD_PRINTER </a></div>
+
+  </div>
+  <h2>Drop Day(s): </h1>
+
+  <div class="content_bubble"> Ect </div>
+
+  <h2>Machines : </h1>
+  <div class="content_bubble">
+    <%- include('partials/allMachines') %>
+  </div>
+</div>

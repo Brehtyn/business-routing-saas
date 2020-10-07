@@ -1,4 +1,21 @@
 # Routing Distribution Database Program
 
-Program intended to act as a solution for service businesses. Will keep track of service requests, ongoing issues, and display information on a dashboard to customizable users.
-Will scrap data for scheduled reports. Different level of permissions based on user type to allow in-program custimization. 
+Program intended to act as a routing database solution for businesses. 
+
+Features:
+
+-display information on a customizable dashboard 
+<br />
+-be accessible from any web device 
+<br />
+-track service requests 
+<br />
+-dispatch new issues to assigned users 
+<br />
+-update log of ongoing problems 
+<br />
+-in app creation of users, locations, and assets 
+<br />
+-scrap data for scheduled reports 
+<br />
+-permissions based on user type 
