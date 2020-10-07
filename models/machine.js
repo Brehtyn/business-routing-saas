@@ -9,11 +9,17 @@ const machineSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    machineType: {
-        type: String
+    short_name: {
+        type: String,
+        required: true
+    },
+    machine_model: {
+        type: String,
+        required: true
     },
     asset_number: {
-        type: String
+        type: String,
+        required: true
     },
     ownershipType: {
         type: String
@@ -21,12 +27,13 @@ const machineSchema = new mongoose.Schema({
     cabinet_license_number: { 
         type: String
     },
-    status: {      //active, pending, posted 
+    status: {      //working, issue, off 
         type: String,
         required: true
     },
     urgent: {
         type: Boolean,
+        default: false,
         required: true
     },
     description: {

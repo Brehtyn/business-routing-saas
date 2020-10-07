@@ -21,13 +21,16 @@ router.post('/new', checkAuthenticated, authCreateProject, async(req, res) =>{
         const machine = new Machine({
             city: req.body.city,
             location: req.body.location,
+            machine_model: req.body.machine_model,
+            short_name: req.body.short_name,
+            asset_number: req.body.asset_number,
             status: req.body.status,
             urgent: req.body.urgent,
             createdAt: new Date(req.body.createdAt)
         })
 
         const newMachine = await machine.save()
-        console.log(newMachine)
+        res.redirect(`/machines/${newMachine._id}`)
 
     }catch(err){
         console.log(err)
@@ -104,6 +107,9 @@ router.put('/edit/:id', checkAuthenticated, authEditProject, async (req, res) =>
         const machine = await Machine.findById(req.params.id)
         machine.city = req.body.city,
         machine.location = req.body.location,
+        machine.asset_number = req.body.asset_number,
+        machine.short_name = req.body.short_name,
+        machine.machine_model = req.body.machine_model,
         machine.status = req.body.status,
         machine.urgent = req.body.urgent,
         createdAt = new Date(req.body.createdAt)
