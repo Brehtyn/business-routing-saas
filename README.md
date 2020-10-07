@@ -2,12 +2,20 @@
 
 Program intended to act as a routing database solution for businesses. 
 
-Will:
--display information on a customizable dashboard
--be accessible from any web device
--track service requests
--dispatch new issues to assigned users
--update log of ongoing problems
--in app creation of users, locations, and assets
--scrap data for scheduled reports
--permissions based on user type
+Features:
+
+-display information on a customizable dashboard 
+<br />
+-be accessible from any web device 
+<br />
+-track service requests 
+<br />
+-dispatch new issues to assigned users 
+<br />
+-update log of ongoing problems 
+<br />
+-in app creation of users, locations, and assets 
+<br />
+-scrap data for scheduled reports 
+<br />
+-permissions based on user type 
