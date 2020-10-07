@@ -162,6 +162,7 @@ a:active {
     border-style: inset;
     border-width:5px;
     background-color: #fff;
+    border-color:#d60019;
   }
   #location_pic {
     height:50px;
@@ -184,7 +185,7 @@ a:active {
     background-color: #fff;
     border-style: inset;
     border-width:5px;
-    background-color: #fff;
+    border-color:#d60019;
   }
   .individual_machine_wrapper {
     text-align: center;
@@ -202,12 +203,13 @@ a:active {
     background-color: #fff;
     border-style: inset;
     border-width:5px;
-    background-color: #fff;
+    border-color:#d60019;
   }
   #machine_pic {
     height:280px;
-    width:186px;
+    width:180px;
     padding: 4px;
+    padding-left: 10px;
     margin-top: 10px;
     margin-bottom: 18px;
     border-style:double;
