@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Building = require('../models/building');
+const Machine = require('../models/machine')
 const { checkAuthenticated } = require('../permissions/basicAuth')
 const { canEditBuilding, canDeleteBuilding, canCreateBuilding} = require('../permissions/buildingAuth')
 //index to create buildings
@@ -9,12 +10,12 @@ router.get('/', checkAuthenticated, (req, res) => {
 })
 
 //page to delete buildings
-router.get('/delete', checkAuthenticated, authDeleteLocation, (req, res) => {
-    var app = req.app;
-    const allBuildingsArray = (app.get('allBuildings'))
+router.get('/delete', checkAuthenticated, authDeleteLocation, async (req, res) => {
+    let buildings = []
 
     try{
-        res.render('buildings/delete', {allBuildingsArray: allBuildingsArray})
+        buildings = await Building.find().sort({createdAt: 'desc'}).limit(10).exec()
+        res.render('buildings/delete', {buildings: buildings})
 
     }catch{
         res.redirect('/')
@@ -22,12 +23,12 @@ router.get('/delete', checkAuthenticated, authDeleteLocation, (req, res) => {
 })
 
 //Gets all buildings
-router.get('/show', checkAuthenticated, (req, res) => {
-    var app = req.app;
-    const allBuildingsArray = (app.get('allBuildings'))
+router.get('/show', checkAuthenticated, async (req, res) => {
+    let buildings = []
 
     try{
-        res.render('buildings/show', {allBuildingsArray: allBuildingsArray})
+        buildings = await Building.find().sort({createdAt: 'desc'}).limit(10).exec()
+        res.render('buildings/show', {buildings: buildings})
 
     }catch{
         res.redirect('/')
@@ -50,8 +51,7 @@ router.post('/new',checkAuthenticated, authCreateLocation, async (req,res) => {
         })
 
         const newBuilding = await building.save()
-        console.log(newBuilding)
-        //res.redirect(`buildings/${newBuilding.id}`)
+        res.redirect(`buildings/${newBuilding.id}`)
     }catch(err){
         console.log(err)
     }
@@ -61,12 +61,12 @@ router.post('/new',checkAuthenticated, authCreateLocation, async (req,res) => {
 //Fix this route and find better name than indexHome but first get all shit working
 //Probably will get fixed in the views instead of on here but we shall see
 router.get('/:id', checkAuthenticated, async (req,res) => {
-    var app = req.app;
-    const allMachinesArray = (app.get('allMachines'))
+    let machines = []
 
     try{
+        machines = await Machine.find().sort({createdAt: 'desc'}).limit(10).exec()
         const building = await Building.findById(req.params.id)
-        res.render('indexBuildings', {building: building, allMachinesArray: allMachinesArray})
+        res.render('indexBuildings', {building: building, machines: machines})
     }catch{
         res.redirect('/')
     }

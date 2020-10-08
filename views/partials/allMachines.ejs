@@ -1,10 +1,9 @@
-<% if (allMachinesArray != null) { %>
-<%  allMachinesArray.forEach(machine => { %>
+<% if (machines != null) { %>
+<%  machines.forEach(machine => { %>
 <div class="individual_machine_wrapper">
     <a href="/machines/<%= machine._id%>">
-        <div>Asset #: </div>
+        <div>Asset #:  <%= machine.asset_number  %>  </div>
         <div id="machine_pic"> <img src="/assets/machines/<%= machine.machine_model %>.jpg" height="100%" width="100%" alt="picture of slot machine"> </div>
-        <div>Machine Asset Number: <%= machine.asset_number  %> </div>
         <div>Location: <%= machine.location %> </div>
     </a>
     <br />

@@ -38,13 +38,12 @@ router.post('/new', checkAuthenticated, authCreateProject, async(req, res) =>{
 })
 
 //to delete a machine
-router.get('/delete', checkAuthenticated, authDeleteProject, (req, res) => {
-    var app = req.app;
-    const allMachinesArray = (app.get('allMachines'))
+router.get('/delete', checkAuthenticated, authDeleteProject,async  (req, res) => {
+    let machines = []
 
     try{
-        console.log(allMachinesArray)
-        res.render('machines/deleteMachine', {allMachinesArray: allMachinesArray})
+        machines = await Machine.find().sort({createdAt: 'desc'}).limit(10).exec()
+        res.render('machines/deleteMachine', {machines: machines})
 
     }catch{
         res.redirect('/')
@@ -70,11 +69,10 @@ router.delete('/delete/:id', checkAuthenticated, authDeleteProject, async(req, r
 //to get all machines
 
 router.get('/show', checkAuthenticated,  async( req, res) => {
-    var app = req.app
-    const allMachinesArray = (app.get('allMachines'))
-
+    let machines = []
     try{
-        res.render('machines/show', {allMachinesArray: allMachinesArray})
+        machines = await Machine.find().sort({createdAt: 'desc'}).limit(10).exec()
+        res.render('machines/show', {machines: machines})
     }catch{
         res.redirect('/')
     }
