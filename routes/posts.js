@@ -7,8 +7,51 @@ router.get('/', (req, res) => {
     res.render('posts/index')
 })
 
+
+//wouldn't have all comments here in posts, must go to individual page to find all comments
+router.get('/all', async (req, res) => {
+    let posts = []
+    try{
+        posts = await Posts.find().sort({createdAt: 'desc'}).limit(10).exec()
+    } catch(err){
+        console.log(err)
+        posts = []
+    }
+    res.render('posts/all', {posts: posts})
+})
+
+router.get('/new', async (req, res) => {
+        res.render('posts/new', {post: new Posts()})
+})
+
+router.post('/new', async( req, res) => {
+    try{
+        const post = new Posts({
+            post: req.body.post,
+            createdBy: req.user.name,
+            createdAt: new Date(req.body.createdAt)
+        })
+        const newPost = await post.save()
+        res.redirect(`/posts/${newPost._id}`)
+    }catch(err){
+        console.log(err)
+        res.redirect('/posts')
+    }
+})
+
+router.get('/:id', async (req, res) => {
+    try{
+        const post = await Posts.findById(req.params.id)
+        //const comments = post.comments
+        res.render('posts/show', {post: post})
+    }catch(err){
+        console.log(err)
+        res.redirect('/posts')
+    }
+})
+
 router.post('/:id', async (req, res) => {
-    let comment = { user_id: req.user.name, comment: req.body.comment}
+    let comment = { userId: req.user.name, comment: req.body.comment}
     try{
         const post = await Posts.findById(req.params.id)
         
@@ -29,50 +72,6 @@ router.post('/:id', async (req, res) => {
 
     }catch(err){
         console.log(err)
-    }
-})
-
-//wouldn't have all comments here in posts, must go to individual page to find all comments
-router.get('/all', async (req, res) => {
-    let posts = []
-    try{
-        posts = await Posts.find().sort({createdAt: 'desc'}).limit(10).exec()
-    } catch(err){
-        console.log(err)
-        posts = []
-    }
-    res.render('posts/all', {posts: posts})
-})
-
-router.get('/new', (req, res) => {
-        res.render('posts/new', {post: new Posts()})
-
-})
-
-router.post('/new', async( req, res) => {
-    try{
-        const post = new Posts({
-            post: req.body.post,
-            createdBy: req.user.name,
-            createdAt: new Date(req.body.createdAt)
-        })
-
-        const newPost = await post.save()
-        console.log(newPost._id)
-    }catch(err){
-        console.log(err)
-        res.redirect('/posts')
-    }
-})
-
-router.get('/:id', async (req, res) => {
-    try{
-        const post = await Posts.findById(req.params.id)
-        //const comments = post.comments
-        res.render('posts/show', {post: post})
-    }catch(err){
-        console.log(err)
-        res.redirect('/posts')
     }
 })
 
