@@ -4,20 +4,10 @@ const Posts = require('../models/posts')
 const Users = require('../models/user')
 
 router.get('/', (req, res) => {
-    console.log(req.user.name)
     res.render('posts/index')
 })
 
-router.get('/comment/:id', async (req, res) => {
-    try{
-        const post = await Posts.findById(req.params.id)
-        res.render('posts/new-comment', {post: post})
-    }catch{
-        res.redirect('/posts')
-    }
-})
-
-router.post('/comment/:id', async (req, res) => {
+router.post('/:id', async (req, res) => {
     let comment = { user_id: req.user.name, comment: req.body.comment}
     try{
         const post = await Posts.findById(req.params.id)
@@ -54,25 +44,21 @@ router.get('/all', async (req, res) => {
     res.render('posts/all', {posts: posts})
 })
 
-router.get('/new', async (req, res) => {
-    try{
+router.get('/new', (req, res) => {
         res.render('posts/new', {post: new Posts()})
-    }catch(err){
-        console.log(err)
-        res.redirect('/posts')
-    }
+
 })
 
 router.post('/new', async( req, res) => {
     try{
         const post = new Posts({
             post: req.body.post,
-            createdBy: req.user.name
+            createdBy: req.user.name,
+            createdAt: new Date(req.body.createdAt)
         })
 
         const newPost = await post.save()
-        res.redirect(`/posts/${newPost._id}`)
-
+        console.log(newPost._id)
     }catch(err){
         console.log(err)
         res.redirect('/posts')

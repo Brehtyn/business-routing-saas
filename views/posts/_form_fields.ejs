@@ -1,4 +1,9 @@
 <div>
     <label>Post</label>
-    <textarea name="post" id="post"><%= post.post %></textarea>
+    <input type="text" name="post" value="<%= post.post %>">
+    <div>
+        <label>Created At Date</label>
+        <input type="date" name="createdAt"
+            value="<%= post.createdAt == null ? '' : post.createdAt.toISOString().split('T')[0] %>">
+    </div>
 </div>
