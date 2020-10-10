@@ -1,3 +1,6 @@
-<div>
-    <label>Comment</label>
-</div>
+<h2>New Comment</h2>
+<form action="/posts/<%= post._id %> " method="POST">
+    <textarea name="comment" id="comment"></textarea>
+    <a href="/posts">Cancel</a>
+    <button type="submit">Comment</button>
+</form>

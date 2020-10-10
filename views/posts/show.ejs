@@ -1,5 +1,7 @@
-<h2><%= post.post %></h2>
+<br />  <br />  <br />
+<h1><%= post.post %> </h1>
 <h2><% post.comments.forEach(comment => { %>
     <h2> <%= comment.comment %>  </h2>
  <% }); %> </h2>
-<a href="/posts/comment/<%= post._id%>">Comment</a>
+
+ <%- include('_comment_form_fields') %> 

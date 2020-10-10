@@ -1,5 +1,6 @@
 <h2>New Post</h2>
 <form action="/posts/new" method="POST">
+    <%= post._id %> 
     <%- include('_form_fields') %> 
     <a href="/posts">Cancel</a>
     <button type="submit">Create Post</button>

@@ -1,7 +1,6 @@
-
 <div>
     <% posts.forEach(post => {%>
-        <%- include('show', {post: post}) %>
-        <a href="/posts/<%= post._id %>"> <%= post.post %> </a>
+        <a href="/posts/<%= post._id %>"> Go to Post</a>
+        <h1><%= post.post %> </h1> 
     <% }) %>
 </div>
