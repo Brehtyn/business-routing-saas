@@ -18,6 +18,7 @@ const machinesRouter = require('./routes/machines')
 const userRouter = require('./routes/users') 
 const postRouter = require('./routes/posts')
 
+
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
 app.set('layout', 'layouts/layout')
