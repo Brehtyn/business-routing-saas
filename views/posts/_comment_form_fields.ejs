@@ -1,6 +1,10 @@
-<h2>Additonal Notes :</h2>
-<form action="/posts/<%= post._id %> " method="POST">
-    <textarea name="comment" id="comment"></textarea>
-    <a href="/posts">Cancel</a>
-    <button type="submit">Comment</button>
-</form>
+<link href="/stylesheets/style.css" rel="stylesheet" type="text/css" />
+
+<div class="wrapper">
+    <form action="/posts/<%= post._id %> " method="POST">
+        <textarea name="comment" id="comment">  </textarea>
+        <br/>
+        <button id="btn_accept" type="submit"> Comment </button>
+        <button id="btn_cancel" href="index"> Cancel </button>
+    </form>
+</div>

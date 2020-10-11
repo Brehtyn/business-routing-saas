@@ -5,6 +5,10 @@ const buildingSchema = new mongoose.Schema({
             type: String,
             required: true
         },
+        building_type: {
+            type:String,
+            required: true
+        },
         address: {
             type: String,
             required: true

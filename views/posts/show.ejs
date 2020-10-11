@@ -1,7 +1,12 @@
-<br />  <br /> 
-<h1><%= post.post %> </h1>
-<h2><% post.comments.forEach(comment => { %>
-    <h2> <%= comment.comment %>  </h2>
- <% }); %> </h2>
+<div class="wrapper">
+    <div class="database_wrapper">
 
- <%- include('_comment_form_fields') %> 
+        <h1> <%= post.post %> </h1>
+
+        <% post.comments.forEach(comment => { %>
+        <p class="database_comment"> <%= comment.comment %> </p>
+        <% }); %>
+
+    </div>
+    <%- include('_comment_form_fields') %>
+</div>
