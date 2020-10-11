@@ -1,21 +1,30 @@
-# Routing Distribution Database Program
+# CosmicDB - Universal Database-Routing Solution
 
-Program intended to act as a routing database solution for businesses. 
+<p>
+Base program intended to be customized and act as a routing database solution to manage, distribute, and scrap the data points businesses find most important!
 
-Features:
+CosmicDB is lightweight with the scripting consisting of just JavaScript & HTML5/CSS. Utilizing the latest open source nodejs packages and backed with the powerful back-end solution MongoDB,  CosmicDB can achieve blazing fast speeds for multiple instances with even the simplest of private nodes. Yet the backend first designed application allows the service to be compatible with enterprise solutions such as AWS.
 
--display information on a customizable dashboard 
 <br />
--be accessible from any web device 
+
+Can Feature:
+
+-data points displayed on a customizable dashboard 
 <br />
--track service requests 
+-compatible from any web-enabled device 
 <br />
--dispatch new issues to assigned users 
+-track service requests
 <br />
--update log of ongoing problems 
+-dispatch new tickets to assigned users via phone/email
 <br />
--in app creation of users, locations, and assets 
+-automatically updated log of tickets
+<br />
+-in app creation of users, locations, assets, +more
 <br />
 -scrap data for scheduled reports 
 <br />
 -permissions based on user type 
+<br />
+-and anything other customizable requests*!
+
+</p>
