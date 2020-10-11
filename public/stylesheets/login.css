@@ -90,10 +90,16 @@
     -webkit-border-radius: 10px;
     border-radius: 10px;
   }
-
   .nav_bar {
     display: none;
   }
+  .left_nav {
+    float:left;
+  }
+  .right_nav {
+    float:right;
+  }
+
 }
 
 /*  ~~~~~~~~~~~~~~~~~~~~~~~  Mobile Viewing  ~~~~~~~~~~~~~~~~~~~~~~~  */

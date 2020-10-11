@@ -26,7 +26,7 @@ const buildingSchema = new mongoose.Schema({
         vault: {
             type: String,
         },
-       card_printer: {
+        card_printer: {
             type: String,
         },
         front_desk: {

@@ -128,7 +128,7 @@ a:active {
     border-style:double;
     border-width: 5px;
     margin-left: 14.5px;
-    background-color:#D5E0E2; 
+    background-color:#B9B9C9; 
   }
   .database_label {
     text-align: left;
@@ -136,13 +136,14 @@ a:active {
     margin-top:20px;
     margin-bottom:20px;
     text-decoration: underline;
+    text
   }
   .database_item {
     width:740px;
     height:35px;
     border-style:solid;
     border-width:2px;
-    margin-top:6px;
+    margin-top:2px;
     margin-left:1px;
     padding-top:10px;
     background-color: #fff;

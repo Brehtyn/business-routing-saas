@@ -1,28 +1,63 @@
 <style>
-.nav_bar {
-  text-align: center;
-  width: 100%;
-  position: fixed;
-  height:50px;
-  background-image: url(../assets/nav_bar.jpg);
-  background-repeat: repeat-x;
-  margin-top: -8px;
-  margin-left: -8px;
-  letter-spacing: 1px;
-  color: white;
-}
-.left_nav {
-  float:left;
-  padding-left:65px;
-}
-.right_nav {
-  float:right;
-  padding-right:65px;
-}
+  .nav_bar {
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    height: 50px;
+    background-image: url(../assets/nav_bar.jpg);
+    background-repeat: repeat-x;
+    margin-top: -8px;
+    margin-left: -8px;
+    letter-spacing: 1px;
+    color: white;
+  }
+  .left_nav {
+    float: left;
+    padding-left: 65px;
+  }
+  .right_nav {
+    float: right;
+    padding-right: 65px;
+  }
+  #clock {
+    float:left;
+  }
 </style>
 
+<script>
+
+  setInterval(current_time, 1000);
+
+  function current_time() {
+    let time = new Date();
+    let hour = time.getHours();
+    let min = time.getMinutes();
+    let sec = time.getSeconds();
+    am_pm = "AM";
+
+    if (hour > 12) {
+      hour -= 12;
+      am_pm = " PM";
+    }
+    if (hour == 0) {
+      hr = 12;
+      am_pm = " AM";
+    }
+    min = min < 10 ? "0" + min : min;
+    sec = sec < 10 ? "0" + sec : sec;
+
+    let currentTime = hour + ":"
+      + min + ":" + sec + am_pm;
+
+    document.getElementById("clock")
+      .innerHTML = currentTime;
+  }
+  current_time();
+
+</script>
+
 <div>
-<div class="nav_bar" id="nav_bar">
+  <div class="nav_bar" id="nav_bar">
 
     <div class="left_nav">
       <p>
@@ -30,17 +65,17 @@
 
         <a href="/buildings" style="text-decoration: none; color:white;"> Locations </a> |
         <a href="/machines" style="text-decoration: none; color:white;"> All Machines </a> |
-        <a href="/users" style="text-decoration: none; color:white;"> User Page </a>  |
+        <a href="/users" style="text-decoration: none; color:white;"> User Page </a> |
         <a href="/posts" style="text-decoration: none; color:white;"> Post Page </a>
-        
+
       </p>
     </div>
 
     <div class="right_nav">
-      <p>
-      [time]|[active calls]
+      <p> 
+        <div id="clock"> [ Loading ] </div>
       </p>
     </div>
 
-</div>
+  </div>
 </div>
