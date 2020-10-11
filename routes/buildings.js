@@ -70,8 +70,18 @@ router.get('/:id', checkAuthenticated, async (req,res) => {
     let machines = []
 
     try{
-        machines = await Machine.find().sort({createdAt: 'desc'}).limit(10).exec()
         const building = await Building.findById(req.params.id)
+        const location = building.location
+        machines = await Machine.find({location: location}, function (err, docs) {
+            if(err){
+                console.log(err)
+            }else{
+                console.log("First function call : ", docs)
+            }
+        }).sort({createdAt: 'desc'}).limit(10).exec()
+
+        // machines = await Machine.find().sort({createdAt: 'desc'}).limit(10).exec()
+
         res.render('indexBuildings', {building: building, machines: machines})
     }catch{
         res.redirect('/')
