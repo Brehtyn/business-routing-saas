@@ -1,6 +1,8 @@
+<br>    <br>    <br>
 <div>
     <% posts.forEach(post => {%>
-        <a href="/posts/<%= post._id %>"> Go to Post</a>
         <h1><%= post.post %> </h1> 
+        <a href="/posts/<%= post._id %>"> Go to Post</a>
+        <%- include('delete', {url: `/posts/delete/${post._id}`})%>
     <% }) %>
 </div>
