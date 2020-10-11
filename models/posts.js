@@ -9,6 +9,14 @@ const postSchema = new mongoose.Schema({
             type: String,
             require: true
         },
+        location: {
+            type: String,
+            require: false
+        },
+        asset_number: {
+            type: Number,
+            require: false
+        },
         comments:[
             {
                 userId: {
