@@ -128,7 +128,7 @@ a:active {
     border-style:double;
     border-width: 5px;
     margin-left: 14.5px;
-    background-color: #fff;
+    background-color:#D5E0E2; 
   }
   .database_label {
     text-align: left;
@@ -138,12 +138,21 @@ a:active {
     text-decoration: underline;
   }
   .database_item {
-    width:757px;
-    height:30px;
+    width:740px;
+    height:35px;
     border-style:solid;
-    border-width: 2px;
-    margin-top:5px;
+    border-width:2px;
+    margin-top:6px;
+    margin-left:1px;
     padding-top:10px;
+    background-color: #fff;
+    text-align: left;
+    padding-left:16px;
+  }
+  .post_buttons {
+    float:right;
+    text-decoration: none;
+    padding-right:20px;
   }
   .individual_location_wrapper {
     text-align: center;
@@ -226,7 +235,7 @@ a:active {
   }
   #left_side {
     float: left;
-    widows:300px;
+    width:300px;
     height:100px;
   }
   #right_side {

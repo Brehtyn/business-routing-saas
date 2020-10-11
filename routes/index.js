@@ -2,10 +2,12 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
 const Building = require('../models/building')
+const Posts = require('../models/posts')
 const passport = require('passport')
 const initializePassport = require('../public/passport-config')
 const flash = require('express-flash')
 const { checkAuthenticated } = require('../permissions/basicAuth')
+
 
 initializePassport(
     passport,
@@ -16,10 +18,12 @@ initializePassport(
 //index router page
 router.get('/', checkAuthenticated, async (req, res) => {
     let buildings = []
+    let posts = []
     try{
     buildings = await Building.find().sort({createdAt: 'desc'}).limit(10).exec()
+    posts = await Posts.find().exec()
     var user = req.user
-     res.render('index', { buildings: buildings, user: user})
+     res.render('index', { buildings: buildings, user: user, posts:posts})
     }catch{
         res.redirect('/login')
     }
