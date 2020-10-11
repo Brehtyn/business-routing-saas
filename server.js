@@ -17,7 +17,7 @@ const buildingsRouter = require('./routes/buildings')
 const machinesRouter = require('./routes/machines')
 const userRouter = require('./routes/users') 
 const postRouter = require('./routes/posts')
-
+var favicon = require('serve-favicon');
 
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
@@ -30,6 +30,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 app.use(methodOverride('_method'))
 app.use(cookieParser(process.env.SESSION_SECRET))
+app.use(favicon(__dirname + '/public/assets/favicon.ico'));
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
