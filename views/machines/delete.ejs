@@ -1,5 +1,6 @@
-<% if (allMachinesArray != null) { %>
-    <%  allMachinesArray.forEach(machine => { %>
+<br>    <br>    <br>
+<% if (machines != null) { %>
+    <%  machines.forEach(machine => { %>
         <h1><%= machine.location%></h1>
         <%- include('../partials/deleteForm', 
                 {url: `/machines/delete/${machine._id}`}) %>

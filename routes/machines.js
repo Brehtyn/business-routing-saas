@@ -43,7 +43,7 @@ router.get('/delete', checkAuthenticated, authDeleteProject,async  (req, res) =>
 
     try{
         machines = await Machine.find().sort({createdAt: 'desc'}).limit(10).exec()
-        res.render('machines/deleteMachine', {machines: machines})
+        res.render('machines/delete', {machines: machines})
 
     }catch{
         res.redirect('/')
