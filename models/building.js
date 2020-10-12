@@ -33,16 +33,15 @@ const buildingSchema = new mongoose.Schema({
         },
         vault: {
             type: String,
+            status: String, //WORKING,PENDING,HOLDING  
         },
-        status: {      //WORKING,PENDING,HOLDING  
-            type: String,
-            required: true
-        },
         card_printer: {
             type: String,
+            status: String, //WORKING,PENDING,HOLDING  
         },
         front_desk: {
             type: String,
+            status: String, //WORKING,PENDING,HOLDING  
         },
         drop_days: {
             type: String,

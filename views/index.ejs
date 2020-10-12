@@ -2,6 +2,10 @@
 
 <div class="wrapper">
 
+  <a href="/posts/new">New Post</a>
+
+  <br /> <br />  <br />
+
   <p id="right_side">
     Welcome <%= user.name %>! <br />
     <a href="/logout"> Log Out </a>
@@ -13,15 +17,17 @@
 
     <% posts.forEach(post => {%>
     <div class="database_item">
-
-      <%= post.post %>
-
+      
+        <%= post.location %>
+        # <%= post.asset_number %>
+        : <%= post.post %>
+      
       <div class="post_buttons">
         <a href="/posts/<%= post._id %>"><img src="/assets/comment.png" height="30px" alt="comment button"></a>
-        <a href="/posts/delete>"><img src="/assets/edit.png" height="30px" alt="edit button"></a>
-        <a href="/posts/show"><img src="/assets/transfer.png" height="30px" alt="edit button"></a>
-        <a href="/posts/delete"><img src="/assets/trash.png" height="30px" alt="edit button"></a>
-        <a href="/posts/show"><img src="/assets/complete.png" height="30px" alt="edit button"></a>
+        <a href="/posts/all>"><img src="/assets/edit.png" height="30px" alt="edit button"></a>
+        <a href="/posts/all"><img src="/assets/transfer.png" height="30px" alt="edit button"></a>
+        <a href="/posts/delete"> <img src="/assets/trash.png" height="30px" alt="edit button"></a>
+        <a href="/posts/all"><img src="/assets/complete.png" height="30px" alt="edit button"></a>
       </div>
 
     </div>
