@@ -20,16 +20,19 @@ router.get('/', checkAuthenticated, async (req, res) => {
     let buildings = []
     let postsPending = []
     let postsHolding = []
-    let posts = []
+    //let posts = []
+    let buildingsDrop = []
+    let day = new Date()
+    //console.log(castDay(day))
     try{
     buildings = await Building.find().sort({createdAt: 'desc'}).limit(10).exec()
-    posts = await Posts.find().exec()
+    //posts = await Posts.find().exec()
     
     postsPending = await Posts.find({status: "PENDING"}, function (err, docs) {
         if(err){
             console.log(err)
         }else{
-            console.log("First function call : ", docs)
+            console.log("success for pending")
         }
     }).sort({createdAt: 'desc'}).limit(10).exec()
 
@@ -37,12 +40,21 @@ router.get('/', checkAuthenticated, async (req, res) => {
         if(err){
             console.log(err)
         }else{
-            console.log("First function call : ", docs)
+            console.log("success for holding")
+        }
+    }).sort({createdAt: 'desc'}).limit(10).exec()
+
+    let today = castDay(day)
+    buildingsDrop = await Building.find({drop_days: today}, function (err, docs) {
+        if(err){
+            console.log(err)
+        }else{
+            console.log("success for drop days")
         }
     }).sort({createdAt: 'desc'}).limit(10).exec()
 
     var user = req.user
-     res.render('index', { buildings: buildings, user: user, postsPending: postsPending, postsHolding: postsHolding})
+     res.render('index', { buildings: buildings, buildingsDrop, user: user, postsPending: postsPending, postsHolding: postsHolding})
     }catch{
         res.redirect('/login')
     }
@@ -86,6 +98,19 @@ function checkNotAuthenticated(req, res, next){
         return res.redirect('/')
     }
     next()
+}
+
+function castDay(day) {
+    var weekday = new Array(7);
+    weekday[0] = "Sunday";
+    weekday[1] = "Monday";
+    weekday[2] = "Tuesday";
+    weekday[3] = "Wednesday";
+    weekday[4] = "Thursday";
+    weekday[5] = "Friday";
+    weekday[6] = "Saturday";
+    
+    return weekday[day.getDay()];
 }
 
 module.exports = router

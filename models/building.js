@@ -44,7 +44,7 @@ const buildingSchema = new mongoose.Schema({
             status: String, //WORKING,PENDING,HOLDING  
         },
         drop_days: {
-            type: String,
+            type: String,   //MONDAY-FRIDAY
         }
     })
 

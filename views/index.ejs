@@ -55,7 +55,9 @@
   </div>
 
   <h2>Drops Today: </h1>
-    <div class="content_bubble"> TODO: DISPLAY TODAYS DATES DROPS </div>
+    <div class="content_bubble"> 
+      <%- include('partials/allBuildings.ejs', {buildings: buildingsDrop}) %>
+    </div>
 
     <h2>Locations : </h1>
       <div class="content_bubble">
