@@ -78,6 +78,22 @@ router.post('/:id', async (req, res) => {
     }
 })
 
+router.put('/transfer/:id', async (req, res) => {
+    try{
+        const post = await Posts.findById(req.params.id)
+        if(post.status == "HOLDING"){
+            post.status = "PENDING"
+        }else{
+            post.status = "HOLDING"
+        }
+        await post.save()
+        res.redirect('/')
+    } catch{
+        res.redirect('/posts')
+    }
+})
+
+
 router.delete('/delete/:id', async (req, res) => {
     try{
         const post = await Posts.findById(req.params.id)

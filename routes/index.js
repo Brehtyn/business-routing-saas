@@ -36,6 +36,14 @@ router.get('/', checkAuthenticated, async (req, res) => {
         }
     }).sort({createdAt: 'desc'}).limit(10).exec()
 
+    let postPendingCount = await Posts.countDocuments({status: "PENDING", function (err, result) {
+        if(err){
+            console.log(err)
+        }else{
+            console.log("Count:", result)
+        }
+    }})
+
     postsHolding = await Posts.find({status: "HOLDING"}, function (err, docs) {
         if(err){
             console.log(err)
@@ -44,6 +52,17 @@ router.get('/', checkAuthenticated, async (req, res) => {
         }
     }).sort({createdAt: 'desc'}).limit(10).exec()
 
+    let postHoldingCount = await Posts.countDocuments({status: "HOLDING", function (err, result) {
+        if(err){
+            console.log(err)
+        }else{
+            console.log("Count:" ,result)
+        }
+    }})
+
+    console.log("Holding Count: " + postHoldingCount)
+    console.log("Pendin Count: " + postPendingCount)
+    
     let today = castDay(day)
     buildingsDrop = await Building.find({drop_days: today}, function (err, docs) {
         if(err){

@@ -25,9 +25,13 @@
       <div class="post_buttons">
         <a href="/posts/<%= post._id %>"><img src="/assets/comment.png" height="30px" alt="comment button"></a>
         <a href="/posts/all>"><img src="/assets/edit.png" height="30px" alt="edit button"></a>
-        <a href="/posts/all"><img src="/assets/transfer.png" height="30px" alt="edit button"></a>
-        <a href="/posts/delete"> <img src="/assets/trash.png" height="30px" alt="edit button"></a>
-        <a href="/posts/all"><img src="/assets/complete.png" height="30px" alt="edit button"></a>
+        <form action="/posts/transfer/<%= post._id %>?_method=PUT" method="POST">
+          <button type="submit"><img src="/assets/transfer.png" height="30px" alt="edit button"></button>
+      </form>
+        <form method="POST" action="/posts/delete/<%= post._id %>?_method=DELETE">
+          <button type="submit"><img src="/assets/trash.png" height="30px" alt="edit button"></button>
+      </form>        
+      <a href="/posts/all"><img src="/assets/complete.png" height="30px" alt="edit button"></a>
       </div>
 
     </div>
@@ -44,12 +48,15 @@
   
         <div class="post_buttons">
           <a href="/posts/<%= post._id %>"><img src="/assets/comment.png" height="30px" alt="comment button"></a>
-          <a href="/posts/delete>"><img src="/assets/edit.png" height="30px" alt="edit button"></a>
-          <a href="/posts/show"><img src="/assets/transfer.png" height="30px" alt="edit button"></a>
-          <a href="/posts/delete"><img src="/assets/trash.png" height="30px" alt="edit button"></a>
+          <a href="/posts/delete/<%= post._id %>"><img src="/assets/edit.png" height="30px" alt="edit button"></a>
+          <form action="/posts/transfer/<%= post._id %>?_method=PUT" method="POST">
+            <button type="submit"><img src="/assets/transfer.png" height="30px" alt="edit button"></button>
+        </form>  
+          <form method="POST" action="/posts/delete/<%= post._id %>?_method=DELETE">
+            <button type="submit"><img src="/assets/trash.png" height="30px" alt="edit button"></button>
+        </form>
           <a href="/posts/show"><img src="/assets/complete.png" height="30px" alt="edit button"></a>
         </div>
-  
       </div>
       <% }) %>
   </div>
