@@ -3,8 +3,8 @@
     <%  buildings.forEach(building => { %>
     <div class="individual_location_wrapper">
         <a href="/buildings/<%= building._id%>"> 
-        <div id="location_pic"> <img src="/assets/locations/jackpotjoanies.jpg" height="50px" width="120px" alt="jackpot joanies logo"> </div>
-        <%= building.location  %> </a>
+        <div id="location_pic"> <img src="/assets/locations/<%= building.building_type %>.jpg" height="50px" width="120px" alt="building image"> </div>
+        <%= building.short_name  %> </a>
     </div>
     <% }) %>
     <% } %>
