@@ -51,6 +51,7 @@ router.post('/new',checkAuthenticated, authCreateLocation, async (req,res) => {
             tech_service: req.body.tech_service,
             cash_can_access: req.body.cash_can_access,
             numberOfMachines: req.body.numberOfMachines,
+            status: req.body.status,
             vault: req.body.vault,
             card_printer: req.body.card_printer,
             front_desk: req.body.front_desk
@@ -79,8 +80,6 @@ router.get('/:id', checkAuthenticated, async (req,res) => {
                 console.log("First function call : ", docs)
             }
         }).sort({createdAt: 'desc'}).limit(10).exec()
-
-        // machines = await Machine.find().sort({createdAt: 'desc'}).limit(10).exec()
 
         res.render('indexBuildings', {building: building, machines: machines})
     }catch{
@@ -125,6 +124,7 @@ router.put('/edit/:id',checkAuthenticated, authEditLocation, async (req, res) =>
         building.front_desk = req.body.front_desk,
         building.numberOfMachines = req.body.numberOfMachines,
         building.cash_can_access = req.body.cash_can_access,
+        building.status = req.body.status
         building.vault = req.body.vault,
         building.card_printer = req.body.card_printer
         await building.save()

@@ -30,6 +30,10 @@ const buildingSchema = new mongoose.Schema({
         vault: {
             type: String,
         },
+        status: {      //WORKING,PENDING,HOLDING  
+            type: String,
+            required: true
+        },
         card_printer: {
             type: String,
         },
