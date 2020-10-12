@@ -52,7 +52,6 @@ router.post('/new',checkAuthenticated, authCreateLocation, async (req,res) => {
             tech_service: req.body.tech_service,
             cash_can_access: req.body.cash_can_access,
             numberOfMachines: req.body.numberOfMachines,
-            status: req.body.status,
             vault: req.body.vault,
             card_printer: req.body.card_printer,
             front_desk: req.body.front_desk,
@@ -60,7 +59,7 @@ router.post('/new',checkAuthenticated, authCreateLocation, async (req,res) => {
         })
 
         const newBuilding = await building.save()
-        res.redirect(`buildings/${newBuilding.id}`)
+        res.redirect(`${newBuilding.id}`)
     }catch(err){
         console.log(err)
     }
@@ -127,7 +126,6 @@ router.put('/edit/:id',checkAuthenticated, authEditLocation, async (req, res) =>
         building.front_desk = req.body.front_desk,
         building.numberOfMachines = req.body.numberOfMachines,
         building.cash_can_access = req.body.cash_can_access,
-        building.status = req.body.status
         building.vault = req.body.vault,
         building.card_printer = req.body.card_printer
         building.drop_days = req.body.drop_days
