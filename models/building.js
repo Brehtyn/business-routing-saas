@@ -5,6 +5,10 @@ const buildingSchema = new mongoose.Schema({
             type: String,
             required: true
         },
+        short_name: {
+            type: String,
+            required: true
+        },
         building_type: {
             type:String,
             required: true
@@ -39,7 +43,10 @@ const buildingSchema = new mongoose.Schema({
         },
         front_desk: {
             type: String,
-        }
+        },
+        drop_days: {
+            type: String,
+        }
     })
 
     module.exports = mongoose.model('Buildings', buildingSchema)

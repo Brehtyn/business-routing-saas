@@ -45,6 +45,7 @@ router.post('/new',checkAuthenticated, authCreateLocation, async (req,res) => {
     try{
         const building = new Building({
             location: req.body.location,
+            short_name: req.body.short_name,
             address: req.body.address,
             building_type: req.body.building_type,
             telephone_number: req.body.telephone_number,
@@ -54,7 +55,8 @@ router.post('/new',checkAuthenticated, authCreateLocation, async (req,res) => {
             status: req.body.status,
             vault: req.body.vault,
             card_printer: req.body.card_printer,
-            front_desk: req.body.front_desk
+            front_desk: req.body.front_desk,
+            drop_days: req.body.drop_days
         })
 
         const newBuilding = await building.save()
@@ -118,6 +120,7 @@ router.put('/edit/:id',checkAuthenticated, authEditLocation, async (req, res) =>
         const building = await Building.findById(req.params.id)
         building.location = req.body.location,
         building.address = req.body.address,
+        building.short_name = req.body.short_name,
         building.building_type = req.body.building_type,
         building.telephone_number = req.body.telephone_number,
         building.tech_service = req.body.tech_service,
@@ -127,6 +130,7 @@ router.put('/edit/:id',checkAuthenticated, authEditLocation, async (req, res) =>
         building.status = req.body.status
         building.vault = req.body.vault,
         building.card_printer = req.body.card_printer
+        building.drop_days = req.body.drop_days
         await building.save()
         res.redirect(`/buildings/${building._id}`)
     } catch{

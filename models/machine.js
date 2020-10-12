@@ -1,15 +1,7 @@
 const mongoose = require('mongoose')
 
 const machineSchema = new mongoose.Schema({
-    city: {
-        type: String,
-        required: true
-    },
     location: {
-        type: String,
-        required: true
-    },
-    short_name: {
         type: String,
         required: true
     },
@@ -35,6 +27,10 @@ const machineSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
         required: true
+    },
+    datasheet: {
+        type: String,
+        required: false,
     },
     description: {
         type: String    
