@@ -19,7 +19,7 @@ const machineSchema = new mongoose.Schema({
     cabinet_license_number: { 
         type: String
     },
-    status: {      //working, issue, off 
+    status: {      //working, pending, holding
         type: String,
         required: true
     },
