@@ -32,6 +32,7 @@ router.post('/new', async( req, res) => {
             createdAt: new Date(req.body.createdAt),
             asset_number: req.body.asset_number,
             location: req.body.location,
+            status: req.body.status
         })
         const newPost = await post.save()
         res.redirect(`/posts/${newPost._id}`)

@@ -18,12 +18,31 @@ initializePassport(
 //index router page
 router.get('/', checkAuthenticated, async (req, res) => {
     let buildings = []
+    let postsPending = []
+    let postsHolding = []
     let posts = []
     try{
     buildings = await Building.find().sort({createdAt: 'desc'}).limit(10).exec()
     posts = await Posts.find().exec()
+    
+    postsPending = await Posts.find({status: "PENDING"}, function (err, docs) {
+        if(err){
+            console.log(err)
+        }else{
+            console.log("First function call : ", docs)
+        }
+    }).sort({createdAt: 'desc'}).limit(10).exec()
+
+    postsHolding = await Posts.find({status: "HOLDING"}, function (err, docs) {
+        if(err){
+            console.log(err)
+        }else{
+            console.log("First function call : ", docs)
+        }
+    }).sort({createdAt: 'desc'}).limit(10).exec()
+
     var user = req.user
-     res.render('index', { buildings: buildings, user: user, posts:posts})
+     res.render('index', { buildings: buildings, user: user, postsPending: postsPending, postsHolding: postsHolding})
     }catch{
         res.redirect('/login')
     }

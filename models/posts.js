@@ -29,6 +29,9 @@ const postSchema = new mongoose.Schema({
                 }
             }
         ],
+        status: {
+            type: String
+        },
         createdAt:{
             type: Date,
             required: true,
