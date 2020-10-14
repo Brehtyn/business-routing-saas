@@ -46,11 +46,13 @@ a:active {
   }
   .title{
     padding: 50px 0 50px 0;
+    
   }
   h1, h2 {    
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: left;
     padding-left: 50px;
+    padding-top: 10px;
   }
 
   #popup_form {
@@ -180,6 +182,12 @@ a:active {
     padding:5px;
     background-color: #fff;
   }
+  #location_overview {
+    text-align:left;
+    margin-bottom:10px;
+    padding-left:25px;
+    background-color: #fff;
+  }
   .individual_location_wrapper {
     text-align: center;
     float:left;
@@ -221,6 +229,14 @@ a:active {
     border-style: inset;
     border-width:5px;
     border-color:#d60019;
+    margin-bottom: 50px;
+  }
+
+  #machine_overview {
+    text-align:left;
+    margin-bottom:10px;
+    padding-left:25px;
+    background-color: #fff;
   }
   .individual_machine_wrapper {
     text-align: center;
@@ -254,6 +270,10 @@ a:active {
     margin-bottom:10px;
     padding-left:25px;
     background-color: #fff;
+  }
+  #machine_datasheet {
+    height:500px;
+    width:100%;
   }
   .machine_header{
     height:100px;
