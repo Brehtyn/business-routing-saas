@@ -154,6 +154,16 @@ a:active {
     text-decoration: none;
     padding-right:20px;
   }
+  #post_buttons {
+    float:right;
+    border: 0;
+    padding: 0;
+    padding-left: 2px;
+    font-family: inherit;
+    font-size: inherit;
+    background: none;
+    
+  }
   #comment {
     width: 350px;
     height: 10vh;

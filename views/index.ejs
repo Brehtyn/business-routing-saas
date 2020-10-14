@@ -4,7 +4,7 @@
 
   <a href="/posts/new">New Post</a>
 
-  <br /> <br />  <br />
+  <br /> <br /> <br />
 
   <p id="right_side">
     Welcome <%= user.name %>! <br />
@@ -17,21 +17,27 @@
 
     <% postsPending.forEach(post => {%>
     <div class="database_item">
-      
-        <%= post.location %>
-        # <%= post.asset_number %>
-        : <%= post.post %>
-      
+
+      <%= post.location %>
+      # <%= post.asset_number %>
+      : <%= post.post %>
+
       <div class="post_buttons">
         <a href="/posts/<%= post._id %>"><img src="/assets/comment.png" height="30px" alt="comment button"></a>
         <a href="/posts/all>"><img src="/assets/edit.png" height="30px" alt="edit button"></a>
-        <form action="/posts/transfer/<%= post._id %>?_method=PUT" method="POST">
-          <button type="submit"><img src="/assets/transfer.png" height="30px" alt="edit button"></button>
-      </form>
-        <form method="POST" action="/posts/delete/<%= post._id %>?_method=DELETE">
-          <button type="submit"><img src="/assets/trash.png" height="30px" alt="edit button"></button>
-      </form>        
-      <a href="/posts/all"><img src="/assets/complete.png" height="30px" alt="edit button"></a>
+        <a id="post_buttons">
+          <form method="POST" action="/posts/delete/<%= post._id %>?_method=DELETE">
+            <button  id="post_buttons" type="submit"><img src="/assets/trash.png" height="30px"
+                alt="edit button"></button>
+          </form>
+        </a>
+        <a id="post_buttons">
+          <form action="/posts/transfer/<%= post._id %>?_method=PUT" method="POST">
+            <button  id="post_buttons" type="submit"><img src="/assets/transfer.png" height="30px"
+                alt="edit button"></button>
+          </form>
+        </a>
+        <a href="/posts/all"><img src="/assets/complete.png" height="30px" alt="edit button"></a>
       </div>
 
     </div>
@@ -41,28 +47,38 @@
   <h1>Holding: </h1>
   <div class="database_wrapper">
     <div class="database_label"> Date | Location | Asset | Issue : </div>
+    
     <% postsHolding.forEach(post => {%>
-      <div class="database_item">
-  
-        <%= post.post %>
-  
-        <div class="post_buttons">
-          <a href="/posts/<%= post._id %>"><img src="/assets/comment.png" height="30px" alt="comment button"></a>
-          <a href="/posts/delete/<%= post._id %>"><img src="/assets/edit.png" height="30px" alt="edit button"></a>
-          <form action="/posts/transfer/<%= post._id %>?_method=PUT" method="POST">
-            <button type="submit"><img src="/assets/transfer.png" height="30px" alt="edit button"></button>
-        </form>  
+    <div class="database_item">
+
+      <%= post.location %>
+      # <%= post.asset_number %>
+      : <%= post.post %>
+
+      <div class="post_buttons">
+        <a href="/posts/<%= post._id %>"><img src="/assets/comment.png" height="30px" alt="comment button"></a>
+        <a href="/posts/all>"><img src="/assets/edit.png" height="30px" alt="edit button"></a>
+        <a id="post_buttons">
           <form method="POST" action="/posts/delete/<%= post._id %>?_method=DELETE">
-            <button type="submit"><img src="/assets/trash.png" height="30px" alt="edit button"></button>
-        </form>
-          <a href="/posts/show"><img src="/assets/complete.png" height="30px" alt="edit button"></a>
-        </div>
+            <button  id="post_buttons" type="submit"><img src="/assets/trash.png" height="30px"
+                alt="edit button"></button>
+          </form>
+        </a>
+        <a id="post_buttons">
+          <form action="/posts/transfer/<%= post._id %>?_method=PUT" method="POST">
+            <button  id="post_buttons" type="submit"><img src="/assets/transfer.png" height="30px"
+                alt="edit button"></button>
+          </form>
+        </a>
+        <a href="/posts/all"><img src="/assets/complete.png" height="30px" alt="edit button"></a>
       </div>
-      <% }) %>
+
+    </div>
+    <% }) %>
   </div>
 
   <h2>Drops Today: </h1>
-    <div class="content_bubble"> 
+    <div class="content_bubble">
       <%- include('partials/allBuildings.ejs', {buildings: buildingsDrop}) %>
     </div>
 
