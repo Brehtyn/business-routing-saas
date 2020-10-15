@@ -61,16 +61,16 @@
         <a id="post_buttons">
           <form method="POST" action="/posts/delete/<%= post._id %>?_method=DELETE">
             <button  id="post_buttons" type="submit"><img src="/assets/trash.png" height="30px"
-                alt="edit button"></button>
+                alt="trash button"></button>
           </form>
         </a>
         <a id="post_buttons">
           <form action="/posts/transfer/<%= post._id %>?_method=PUT" method="POST">
             <button  id="post_buttons" type="submit"><img src="/assets/transfer.png" height="30px"
-                alt="edit button"></button>
+                alt="transfer button"></button>
           </form>
         </a>
-        <a href="/posts/all"><img src="/assets/complete.png" height="30px" alt="edit button"></a>
+        <a href="/posts/all"><img src="/assets/complete.png" height="30px" alt="complete button"></a>
       </div>
 
     </div>
