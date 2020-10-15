@@ -164,7 +164,9 @@ a:active {
     font-family: inherit;
     font-size: inherit;
     background: none;
-    
+  }
+  #post_buttons:hover {
+    cursor: pointer;
   }
   #comment {
     width: 350px;
@@ -231,7 +233,6 @@ a:active {
     border-color:#d60019;
     margin-bottom: 50px;
   }
-
   #machine_overview {
     text-align:left;
     margin-bottom:10px;
@@ -265,12 +266,6 @@ a:active {
     margin-bottom: 18px;
     border-style:double;
   }
-  #machine_overview {
-    text-align:left;
-    margin-bottom:10px;
-    padding-left:25px;
-    background-color: #fff;
-  }
   #machine_datasheet {
     height:500px;
     width:100%;
@@ -289,7 +284,12 @@ a:active {
     width:300px;
     height:100px;
   }
-
+  #user_overview {
+    text-align:left;
+    margin-bottom:10px;
+    padding-left:25px;
+    background-color: #fff;
+  }
 }
 
 /*  ~~~~~~~~~~~~~~~~~~~~~~~  Mobile Viewing  ~~~~~~~~~~~~~~~~~~~~~~~  */

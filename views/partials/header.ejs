@@ -11,16 +11,39 @@
     letter-spacing: 1px;
     color: white;
   }
+
   .left_nav {
     float: left;
-    padding-left: 65px;
+    padding-left: 50px;
   }
+
   .right_nav {
-    float: right;
-    padding-right: 65px;
+    float: right ;
+    padding-right: 50px;
+    padding-top:1px;
   }
-  #clock {
+
+  #user_controls {
+    padding: none;
+    margin: none;
+    border: none;
+    font:inherit;
+    background: inherit;
+    color: inherit;
+    margin-left:-5px;
+  }
+  #user_controls:hover {
+    cursor: pointer;
+  }
+
+  #post_count {
     float:left;
+    padding-left: 10px;
+  }
+
+  #clock {
+    float: left;
+    padding-left: 10px;
   }
 </style>
 
@@ -62,18 +85,18 @@
     <div class="left_nav">
       <p>
         <a href="/" style="text-decoration: none; color:white;"> Dashboard </a> |
-
         <a href="/buildings" style="text-decoration: none; color:white;"> Locations </a> |
-        <a href="/machines" style="text-decoration: none; color:white;"> All Machines </a> |
-        <a href="/users" style="text-decoration: none; color:white;"> User Page </a> |
-        <a href="/posts/all" style="text-decoration: none; color:white;"> Post Page </a>
+        <a href="/machines" style="text-decoration: none; color:white;"> Machines </a> |
+        <a href="/users" style="text-decoration: none; color:white;"> User </a> |
+        <button id="user_controls">Actions</button>
 
       </p>
     </div>
 
     <div class="right_nav">
-      <p> 
-        <div id="clock"> [ Loading ] </div>
+      <p>
+      <div id="post_count"> Active:  postPendingCount;</div> 
+      <div id="clock"> [ Loading ] </div>
       </p>
     </div>
 
