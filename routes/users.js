@@ -8,7 +8,7 @@ const { canEditUser, canDeleteUser, canCreateUser, canViewUser} = require('../pe
 //Users index route
 router.get('/', checkAuthenticated, authViewUser, async (req, res) =>{
     console.log(req.user.name)
-    res.render('users/index')
+    res.render('users')
 })
 
 //Get all users route

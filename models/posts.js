@@ -30,7 +30,8 @@ const postSchema = new mongoose.Schema({
             }
         ],
         status: {
-            type: String
+            type: String,
+            default: "PENDING"
         },
         createdAt:{
             type: Date,
