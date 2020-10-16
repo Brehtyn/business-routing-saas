@@ -17,16 +17,13 @@ initializePassport(
 
 //index router page
 router.get('/', checkAuthenticated, async (req, res) => {
-    let buildings = []
     let postsPending = []
     let postsHolding = []
-    //let posts = []
     let buildingsDrop = []
+    let buildings = []
     let day = new Date()
-    //console.log(castDay(day))
     try{
     buildings = await Building.find().sort({createdAt: 'desc'}).limit(10).exec()
-    //posts = await Posts.find().exec()
     
     postsPending = await Posts.find({status: "PENDING"}, function (err, docs) {
         if(err){
@@ -60,22 +57,23 @@ router.get('/', checkAuthenticated, async (req, res) => {
         }
     }})
 
-    console.log("Holding Count: " + postHoldingCount)
-    console.log("Pendin Count: " + postPendingCount)
-    
     let today = castDay(day)
-    buildingsDrop = await Building.find({drop_days: today}, function (err, docs) {
-        if(err){
-            console.log(err)
-        }else{
-            console.log("success for drop days")
-        }
-    }).sort({createdAt: 'desc'}).limit(10).exec()
+    buildings = await Building.find({})
+        buildings.forEach(building => {
+            building.drop_days.forEach(dropdayobj => {
+                if(dropdayobj[`${today}`]){
+                    buildingsDrop.push(building)
+                }
+            })
+        });
 
     var user = req.user
      res.render('index', { buildings: buildings, buildingsDrop, user: user, postsPending: postsPending, postsHolding: postsHolding})
     }catch{
-        res.redirect('/login')
+        //Making this catch block redirect to the login page gives an error because it never logs the user out
+        //so the user is still authenticated which would redirect it back to the home page in turn redirecting back
+        //out to the login page and thereby making an infinite loop
+        console.log('There was an error renderin the page')
     }
 })
 
@@ -91,11 +89,14 @@ router.get('/logout', (req, res) => {
 
 router.post('/login', checkNotAuthenticated, passport.authenticate('local', {
     failureRedirect:'/login',
-    failureFlash: true}), async (req, res) => {
+    failureFlash: true}), 
+    async (req, res) => {
         if(req.isAuthenticated() === true){
             try{
                 req.logIn(req.user, function(err) {
-                    if (err) { return next(err); }
+                    if (err) { 
+                        console.log(err)
+                        return next(err); }
                     return res.redirect('/');
                   });
             }catch{

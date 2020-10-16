@@ -42,6 +42,11 @@ router.get('/new',checkAuthenticated, authCreateLocation, async (req,res) => {
 
 // //creates the machine by sending it to the database
 router.post('/new',checkAuthenticated, authCreateLocation, async (req,res) => {
+    let drop_days = { monday: req.body.monday, 
+                    tuesday: req.body.tuesday,
+                    wednesday: req.body.wednesday,
+                    thursday: req.body.thursday,
+                    friday: req.body.friday }
     try{
         const building = new Building({
             location: req.body.location,
@@ -55,7 +60,7 @@ router.post('/new',checkAuthenticated, authCreateLocation, async (req,res) => {
             vault: req.body.vault,
             card_printer: req.body.card_printer,
             front_desk: req.body.front_desk,
-            drop_days: req.body.drop_days
+            drop_days: drop_days
         })
 
         const newBuilding = await building.save()
@@ -115,6 +120,12 @@ router.get('/edit/:id', checkAuthenticated, authEditLocation, async (req, res) =
 })
 
 router.put('/edit/:id',checkAuthenticated, authEditLocation, async (req, res) => {
+    let drop_days = { monday: req.body.monday, 
+        tuesday: req.body.tuesday,
+        wednesday: req.body.wednesday,
+        thursday: req.body.thursday,
+        friday: req.body.friday }
+
     try{
         const building = await Building.findById(req.params.id)
         building.location = req.body.location,
@@ -128,7 +139,7 @@ router.put('/edit/:id',checkAuthenticated, authEditLocation, async (req, res) =>
         building.cash_can_access = req.body.cash_can_access,
         building.vault = req.body.vault,
         building.card_printer = req.body.card_printer
-        building.drop_days = req.body.drop_days
+        building.drop_days = drop_days
         await building.save()
         res.redirect(`/buildings/${building._id}`)
     } catch{

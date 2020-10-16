@@ -16,6 +16,10 @@
         <div class="top_padding"> </div>
         <div class="title">
             <h1> Eclipse Routing </h1>
+            <h2>
+                <% if (messages.error) { %>
+                <%= messages.error %>
+              <% } %></h2>
         </div>
         <button id="btn_accept" onclick="openForm()"> Employee Login </button>
         <div class="popup_form" id="popup_form">

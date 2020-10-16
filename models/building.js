@@ -43,9 +43,29 @@ const buildingSchema = new mongoose.Schema({
             type: String,
             status: String, //WORKING,PENDING,HOLDING  
         },
-        drop_days: {
-            type: String,   //MONDAY-FRIDAY
-        }
+        drop_days: [          
+        {
+            Monday: {
+                type: Boolean,
+                default: false
+            },
+            Tuesday: {
+                type: Boolean,
+                default: false
+            },
+            Wednesday: {
+                type: Boolean,
+                default: false
+            },
+            Thursday: {
+                type: Boolean,
+                default: false
+            },
+            Friday: {
+                type: Boolean,
+                default: false
+            }
+        }]
     })
 
     module.exports = mongoose.model('Buildings', buildingSchema)
