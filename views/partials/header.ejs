@@ -11,16 +11,40 @@
     letter-spacing: 1px;
     color: white;
   }
+
   .left_nav {
     float: left;
-    padding-left: 65px;
+    padding-left: 50px;
   }
+
   .right_nav {
     float: right;
-    padding-right: 65px;
+    padding-right: 50px;
+    padding-top: 1px;
   }
+
+  #user_controls {
+    padding: none;
+    margin: none;
+    border: none;
+    font: inherit;
+    background: inherit;
+    color: inherit;
+    margin-left: -5px;
+  }
+
+  #user_controls:hover {
+    cursor: pointer;
+  }
+
+  #post_count {
+    float: left;
+    padding-left: 10px;
+  }
+
   #clock {
-    float:left;
+    float: left;
+    padding-left: 10px;
   }
 </style>
 
@@ -54,6 +78,15 @@
   }
   current_time();
 
+  function openForm() {
+    document.getElementById("popup_form").style.display = "block";
+    document.getElementById("form_background").style.display = "block";
+  }
+  function closeForm() {
+    document.getElementById("popup_form").style.display = "none";
+    document.getElementById("form_background").style.display = "none";
+  }
+
 </script>
 
 <div>
@@ -62,18 +95,50 @@
     <div class="left_nav">
       <p>
         <a href="/" style="text-decoration: none; color:white;"> Dashboard </a> |
-
         <a href="/buildings" style="text-decoration: none; color:white;"> Locations </a> |
-        <a href="/machines" style="text-decoration: none; color:white;"> All Machines </a> |
-        <a href="/users" style="text-decoration: none; color:white;"> User Page </a> |
-        <a href="/posts/all" style="text-decoration: none; color:white;"> Post Page </a>
+        <a href="/machines" style="text-decoration: none; color:white;"> Machines </a> |
+        <a href="/users" style="text-decoration: none; color:white;"> User </a> |
+        <button id="user_controls" onclick="openForm()"> Controls </button>
+      <div class="popup_form" id="popup_form">
+        <div>
+
+          <div id="form_element">
+            <a href="/posts/new">New Post</a>
+          </div>
+          <div id="form_element">
+            <h4> Buildings </h4>
+            <a href="/buildings/new">New Building</a> <br />
+            <a href="/buildings/delete">Delete Building</a>
+          </div>
+          <div id="form_element">
+            <h4> Machines </h4>
+            <a href="/machines/new">New Machine</a> <br />
+            <a href="/machines/delete">Delete Machine</a> 
+          </div>
+          <div id="form_element">
+            <h4> Users </h4>
+            <a href="/users/all"> Users List </a> <br />
+            <a href="/users/new">New User </a> <br />
+            <a href="/users/delete"> Delete User </a>
+          </div>
+          <div id="form_element">
+            <a href="/logout"> Log Out </a>
+          </div>
+
+          <button id="btn_accept" type="submit">Submit</button>
+          <button id="btn_cancel" onclick="closeForm()">Close</button>
+
+        </div>
+      </div>
+      <div id="form_background"></div>
 
       </p>
     </div>
 
     <div class="right_nav">
-      <p> 
-        <div id="clock"> [ Loading ] </div>
+      <p>
+      <div id="post_count"> Active: postPendingCount;</div>
+      <div id="clock"> [ Loading ] </div>
       </p>
     </div>
 

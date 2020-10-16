@@ -23,15 +23,15 @@ router.get('/', checkAuthenticated, async (req, res) => {
     let buildings = []
     let day = new Date()
     try{
-    buildings = await Building.find().sort({createdAt: 'desc'}).limit(10).exec()
-    
+    buildings = await Building.find({}).sort({createdAt: 'desc'}).exec()
+
     postsPending = await Posts.find({status: "PENDING"}, function (err, docs) {
         if(err){
             console.log(err)
         }else{
             console.log("success for pending")
         }
-    }).sort({createdAt: 'desc'}).limit(10).exec()
+    }).sort({createdAt: 'desc'}).exec()
 
     let postPendingCount = await Posts.countDocuments({status: "PENDING", function (err, result) {
         if(err){
@@ -47,7 +47,7 @@ router.get('/', checkAuthenticated, async (req, res) => {
         }else{
             console.log("success for holding")
         }
-    }).sort({createdAt: 'desc'}).limit(10).exec()
+    }).sort({createdAt: 'desc'}).exec()
 
     let postHoldingCount = await Posts.countDocuments({status: "HOLDING", function (err, result) {
         if(err){
@@ -67,8 +67,9 @@ router.get('/', checkAuthenticated, async (req, res) => {
             })
         });
 
+
     var user = req.user
-     res.render('index', { buildings: buildings, buildingsDrop, user: user, postsPending: postsPending, postsHolding: postsHolding})
+     res.render('index', { buildings: buildings, buildingsDrop, user: user, postsPending: postsPending, postsHolding: postsHolding, url:'/'})
     }catch{
         //Making this catch block redirect to the login page gives an error because it never logs the user out
         //so the user is still authenticated which would redirect it back to the home page in turn redirecting back

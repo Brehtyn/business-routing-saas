@@ -1,13 +1,13 @@
 <link href="../stylesheets/login.css" rel="stylesheet" type="text/css" />
 
 <script>
-    function openForm() {
-        document.getElementById("popup_form").style.display = "block";
-        document.getElementById("form_background").style.display = "block";
+    function open_loginForm() {
+        document.getElementById("popup_loginform").style.display = "block";
+        document.getElementById("form_loginbackground").style.display = "block";
     }
-    function closeForm() {
-        document.getElementById("popup_form").style.display = "none";
-        document.getElementById("form_background").style.display = "none";
+    function close_loginForm() {
+        document.getElementById("popup_loginform").style.display = "none";
+        document.getElementById("form_loginbackground").style.display = "none";
     }
 </script>
 
@@ -21,23 +21,23 @@
                 <%= messages.error %>
               <% } %></h2>
         </div>
-        <button id="btn_accept" onclick="openForm()"> Employee Login </button>
-        <div class="popup_form" id="popup_form">
+        <button id="btn_accept" onclick="open_loginForm()"> Employee Login </button>
+        <div class="popup_loginform" id="popup_loginform">
             <form action="/login" method="POST">
                 <div>
-                    <div id="form_element">
+                    <div id="form_loginelement">
                         <label for="username">Username:</label>
                         <input type="text" id="username" name="username" required>
                     </div>
-                    <div id="form_element">
+                    <div id="form_loginelement">
                         <label for="password">Password:</label>
                         <input type="password" id="password" name="password" required>
                     </div>
                     <button id="btn_accept" type="submit">Submit</button>
-                    <button id="btn_cancel" onclick="closeForm()">Close</button>
+                    <button id="btn_cancel" onclick="close_loginForm()">Close</button>
                 </div>
         </div>
-        <div id="form_background"></div>
+        <div id="form_loginbackground"></div>
         </form>
         <br /> <br /> <br />
         <h2>Thank you & be safe!</h2>

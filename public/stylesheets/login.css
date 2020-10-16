@@ -33,10 +33,10 @@
     text-shadow: 5px 5px 5px #000000;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
-  #popup_form {
+  #popup_loginform {
     display:none;
   }
-  .popup_form {
+  .popup_loginform {
     display: none;
     position: fixed;
     top:30%;
@@ -54,10 +54,10 @@
     box-shadow: 4px 4px 14px #000;
     border-style: double;
   }
-  #form_element {
+  #form_loginelement {
     padding-bottom:8px;
   }
-  #form_background {
+  #form_loginbackground {
     position: fixed;
     display:none;
     background-color: black;

@@ -1,8 +1,15 @@
-<br>    <br>    <br>
-<% if (machines != null) { %>
-    <%  machines.forEach(machine => { %>
-        <h1><%= machine.location%></h1>
-        <%- include('../partials/deleteForm', 
-                {url: `/machines/delete/${machine._id}`}) %>
-<% }) %>
-<% } %> 
+<link href="/stylesheets/style.css" rel="stylesheet" type="text/css" />
+<div class="wrapper">
+    <div class="content_bubble">
+        <% if (machines != null) { %>
+        <%  machines.forEach(machine => { %>
+        <div class="individual_delete_wrapper">
+
+            <h4><%= machine.location %>#<%= machine.asset_number%></h4>
+            <%- include('../partials/deleteForm', 
+            {url: `/machines/delete/${machine._id}`}) %>
+        </div>
+        <% }) %>
+        <% } %>
+    </div>
+</div>

@@ -61,11 +61,11 @@ a:active {
   .popup_form {
     display: none;
     position: fixed;
-    top:30%;
+    top:10%;
     left:50%;
-    margin-left: -122px;
+    margin-left: -172px;
     background-color:white;
-    width:200px;
+    width:300px;
     padding: 20px 20px 10px 20px;
     z-index: 9;
     -moz-border-radius: 12px;
@@ -74,9 +74,11 @@ a:active {
     -moz-box-shadow: 4px 4px 14px #000;
     -webkit-box-shadow: 4px 4px 14px #000;
     box-shadow: 4px 4px 14px #000;
+    color: black;
+    overflow:wrap;
   }
   #form_element {
-    padding-bottom:8px;
+    padding-bottom:15px;
   }
   #form_background {
     position: fixed;
@@ -164,7 +166,9 @@ a:active {
     font-family: inherit;
     font-size: inherit;
     background: none;
-    
+  }
+  #post_buttons:hover {
+    cursor: pointer;
   }
   #comment {
     width: 350px;
@@ -181,6 +185,24 @@ a:active {
     margin-left:3px;
     padding:5px;
     background-color: #fff;
+  }
+  .individual_delete_wrapper {
+    text-align: center;
+    float:left;
+    width: 200px;
+    height: 150px;
+    margin: 18px;
+    -moz-border-radius: 55px;
+    -webkit-border-radius: 55px;
+    border-radius: 55px;
+    -moz-box-shadow: 4px 4px 14px #000;
+    -webkit-box-shadow: 4px 4px 14px #000;
+    box-shadow: 4px 4px 14px #000;
+    background-color: #fff;
+    border-style: inset;
+    border-width:5px;
+    border-color:#d60019;
+    margin-bottom: 50px;
   }
   #location_overview {
     text-align:left;
@@ -231,7 +253,6 @@ a:active {
     border-color:#d60019;
     margin-bottom: 50px;
   }
-
   #machine_overview {
     text-align:left;
     margin-bottom:10px;
@@ -265,12 +286,6 @@ a:active {
     margin-bottom: 18px;
     border-style:double;
   }
-  #machine_overview {
-    text-align:left;
-    margin-bottom:10px;
-    padding-left:25px;
-    background-color: #fff;
-  }
   #machine_datasheet {
     height:500px;
     width:100%;
@@ -289,7 +304,12 @@ a:active {
     width:300px;
     height:100px;
   }
-
+  #user_overview {
+    text-align:left;
+    margin-bottom:10px;
+    padding-left:25px;
+    background-color: #fff;
+  }
 }
 
 /*  ~~~~~~~~~~~~~~~~~~~~~~~  Mobile Viewing  ~~~~~~~~~~~~~~~~~~~~~~~  */
