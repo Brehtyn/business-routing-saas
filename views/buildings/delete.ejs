@@ -1,16 +1,16 @@
 <link href="/stylesheets/style.css" rel="stylesheet" type="text/css" />
 <div class="wrapper">
-    <% if (buildings != null) { %>
-    <%  buildings.forEach(building => { %>
+    <div class="content_bubble">
+        <% if (buildings != null) { %>
+        <%  buildings.forEach(building => { %>
+        <div class="individual_delete_wrapper">
 
-    <div class="individual_delete_wrapper">
+            <h4><%= building.location%></h4>
+            <%- include('../partials/deleteForm', 
+            {url: `/buildings/delete/${building._id}`}) %>
 
-        <h4><%= building.location%></h4>
-        <%- include('../partials/deleteForm', 
-    {url: `/buildings/delete/${building._id}`}) %>
-
+        </div>
+        <% }) %>
+        <% } %>
     </div>
-
-    <% }) %>
-    <% } %>
 </div>
