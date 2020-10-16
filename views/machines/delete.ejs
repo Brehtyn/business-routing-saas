@@ -1,8 +1,18 @@
-<br>    <br>    <br>
-<% if (machines != null) { %>
+<link href="/stylesheets/style.css" rel="stylesheet" type="text/css" />
+<div class="wrapper">
+
+    <% if (machines != null) { %>
     <%  machines.forEach(machine => { %>
-        <h1><%= machine.location%></h1>
-        <%- include('../partials/deleteForm', 
+
+        <div class="individual_delete_wrapper"> 
+
+    <h4>#<%= machine.asset_number%></h4>
+    <%- include('../partials/deleteForm', 
                 {url: `/machines/delete/${machine._id}`}) %>
-<% }) %>
-<% } %> 
+
+
+        </div>
+    <% }) %>
+    <% } %>
+
+</div>

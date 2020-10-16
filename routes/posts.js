@@ -98,7 +98,7 @@ router.delete('/delete/:id', async (req, res) => {
     try{
         const post = await Posts.findById(req.params.id)
         await post.remove()
-        res.redirect('/posts/all')
+        res.redirect(`${req.body.url}`)
     } catch {
         res.redirect('/posts')
     }

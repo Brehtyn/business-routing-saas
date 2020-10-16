@@ -1,8 +1,16 @@
-        <br>    <br>    <br>
-        <% if (buildings != null) { %>
-            <%  buildings.forEach(building => { %>
-                <h1><%= building.location%></h1>
-                <%- include('../partials/deleteForm', 
-                        {url: `/buildings/delete/${building._id}`}) %>
-        <% }) %>
-        <% } %> 
+<link href="/stylesheets/style.css" rel="stylesheet" type="text/css" />
+<div class="wrapper">
+    <% if (buildings != null) { %>
+    <%  buildings.forEach(building => { %>
+
+    <div class="individual_delete_wrapper">
+
+        <h4><%= building.location%></h4>
+        <%- include('../partials/deleteForm', 
+    {url: `/buildings/delete/${building._id}`}) %>
+
+    </div>
+
+    <% }) %>
+    <% } %>
+</div>

@@ -186,6 +186,24 @@ a:active {
     padding:5px;
     background-color: #fff;
   }
+  .individual_delete_wrapper {
+    text-align: center;
+    float:left;
+    width: 200px;
+    height: 150px;
+    margin: 18px;
+    -moz-border-radius: 55px;
+    -webkit-border-radius: 55px;
+    border-radius: 55px;
+    -moz-box-shadow: 4px 4px 14px #000;
+    -webkit-box-shadow: 4px 4px 14px #000;
+    box-shadow: 4px 4px 14px #000;
+    background-color: #fff;
+    border-style: inset;
+    border-width:5px;
+    border-color:#d60019;
+    margin-bottom: 50px;
+  }
   #location_overview {
     text-align:left;
     margin-bottom:10px;

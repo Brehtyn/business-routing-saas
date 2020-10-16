@@ -23,8 +23,10 @@
         <a href="/posts/all>"><img src="/assets/edit.png" height="30px" alt="edit button"></a>
         <a id="post_buttons">
           <form method="POST" action="/posts/delete/<%= post._id %>?_method=DELETE" method="POST">
+            <submit type="text" name="url" value="/">
             <button  id="post_buttons" type="submit"><img src="/assets/trash.png" height="30px"
                 alt="trash button"></button>
+              </submit>
           </form>
         </a>
         <a id="post_buttons">
