@@ -23,15 +23,15 @@
         <a href="/posts/all>"><img src="/assets/edit.png" height="30px" alt="edit button"></a>
         <a id="post_buttons">
           <form method="POST" action="/posts/delete/<%= post._id %>?_method=DELETE" method="POST">
-            <submit type="text" name="url" value="/">
-            <button  id="post_buttons" type="submit"><img src="/assets/trash.png" height="30px"
+            <input style="display: none;" type="text" name="url" value="<%= url %>"> 
+            <button id="post_buttons" type="submit"><img src="/assets/trash.png" height="30px"
                 alt="trash button"></button>
-              </submit>
+            </input>
           </form>
         </a>
         <a id="post_buttons">
           <form action="/posts/transfer/<%= post._id %>?_method=PUT" method="POST">
-            <button  id="post_buttons" type="submit"><img src="/assets/transfer.png" height="30px"
+            <button id="post_buttons" type="submit"><img src="/assets/transfer.png" height="30px"
                 alt="transfer button"></button>
           </form>
         </a>
