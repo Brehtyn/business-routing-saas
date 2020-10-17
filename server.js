@@ -12,6 +12,10 @@ const passport = require('passport')
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
 const flash = require('express-flash')
+const RedisStore = require('connect-redis')(session)
+// const client = require('redis').createClient(process.env.REDIS_URL)
+// const Redis = require('ioredis')
+// const redis = new Redis(process.env.REDIS_URL)
 
 const indexRouter = require('./routes/index')
 const buildingsRouter = require('./routes/buildings')
@@ -35,6 +39,9 @@ app.use(favicon(__dirname + '/public/assets/favicon.ico'));
 app.use(flash())
 
 app.use(session({
+    store: new RedisStore({
+        url: process.env.REDIS_URL
+    }),
     secret: process.env.SESSION_SECRET,
     saveUninitialized: false,
     resave: false
