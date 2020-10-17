@@ -13,9 +13,9 @@ const session = require('express-session')
 const cookieParser = require('cookie-parser')
 const flash = require('express-flash')
 const RedisStore = require('connect-redis')(session)
-// const client = require('redis').createClient(process.env.REDIS_URL)
-// const Redis = require('ioredis')
-// const redis = new Redis(process.env.REDIS_URL)
+const client = require('redis').createClient(process.env.REDIS_URL)
+const Redis = require('ioredis')
+const redis = new Redis(process.env.REDIS_URL)
 
 const indexRouter = require('./routes/index')
 const buildingsRouter = require('./routes/buildings')
@@ -40,6 +40,7 @@ app.use(flash())
 
 app.use(session({
     store: new RedisStore({
+        client: client,
         url: process.env.REDIS_URL
     }),
     secret: process.env.SESSION_SECRET,
