@@ -109,8 +109,8 @@ router.put('/edit/:id', checkAuthenticated, authEditProject, async (req, res) =>
         machine.location = req.body.location,
         machine.asset_number = req.body.asset_number,
         machine.machine_model = req.body.machine_model,
-        machine.status = req.body.status,
-        machine.urgent = req.body.urgent,
+        machine.status = machine.status,
+        machine.urgent = machine.urgent,
         machine.ownershipType = req.body.ownershipType,
         machine.cabinet_license_number = req.body.cabinet_license_number,
         machine.datasheet = req.body.datasheet,
@@ -118,7 +118,8 @@ router.put('/edit/:id', checkAuthenticated, authEditProject, async (req, res) =>
         createdAt = new Date(req.body.createdAt)
         await machine.save()
         res.redirect(`/machines/${machine._id}`)
-    } catch{
+    } catch(err){
+        console.log(err)
         res.redirect('/machines')
     }
 })
