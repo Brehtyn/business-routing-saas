@@ -1,0 +1,8 @@
+<h2>Edit Post</h2>
+<form action="/posts/edit/<%= post._id %> " method="POST">
+    <label>Post : </label>
+    <input type="text" name="post" value="<%= post.post %>">
+    <br />
+    <a href="/posts">Cancel</a>
+    <button type="submit">Update Post</button>
+</form>
