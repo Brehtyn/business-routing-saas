@@ -5,15 +5,16 @@
   <h2> <a href="/buildings/edit/<%= building._id%>">Edit</a> </h2>
 
   <h2> Overview: </h2>
-  <div class="content_bubble">
+  <div class="text_bubble">
     <div id="location_overview"> Address: <%= building.address %> </div>
     <div id="location_overview"> Cell: (<%= building.telephone_number %>) </div>
     <div id="location_overview"> Service: <%= building.tech_service %> </div>
+    <div id="location_overview"> Cash-can Access: <%= building.cash_can_access %> </div>
     <div id="location_overview"> Drop Day(s): <%= building.drop_days %> </div>
-    <div class="individual_desk_wrapper"> Front Desk: <br /> </div>
-    <div class="individual_desk_wrapper"> Vault: <br /> </div>
-    <div class="individual_desk_wrapper"> Card Printer: <br /> </div>
   </div>
+  <div class="individual_desk_wrapper"> Front Desk: <br /> </div>
+  <div class="individual_desk_wrapper"> Vault: <br /> </div>
+  <div class="individual_desk_wrapper"> Card Printer: <br /> </div>
 
   <h2>Machines : </h1>
     <div class="content_bubble">

@@ -2,9 +2,10 @@
 <%  machines.forEach(machine => { %>
 <div class="individual_machine_wrapper">
     <a href="/machines/<%= machine._id%>">
-        <div>Asset #:  <%= machine.asset_number  %>  </div>
+        <div>Asset #<%= machine.asset_number  %>  </div>
         <div id="machine_pic"> <img src="/assets/machines/<%= machine.machine_model %>.jpg" height="100%" width="100%" alt="picture of slot machine"> </div>
         <div>Status: <%= machine.status %></div>
+        <br />
         <div>Title: <%= machine.ownershipType %></div>
         <br />
         <div>Location: <%= machine.location %> </div>

@@ -1,8 +1,13 @@
-<h2><%= user.name%></h2>
-<h2><%= user._id %> </h2>
-<h2><%= user.authorizationLevel %> </h2>
-<h2><%= user.cell_number %> </h2>
-<h2><%= user.group %> </h2>
+<div class="individual_user_wrapper">
+    <h4><%= user.name%></h4>
+    <div>Username: <%= user.username %> </div>
+    <div>Type: <%= user.authorizationLevel %> </div>
+    <div>Phone #: <%= user.cell_number %> </div>
 
-<a href="/users/edit/<%= user._id%>">Edit</a>
-<%- include('delete', {url: `/users/delete/${user._id}`})%>
+    <br />
+
+    <a style="float: left; padding-left: 80px; margin-right: -50px;" href="/users/edit/<%= user._id%>">
+        <button id="btn_accept"> Edit </button>
+    </a>
+    <%- include('delete', {url: `/users/delete/${user._id}`})%>
+</div>

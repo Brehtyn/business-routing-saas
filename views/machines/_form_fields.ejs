@@ -7,20 +7,21 @@
     <input type="number" name="asset_number" value="<%= machine.asset_number %>">
 </div>
 <div>
-    <label>Machine Model</label>
-    <input type="text" name="machine_model" value="<%= machine.machine_model %>">
-</div>
-<div>
-    <label>Status</label>
-    <input type="text" name="status" value="<%= machine.status %>">
-</div>
-<div>
     <label>Title</label>
-    <input type="text" name="ownershipType" value="<%= machine.ownershipType %>">
+    <select name="ownershipType" value="<%= machine.ownershipType %>">
+        <option type="option" name="ownershipType" value="Eclipse"> Eclipse </option>
+        <option type="option"  name="ownershipType" value="Aristocrat"> Aristocrat </option>
+        <option type="option" name="ownershipType" value="Everi"> Everi </option>
+        <option type="option"  name="ownershipType" value="Other"> Other </option>
+    </select>
 </div>
 <div>
     <label>Cabinet License Number</label>
     <input type="text" name="cabinet_license_number" value="<%= machine.cabinet_license_number %>">
+</div>
+<div>
+    <label>Machine Model Picture</label>
+    <input type="text" name="machine_model" value="<%= machine.machine_model %>">
 </div>
 <div>
     <label>Datasheet File Name</label>
@@ -29,10 +30,6 @@
 <div>
     <label>Description</label>
     <input type="text" name="description" value="<%= machine.description %>">
-</div>
-<div>
-    <label>Urgent?</label>
-    <input type="text" name="urgent" value="<%= machine.urgent %>">
 </div>
 <div>
     <label>Created At Date</label>

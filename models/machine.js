@@ -14,14 +14,16 @@ const machineSchema = new mongoose.Schema({
         required: true
     },
     ownershipType: {
-        type: String
+        type: String,
+        required: false
     },
     cabinet_license_number: { 
         type: String
     },
     status: {      //WORKING, PENDING, HOLDING only
         type: String,
-        required: true
+        required: true,
+        default:"WORKING"
     },
     urgent: {
         type: Boolean,
@@ -31,6 +33,7 @@ const machineSchema = new mongoose.Schema({
     datasheet: {
         type: String,
         required: false,
+        default:"default"
     },
     description: {
         type: String    

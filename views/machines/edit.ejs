@@ -1,7 +1,14 @@
+<link href="/stylesheets/style.css" rel="stylesheet" type="text/css" />
+
+<div class="wrapper">
+
 <h2>Edit Machine</h2>
 <form action="/machines/edit/<%= machine._id %>?_method=PUT" method="POST">
 
     <%- include('_form_fields') %>
     <button type="submit">Update</button>
     <a href="/machines">Cancel</a>
+    
 </form>
+
+</div>

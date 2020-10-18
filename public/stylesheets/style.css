@@ -75,7 +75,7 @@ a:active {
     -webkit-box-shadow: 4px 4px 14px #000;
     box-shadow: 4px 4px 14px #000;
     color: black;
-    overflow:wrap;
+    overflow-y: auto;
   }
   #form_element {
     padding-bottom:15px;
@@ -113,7 +113,24 @@ a:active {
     -webkit-border-radius: 10px;
     border-radius: 10px;
   }
+  #btn_delete {
+    background-color: red;
+    color: white;
+    padding: 12px 16px;
+    border: none;
+    cursor: alias;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+  }
   .content_bubble {
+    width: 750px;
+    height: 100%;
+    margin-left: 25px;
+    margin-bottom: 50px;
+    float:left;
+  }
+  .text_bubble {
     width: 750px;
     height: 100%;
     margin-left: 25px;
@@ -123,8 +140,9 @@ a:active {
     -moz-box-shadow: 4px 4px 14px #000;
     -webkit-box-shadow: 4px 4px 14px #000;
     box-shadow: 4px 4px 14px #000;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     background-color: #fff;
+    float:left;
   }
   .database_wrapper {
     width:762px;
@@ -204,6 +222,24 @@ a:active {
     border-color:#d60019;
     margin-bottom: 50px;
   }
+  .individual_user_wrapper {
+    text-align: center;
+    float:left;
+    width: 326px;
+    height: 250px;
+    margin: 18px;
+    -moz-border-radius: 55px;
+    -webkit-border-radius: 55px;
+    border-radius: 55px;
+    -moz-box-shadow: 4px 4px 14px #000;
+    -webkit-box-shadow: 4px 4px 14px #000;
+    box-shadow: 4px 4px 14px #000;
+    background-color: #fff;
+    border-style: inset;
+    border-width:5px;
+    border-color:#d60019;
+    margin-bottom: 50px;
+  }
   #location_overview {
     text-align:left;
     margin-bottom:10px;
@@ -215,7 +251,7 @@ a:active {
     float:left;
     width: 138px;
     height: 150px;
-    margin: 18px;
+    margin: 19px;
     font-weight: 600;
     letter-spacing: 1px;
     -moz-border-radius: 55px;
@@ -239,7 +275,7 @@ a:active {
     float:left;
     width: 200px;
     height: 100px;
-    margin: 18px;
+    margin: 19px;
     padding-top:30px;
     -moz-border-radius: 55px;
     -webkit-border-radius: 55px;
@@ -264,7 +300,7 @@ a:active {
     float:left;
     width: 200px;
     height: 500px;
-    margin: 18px;
+    margin: 19px;
     padding-top:20px;
     -moz-border-radius: 55px;
     -webkit-border-radius: 55px;
