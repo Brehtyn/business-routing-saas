@@ -14,7 +14,7 @@ router.get('/delete', checkAuthenticated, authDeleteLocation, async (req, res) =
     let buildings = []
 
     try{
-        buildings = await Building.find().sort({createdAt: 'desc'}).limit(10).exec()
+        buildings = await Building.find().sort({createdAt: 'desc'}).exec()
         res.render('buildings/delete', {buildings: buildings})
 
     }catch{
