@@ -42,11 +42,11 @@ router.get('/new',checkAuthenticated, authCreateLocation, async (req,res) => {
 
 // //creates the machine by sending it to the database
 router.post('/new',checkAuthenticated, authCreateLocation, async (req,res) => {
-    let drop_days = { monday: req.body.monday, 
-                    tuesday: req.body.tuesday,
-                    wednesday: req.body.wednesday,
-                    thursday: req.body.thursday,
-                    friday: req.body.friday }
+    let drop_days = { Monday: req.body.monday, 
+                    Tuesday: req.body.tuesday,
+                    Wednesday: req.body.wednesday,
+                    Thursday: req.body.thursday,
+                    Friday: req.body.friday }
     try{
         const building = new Building({
             location: req.body.location,
@@ -120,11 +120,11 @@ router.get('/edit/:id', checkAuthenticated, authEditLocation, async (req, res) =
 })
 
 router.put('/edit/:id',checkAuthenticated, authEditLocation, async (req, res) => {
-    let drop_days = { monday: req.body.monday, 
-        tuesday: req.body.tuesday,
-        wednesday: req.body.wednesday,
-        thursday: req.body.thursday,
-        friday: req.body.friday }
+    let drop_days = { Monday: req.body.monday, 
+        Tuesday: req.body.tuesday,
+        Wednesday: req.body.wednesday,
+        Thursday: req.body.thursday,
+        Friday: req.body.friday }
 
     try{
         const building = await Building.findById(req.params.id)

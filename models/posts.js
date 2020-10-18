@@ -25,7 +25,7 @@ const postSchema = new mongoose.Schema({
                 },
                 comment:{
                     type: String,
-                    require: false
+                    require: true
                 }
             }
         ],

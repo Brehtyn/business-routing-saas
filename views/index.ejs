@@ -20,7 +20,7 @@
 
       <div class="post_buttons">
         <a href="/posts/<%= post._id %>"><img src="/assets/comment.png" height="30px" alt="comment button"></a>
-        <a href="/posts/all>"><img src="/assets/edit.png" height="30px" alt="edit button"></a>
+        <a href="/posts/edit/<%= post._id %>"><img src="/assets/edit.png" height="30px" alt="edit button"></a>
         <a id="post_buttons">
           <form method="POST" action="/posts/delete/<%= post._id %>?_method=DELETE" method="POST">
             <input style="display: none;" type="text" name="url" value="<%= url %>"> 
@@ -55,7 +55,7 @@
 
       <div class="post_buttons">
         <a href="/posts/<%= post._id %>"><img src="/assets/comment.png" height="30px" alt="comment button"></a>
-        <a href="/posts/all>"><img src="/assets/edit.png" height="30px" alt="edit button"></a>
+        <a href="/posts/edit/<%= post._id %>"><img src="/assets/edit.png" height="30px" alt="edit button"></a>
         <a id="post_buttons">
           <form method="POST" action="/posts/delete/<%= post._id %>?_method=DELETE">
             <button  id="post_buttons" type="submit"><img src="/assets/trash.png" height="30px"
