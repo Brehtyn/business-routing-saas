@@ -7,6 +7,7 @@ const passport = require('passport')
 const initializePassport = require('../public/passport-config')
 const flash = require('express-flash')
 const { checkAuthenticated } = require('../permissions/basicAuth')
+const { create } = require('../models/posts')
 
 
 initializePassport(
@@ -23,8 +24,8 @@ router.get('/', checkAuthenticated, async (req, res) => {
     let buildings = []
     let day = new Date()
     try{
+    let today = castDay(day)
     buildings = await Building.find({}).sort({createdAt: 'desc'}).exec()
-
     postsPending = await Posts.find({status: "PENDING"}, function (err, docs) {
         if(err){
             console.log(err)
@@ -57,7 +58,6 @@ router.get('/', checkAuthenticated, async (req, res) => {
         }
     }})
 
-    let today = castDay(day)
     buildings = await Building.find({})
         buildings.forEach(building => {
             building.drop_days.forEach(dropdayobj => {
