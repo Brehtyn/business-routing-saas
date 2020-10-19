@@ -1,0 +1,9 @@
+<br>    <br>    <br>    
+
+<% if (history != null) { %>
+    <%  history.forEach(story => { %>
+       <p><%= story._id  %></p> 
+       <p><%= story.post %> </p>
+    <% }) %>
+    <% } %>
+

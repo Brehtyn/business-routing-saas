@@ -3,10 +3,10 @@
 <div class="wrapper">
     <h2> User Settings: </h2>
     <div class="text_bubble">
-        <div id="user_overview"> Name :</div>
-        <div id="user_overview"> Account Level : </div>
-        <div id="user_overview"> Cell Number : </div>
-        <div id="user_overview"> Group : </div>
+        <div id="user_overview"> Name : <%= user.name %>  </div>
+        <div id="user_overview"> Account Level : <%= user.authorizationLevel %>  </div>
+        <div id="user_overview"> Cell Number : <%= user.cell_number %> </div>
+        <div id="user_overview"> Group : <%= user.group %> </div>
     </div>
     
 </div>

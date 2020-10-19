@@ -7,6 +7,14 @@
     <a href="/logout"> Log Out </a>
   </p>
 
+    <a id="post_buttons">
+      <form method="POST" action="/history" method="POST">
+        <button id="post_buttons" type="submit">New History Document</button>
+      </form>
+    </a>
+    <a id="post_buttons" href="/history">Current History Document</a>
+  
+
   <h1>Pending: </h1>
   <div class="database_wrapper">
     <div class="database_label"> Time | Location | Asset | Issue : </div>
@@ -35,7 +43,11 @@
                 alt="transfer button"></button>
           </form>
         </a>
-        <a href="/posts/all"><img src="/assets/complete.png" height="30px" alt="complete button"></a>
+        <a id="post_buttons">
+          <form action="/history/update/<%= post._id %>?_method=PUT" method="POST">
+            <button id="post_buttons" type="submit"><img src="/assets/complete.png" height="30px" alt="complete button"></button>
+          </form>
+        </a>
       </div>
 
     </div>
@@ -68,7 +80,11 @@
                 alt="transfer button"></button>
           </form>
         </a>
-        <a href="/posts/all"><img src="/assets/complete.png" height="30px" alt="complete button"></a>
+        <a id="post_buttons">
+          <form action="/history/update/<%= post._id %>?_method=PUT" method="POST">
+            <button id="post_buttons" type="submit"><img src="/assets/complete.png" height="30px" alt="complete button"></button>
+          </form>
+        </a>
       </div>
 
     </div>

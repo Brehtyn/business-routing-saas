@@ -24,6 +24,7 @@ const buildingsRouter = require('./routes/buildings')
 const machinesRouter = require('./routes/machines')
 const userRouter = require('./routes/users') 
 const postRouter = require('./routes/posts')
+const historyRouter = require('./routes/history')
 var favicon = require('serve-favicon');
 
 app.set('view engine', 'ejs')
@@ -73,5 +74,6 @@ app.use('/buildings', buildingsRouter)
 app.use('/machines', machinesRouter)
 app.use('/users', userRouter)
 app.use('/posts', postRouter)
+app.use('/history', historyRouter)
 
 app.listen(process.env.PORT || 3000)
