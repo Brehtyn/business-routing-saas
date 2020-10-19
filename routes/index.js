@@ -25,6 +25,8 @@ router.get('/', checkAuthenticated, async (req, res) => {
     let day = new Date()
     try{
     let today = castDay(day)
+    console.log(today)
+    //used buildings and then wrote over it down below
     buildings = await Building.find({}).sort({createdAt: 'desc'}).exec()
     postsPending = await Posts.find({status: "PENDING"}, function (err, docs) {
         if(err){
