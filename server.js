@@ -13,12 +13,6 @@ const passport = require('passport')
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
 const flash = require('express-flash')
-if (app.get('env') === 'production'){
-    const RedisStore = require('connect-redis')(session)
-    const client = require('redis').createClient(process.env.REDIS_URL)
-    const Redis = require('ioredis')
-    const redis = new Redis(process.env.REDIS_URL)
-}
 const indexRouter = require('./routes/index')
 const buildingsRouter = require('./routes/buildings')
 const machinesRouter = require('./routes/machines')
@@ -49,6 +43,11 @@ if (app.get('env') === 'development') {
         resave: false
     }))
   } else{
+    const RedisStore = require('connect-redis')(session)
+    const client = require('redis').createClient(process.env.REDIS_URL)
+    const Redis = require('ioredis')
+    const redis = new Redis(process.env.REDIS_URL)
+    
     app.use(session({
         store: new RedisStore({
             client: client,
