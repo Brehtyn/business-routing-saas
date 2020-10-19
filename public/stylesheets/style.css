@@ -68,17 +68,19 @@ a:active {
     width:300px;
     padding: 20px 20px 10px 20px;
     z-index: 9;
-    -moz-border-radius: 12px;
-    -webkit-border-radius: 12px;
-    border-radius: 12px;
-    -moz-box-shadow: 4px 4px 14px #000;
-    -webkit-box-shadow: 4px 4px 14px #000;
-    box-shadow: 4px 4px 14px #000;
-    color: black;
-    overflow-y: auto;
+    -moz-border-radius: 55px;
+    -webkit-border-radius: 55px;
+    border-radius: 55px;
+    -moz-box-shadow: 4px 4px 11px #000;
+    -webkit-box-shadow: 4px 4px 11px #000;
+    box-shadow: 4px 4px 11px #000;
+    border-style: inset;
+    border-width:5px;
+    background-color: #fff;
+    border-color:#d60019;
   }
   #form_element {
-    padding-bottom:15px;
+    margin-bottom:10px;
   }
   #form_background {
     position: fixed;
@@ -90,6 +92,28 @@ a:active {
     height:100%;
     z-index:5;
     right:0px;
+  }
+  #control_header {
+    width:80%;
+    border-style: solid;
+    cursor: pointer;
+    padding:5px;
+    margin-bottom:10px;
+    font-family: inherit;
+    font-size: 18px;
+    letter-spacing: 3px;
+    -moz-border-radius: 55px;
+    -webkit-border-radius: 55px;
+    border-radius: 55px;
+    -moz-box-shadow: 4px 4px 11px #000;
+    -webkit-box-shadow: 4px 4px 11px #000;
+    box-shadow: 4px 4px 11px #000;
+    border-style: inset;
+    border-width:5px;
+    border-color:#d60019;
+  }
+  #building_controls, #machine_controls, #users_controls{
+    display:none;
   }
   #btn_accept {
     background-color: #4CAF50;
@@ -118,7 +142,7 @@ a:active {
     color: white;
     padding: 12px 16px;
     border: none;
-    cursor: alias;
+    cursor: crosshair;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     border-radius: 10px;
@@ -131,17 +155,22 @@ a:active {
     float:left;
   }
   .text_bubble {
-    width: 750px;
+    width: 700px;
     height: 100%;
     margin-left: 25px;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
-    -moz-box-shadow: 4px 4px 14px #000;
-    -webkit-box-shadow: 4px 4px 14px #000;
-    box-shadow: 4px 4px 14px #000;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    padding: 20px;
+    padding-top: 30px;
+    -moz-border-radius: 55px;
+    -webkit-border-radius: 55px;
+    border-radius: 55px;
+    -moz-box-shadow: 4px 4px 11px #000;
+    -webkit-box-shadow: 4px 4px 11px #000;
+    box-shadow: 4px 4px 11px #000;
+    border-style: inset;
+    border-width:5px;
     background-color: #fff;
+    border-color:#d60019;
     float:left;
   }
   .database_wrapper {
@@ -150,7 +179,7 @@ a:active {
     border-style:double;
     border-width: 5px;
     margin-left: 14.5px;
-    background-color:#B9B9C9; 
+    background-color:grey; 
   }
   .database_label {
     text-align: left;
@@ -160,7 +189,7 @@ a:active {
     text-decoration: underline;
   }
   .database_item {
-    width:740px;
+    width:736px;
     height:35px;
     border-style:solid;
     border-width:2px;
@@ -169,7 +198,7 @@ a:active {
     padding-top:14px;
     background-color: #fff;
     text-align: left;
-    padding-left:16px;
+    padding-left:20px;
   }
   .post_buttons {
     float:right;
@@ -244,7 +273,6 @@ a:active {
     text-align:left;
     margin-bottom:10px;
     padding-left:25px;
-    background-color: #fff;
   }
   .individual_location_wrapper {
     text-align: center;
@@ -287,13 +315,11 @@ a:active {
     border-style: inset;
     border-width:5px;
     border-color:#d60019;
-    margin-bottom: 50px;
   }
   #machine_overview {
     text-align:left;
     margin-bottom:10px;
     padding-left:25px;
-    background-color: #fff;
   }
   .individual_machine_wrapper {
     text-align: center;
@@ -344,7 +370,6 @@ a:active {
     text-align:left;
     margin-bottom:10px;
     padding-left:25px;
-    background-color: #fff;
   }
 }
 

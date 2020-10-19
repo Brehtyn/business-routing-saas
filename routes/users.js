@@ -15,7 +15,7 @@ router.get('/', checkAuthenticated, authViewUser, async (req, res) =>{
 router.get('/all', checkAuthenticated, authViewUser, async (req, res) =>{
     let users = []
     try{
-        users = await User.find().sort({createdAt: 'desc'}).limit(10).exec()
+        users = await User.find().sort({createdAt: 'desc'}).exec()
         console.log(users)
     } catch(err){
         console.log(err)

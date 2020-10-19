@@ -50,6 +50,10 @@
 
 <script>
 
+var user_toggle = 0;
+var building_toggle = 0;
+var machine_toggle = 0;
+
   setInterval(current_time, 1000);
 
   function current_time() {
@@ -86,7 +90,36 @@
     document.getElementById("popup_form").style.display = "none";
     document.getElementById("form_background").style.display = "none";
   }
-
+  function users_options() {
+    if (user_toggle == 0) {
+      user_toggle++;
+    document.getElementById("users_controls").style.display = "block";
+    }
+    else {
+    document.getElementById("users_controls").style.display = "none";
+    user_toggle = 0;
+    }
+  }
+  function building_options() {
+    if (building_toggle == 0) {
+      building_toggle++;
+    document.getElementById("building_controls").style.display = "block";
+    }
+    else {
+    document.getElementById("building_controls").style.display = "none";
+    building_toggle = 0;
+    }
+  }
+  function machine_options() {
+    if (machine_toggle == 0) {
+      machine_toggle++;
+    document.getElementById("machine_controls").style.display = "block";
+    }
+    else {
+    document.getElementById("machine_controls").style.display = "none";
+    machine_toggle = 0;
+    }
+  }
 </script>
 
 <div>
@@ -97,35 +130,43 @@
         <a href="/" style="text-decoration: none; color:white;"> Dashboard </a> |
         <a href="/buildings" style="text-decoration: none; color:white;"> Locations </a> |
         <a href="/machines" style="text-decoration: none; color:white;"> Machines </a> |
-        <a href="/users" style="text-decoration: none; color:white;"> User </a> |
+        <a href="/users" style="text-decoration: none; color:white;"> User</a> |
         <button id="user_controls" onclick="openForm()"> Controls </button>
       <div class="popup_form" id="popup_form">
         <div>
 
           <div id="form_element">
-            <a href="/posts/new">New Post</a>
+            <button id="control_header" onclick="users_options()"> Users </button>
+            <div id="users_controls">
+              <a href="/users/all"><button id="btn_accept"> Master List </button></a>
+              <a href="/users/new"><button id="btn_accept"> Create New </button></a>
+            </div>
           </div>
           <div id="form_element">
-            <h4> Buildings </h4>
-            <a href="/buildings/new">New Building</a> <br />
-            <a href="/buildings/delete">Delete Building</a>
+            <button id="control_header" onclick="building_options()"> Buildings </button>
+            <div id="building_controls">
+              <a href="/buildings/new"><button id="btn_accept"> Create New </button></a>
+              
+        
+
+              <a href="/buildings/delete"><button id="btn_cancel"> Delete </button></a>
+            </div>
           </div>
           <div id="form_element">
-            <h4> Machines </h4>
-            <a href="/machines/new">New Machine</a> <br />
-            <a href="/machines/delete">Delete Machine</a> 
-          </div>
-          <div id="form_element">
-            <h4> Users </h4>
-            <a href="/users/new">New User </a> <br />
-            <a href="/users/all"> Users List </a>
-          </div>
-          <div id="form_element">
-            <a href="/logout"> Log Out </a>
+            <button id="control_header" onclick="machine_options()"> Machines </button>
+            <div id="machine_controls">
+              <a href="/machines/new"><button id="btn_accept"> Create New </button></a>
+              <a href="/machines/delete"><button id="btn_cancel"> Delete </button></a>
+            </div>
           </div>
 
-          <button id="btn_accept" type="submit">Submit</button>
-          <button id="btn_cancel" onclick="closeForm()">Close</button>
+          <div id="form_element">
+            <a href="/posts/new"> <button id="btn_accept"> New Post </button> </a>
+          </div>
+
+          <a href="/logout"><button id="btn_cancel" style="margin-right: 20px;"> Log Out </button></a>
+
+          <button id="btn_cancel" onclick="closeForm()"> Close </button>
 
         </div>
       </div>

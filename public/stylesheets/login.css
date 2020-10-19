@@ -27,6 +27,15 @@
   }
   .title{
     font-size: 32px;
+    letter-spacing: 5px;
+  }
+  #alert {
+    width: inherit;
+    color: red;
+    letter-spacing: 2px;
+    background-color:black;
+    background-size: 50%;
+
   }
   h1, h2 {
     color:white;
