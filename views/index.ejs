@@ -2,11 +2,6 @@
 
 <div class="wrapper">
 
-  <p id="right_side">
-    Welcome <%= user.name %>! <br />
-    <a href="/logout"> Log Out </a>
-  </p>
-
     <a id="post_buttons">
       <form method="POST" action="/history" method="POST">
         <button id="post_buttons" type="submit">New History Document</button>
@@ -91,12 +86,12 @@
     <% }) %>
   </div>
 
-  <h2>Drops Today: </h1>
+  <h1>Drops Today: </h1>
     <div class="content_bubble">
       <%- include('partials/allBuildings.ejs', {buildings: buildingsDrop}) %>
     </div>
 
-    <h2>Locations : </h1>
+    <h1>Locations : </h1>
       <div class="content_bubble">
         <%- include('partials/allBuildings.ejs') %>
       </div>

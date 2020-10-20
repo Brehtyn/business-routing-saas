@@ -1,58 +1,10 @@
-<style>
-  .nav_bar {
-    text-align: center;
-    width: 100%;
-    position: fixed;
-    height: 50px;
-    background-image: url(../assets/nav_bar.jpg);
-    background-repeat: repeat-x;
-    margin-top: -8px;
-    margin-left: -8px;
-    letter-spacing: 1px;
-    color: white;
-  }
-
-  .left_nav {
-    float: left;
-    padding-left: 50px;
-  }
-
-  .right_nav {
-    float: right;
-    padding-right: 50px;
-    padding-top: 1px;
-  }
-
-  #user_controls {
-    padding: none;
-    margin: none;
-    border: none;
-    font: inherit;
-    background: inherit;
-    color: inherit;
-    margin-left: -5px;
-  }
-
-  #user_controls:hover {
-    cursor: pointer;
-  }
-
-  #post_count {
-    float: left;
-    padding-left: 10px;
-  }
-
-  #clock {
-    float: left;
-    padding-left: 10px;
-  }
-</style>
+<link href="/stylesheets/style.css" rel="stylesheet" type="text/css" />
 
 <script>
 
-var user_toggle = 0;
-var building_toggle = 0;
-var machine_toggle = 0;
+  var user_toggle = 0;
+  var building_toggle = 0;
+  var machine_toggle = 0;
 
   setInterval(current_time, 1000);
 
@@ -93,31 +45,31 @@ var machine_toggle = 0;
   function users_options() {
     if (user_toggle == 0) {
       user_toggle++;
-    document.getElementById("users_controls").style.display = "block";
+      document.getElementById("users_controls").style.display = "block";
     }
     else {
-    document.getElementById("users_controls").style.display = "none";
-    user_toggle = 0;
+      document.getElementById("users_controls").style.display = "none";
+      user_toggle = 0;
     }
   }
   function building_options() {
     if (building_toggle == 0) {
       building_toggle++;
-    document.getElementById("building_controls").style.display = "block";
+      document.getElementById("building_controls").style.display = "block";
     }
     else {
-    document.getElementById("building_controls").style.display = "none";
-    building_toggle = 0;
+      document.getElementById("building_controls").style.display = "none";
+      building_toggle = 0;
     }
   }
   function machine_options() {
     if (machine_toggle == 0) {
       machine_toggle++;
-    document.getElementById("machine_controls").style.display = "block";
+      document.getElementById("machine_controls").style.display = "block";
     }
     else {
-    document.getElementById("machine_controls").style.display = "none";
-    machine_toggle = 0;
+      document.getElementById("machine_controls").style.display = "none";
+      machine_toggle = 0;
     }
   }
 </script>
@@ -127,10 +79,10 @@ var machine_toggle = 0;
 
     <div class="left_nav">
       <p>
-        <a href="/" style="text-decoration: none; color:white;"> Dashboard </a> |
-        <a href="/buildings" style="text-decoration: none; color:white;"> Locations </a> |
-        <a href="/machines" style="text-decoration: none; color:white;"> Machines </a> |
-        <a href="/users" style="text-decoration: none; color:white;"> User</a> |
+        <a href="/" id="nav_link"> Dashboard </a> |
+        <a href="/buildings" id="nav_link"> Locations </a> |
+        <a href="/machines" id="nav_link"> Machines </a> |
+        <a href="/users" id="nav_link"> User</a> |
         <button id="user_controls" onclick="openForm()"> Controls </button>
       <div class="popup_form" id="popup_form">
         <div>
@@ -138,7 +90,7 @@ var machine_toggle = 0;
           <div id="form_element">
             <button id="control_header" onclick="users_options()"> Users </button>
             <div id="users_controls">
-              <a href="/users/all"><button id="btn_accept"> Master List </button></a>
+              <a href="/users/all"><button id="btn_default"> Master List </button></a>
               <a href="/users/new"><button id="btn_accept"> Create New </button></a>
             </div>
           </div>
@@ -146,17 +98,22 @@ var machine_toggle = 0;
             <button id="control_header" onclick="building_options()"> Buildings </button>
             <div id="building_controls">
               <a href="/buildings/new"><button id="btn_accept"> Create New </button></a>
-              
-        
 
-              <a href="/buildings/delete"><button id="btn_cancel"> Delete </button></a>
+              <a href="/buildings/delete"><button id="btn_cancel"> Delete Page</button></a>
             </div>
           </div>
           <div id="form_element">
             <button id="control_header" onclick="machine_options()"> Machines </button>
             <div id="machine_controls">
               <a href="/machines/new"><button id="btn_accept"> Create New </button></a>
-              <a href="/machines/delete"><button id="btn_cancel"> Delete </button></a>
+
+              <form action="/machines/new" method="POST">
+                <%- include('formfieldMachine') %>
+                <button type="submit">Create Machine</button>
+                <a href="/machines">Cancel</a>
+              </form>
+
+              <a href="/machines/delete"><button id="btn_cancel"> Delete Page</button></a>
             </div>
           </div>
 
@@ -166,7 +123,7 @@ var machine_toggle = 0;
 
           <a href="/logout"><button id="btn_cancel" style="margin-right: 20px;"> Log Out </button></a>
 
-          <button id="btn_cancel" onclick="closeForm()"> Close </button>
+          <button id="btn_default" onclick="closeForm()"> Close </button>
 
         </div>
       </div>

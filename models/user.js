@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
             type: String,
             require: true
         },
-        authorizationLevel: {//ADMIN, MANAGER, TECH, or BART
+        authorizationLevel: {//ADMIN, MANAGER, TECH, or USER
             type: String,
             require: true
         },
