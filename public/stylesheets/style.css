@@ -6,22 +6,15 @@
   src:url(.../assets/BebasNeue)
 }
 
-/* unvisited link */
 a:link {
   color:black;
 }
-
-/* visited link */
 a:visited {
   color:black;
 }
-
-/* mouse over link */
 a:hover {
   color:grey;
 }
-
-/* selected link */
 a:active {
   color:yellow;
 }
@@ -180,7 +173,7 @@ a:active {
     float: left;
     padding-left: 10px;
   }
-  /*content*/
+  /*  ~~~~~~~~~~~~~~~~~~~~~~~  PC-Main Content  ~~~~~~~~~~~~~~~~~~~~~~~  */
   .content_bubble {
     width: 750px;
     height: 100%;
@@ -248,12 +241,20 @@ a:active {
     font-family: 'Tahoma','Arial', 'Arial Narrow', Arial, sans-serif;
     font-size: 20px;
   }
+  .comment_wrapper {
+    width:95%;
+    height: 100%;
+    border-style:double;
+    border-width: 5px;
+    margin-left: 14.5px;
+    background-color:grey; 
+  }
   .database_comment {
-    width:742px;
+    width:95%;
     height:100%;
     border-style:solid;
     border-width:2px;
-    margin-left:3px;
+    margin-left:9px;
     padding:5px;
     background-color: #fff;
   }
