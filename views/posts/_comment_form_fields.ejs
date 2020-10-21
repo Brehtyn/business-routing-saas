@@ -1,10 +1,12 @@
 <link href="/stylesheets/style.css" rel="stylesheet" type="text/css" />
 
-    <form action="/posts/<%= post._id %> " method="POST">
-        <textarea name="comment" id="comment">  </textarea>
-        <br/>
-        <button id="btn_accept" type="submit"> Comment </button>
-    </form>
-    <form action="../" > 
-        <button id="btn_cancel" > Cancel </button>
-    </form>
+<br />
+
+<form action="/posts/<%= post._id %> " method="POST">
+    <textarea name="comment" id="comment" placeholder="Whats the issue?">  </textarea>
+    <br /> <br />
+    <button id="btn_accept" type="submit"> Comment </button>
+</form>
+<form action="../">
+    <button id="btn_cancel"> Go Back </button>
+</form>

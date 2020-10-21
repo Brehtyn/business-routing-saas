@@ -2,7 +2,10 @@
 
 <div class="wrapper">
   <h1><%= building.location%></h1>
-  <h2> <a href="/buildings/edit/<%= building._id%>">Edit</a> </h2>
+
+  <div id="manager">
+    <a href="/buildings/edit/<%= building._id%>">Edit</a>
+  </div>
 
   <h2> Overview: </h2>
   <div class="text_bubble">
@@ -13,9 +16,9 @@
     <div id="location_overview"> Drop Day(s): <%= building.drop_days %> </div>
   </div>
   <div class="content_bubble">
-    <div class="individual_desk_wrapper"> Front Desk: <br /> </div>
-    <div class="individual_desk_wrapper"> Vault: <br /> </div>
-    <div class="individual_desk_wrapper"> Card Printer: <br /> </div>
+    <div class="individual_desk_wrapper"> Front Desk: <br /><br /> <%= building.front_desk %> </div>
+    <div class="individual_desk_wrapper"> Vault: <br /><br /> <%= building.vault %> </div>
+    <div class="individual_desk_wrapper"> Card Printer: <br /><br /> <%= building.card_printer %> </div>
   </div>
 
   <h2>Machines : </h1>

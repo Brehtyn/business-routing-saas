@@ -1,26 +1,32 @@
 <link href="/stylesheets/style.css" rel="stylesheet" type="text/css" />
 
 <div class="wrapper">
-  <div class="top_wrapper">
-    <h1><%= machine.machine_model %> #<%= machine.asset_number  %> </h1>
-    <h2><a href="/machines/edit/<%= machine._id%>">Edit</a> </h2>
-    <div class="machine_header">
-      <div id="left_side">
-        <h2> Status: <%= machine.status %> </h2>
-      </div>
-      <div id="right_side">
-        <img src="/assets/machines/<%= machine.machine_model %>.jpg" height="100%" width="100%" alt="picture of slot machine">
-      </div>
+
+  <h1><%= machine.machine_model %> #<%= machine.asset_number  %> </h1>
+
+  <div id="manager"> <a href="/machines/edit/<%= machine._id%>">Edit</a> </div>
+
+  <div class="machine_header">
+    <div id="left_side">
+      <br/>
+      <h3> Status: <%= machine.status %> </h3>
+      <h3> Owner: <%= machine.ownershipType %> </h3>
+    </div>
+    <div id="right_side">
+      <img id="map" src="/assets/machines/<%= machine.machine_model %>.jpg" height="80%" width="40%"
+        alt="picture of slot machine">
     </div>
   </div>
+
 
   <h2>Overview: </h2>
   <div class="text_bubble">
     <div id="machine_overview">Konomi Asset ID: <%= machine.asset_number %></div>
     <div id="machine_overview">Machine Model: <%= machine.machine_model %></div>
     <div id="machine_overview">Location: <%= machine.location %></div>
-    <div id="machine_overview">Description: <p> <%= machine.description %> </p> </div>
-    <br/>
+    <div id="machine_overview">Description: <p> <%= machine.description %> </p>
+    </div>
+    <br />
     <div id="machine_overview">Title Holder: <%= machine.ownershipType %></div>
     <div id="machine_overview">Cabinent License Number: <%= machine.cabinet_license_number %></div>
     <div id="machine_overview">Machine Database-ID: <%= machine._id  %> </div>
@@ -28,10 +34,11 @@
 
   <h2>Datasheet: </h2>
   <div class="content_bubble">
-      <object data="/assets/datasheets/default.pdf" alt="machine datasheet in pdf" type="application/pdf" id="machine_datasheet">
-        <p> It appears you don't have a PDF plugin for this browser.
-          No biggie... you can <a href="/assets/datasheets/default.pdf">click here to
-            download the PDF file.</a></p>
-      </object>
+    <object data="/assets/datasheets/default.pdf" alt="machine datasheet in pdf" type="application/pdf"
+    id="machine_datasheet">
+      <p> It appears you don't have a PDF plugin for this browser.
+        No biggie... you can <a href="/assets/datasheets/default.pdf">click here to
+          download the PDF file.</a></p>
+    </object>
   </div>
 </div>
