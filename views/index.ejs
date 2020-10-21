@@ -9,9 +9,9 @@
     <% postsPending.forEach(post => {%>
     <div class="database_item">
 
-      <%= post.location %>
-      #<%= post.asset_number %>
-      : <%= post.post %>
+      <a href="/buildings/<%= buildings._id %>"> <%= post.location %></a>
+      <a href="/machines/"> #<%= post.asset_number %></a>
+      : <a href="/posts/<%= post._id %>"> <%= post.post %> </a>
 
       <div class="post_buttons">
         <a href="/posts/<%= post._id %>"><img src="/assets/comment.png" height="30px" alt="comment button"></a>
@@ -49,9 +49,9 @@
     <% postsHolding.forEach(post => {%>
     <div class="database_item">
 
-      <%= post.location %>
-      # <%= post.asset_number %>
-      : <%= post.post %>
+      <a href="/"> <%= post.location %></a>
+      <a href="/"> #<%= post.asset_number %></a>
+      : <a href="/posts/<%= post._id %>"> <%= post.post %> </a>
 
       <div class="post_buttons">
         <a href="/posts/<%= post._id %>"><img src="/assets/comment.png" height="30px" alt="comment button"></a>

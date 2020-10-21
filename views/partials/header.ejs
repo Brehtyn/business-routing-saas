@@ -83,8 +83,7 @@
         <a href="/users" id="nav_link"> User</a> |
         <button id="user_controls" onclick="openForm()"> Controls </button>
       <div class="popup_form" id="popup_form">
-        <div>
-
+        <div id="admin">
           <div id="form_element">
             <button id="control_header" onclick="users_options()"> Users </button>
             <div id="users_controls">
@@ -114,16 +113,16 @@
               <a href="/machines/delete"><button id="btn_cancel"> Delete Page</button></a>
             </div>
           </div>
-
-          <div id="form_element">
-            <a href="/posts/new"> <button id="btn_accept"> New Post </button> </a>
-          </div>
-
-          <a href="/logout"><button id="btn_cancel" style="margin-right: 20px;"> Log Out </button></a>
-
-          <button id="btn_default" onclick="closeForm()"> Close </button>
-
         </div>
+
+        <div id="form_element">
+          <a href="/posts/new"> <button id="btn_accept"> New Post </button> </a>
+        </div>
+
+        <a href="/logout"><button id="btn_cancel" style="margin-right: 20px;"> Log Out </button></a>
+
+        <button id="btn_default" onclick="closeForm()"> Close </button>
+
       </div>
       <div id="form_background"></div>
 
