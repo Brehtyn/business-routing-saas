@@ -8,14 +8,16 @@ const { canEditMachine, canDeleteMachine, canCreateMachine} = require('../permis
 //index to create machines
 router.get('/', checkAuthenticated, async (req, res) => {
     if(!req.timedout){
-        res.render('machines/index')
+        const user = req.user
+        res.render('machines/index', {authorizationLevel: user.authorizationLevel})
     }
 })
 
 //index to create new machines
 router.get('/new',checkAuthenticated, authCreateProject,  async(req, res) =>{
     if(!req.timedout){
-        res.render('machines/new', {machine: new Machine()})
+        const user = req.user
+        res.render('machines/new', {machine: new Machine(), authorizationLevel: user.authorizationLevel})
     }
 })
 
@@ -47,11 +49,11 @@ router.post('/new', checkAuthenticated, authCreateProject, async(req, res) =>{
 //to delete a machine
 router.get('/delete', checkAuthenticated, authDeleteProject,async  (req, res) => {
         let machines = []
-
+        const user = req.user
         try{
             machines = await Machine.find().sort({createdAt: 'desc'}).exec()
             if (!req.timedout) { 
-                res.render('machines/delete', {machines: machines})
+                res.render('machines/delete', {machines: machines, authorizationLevel: user.authorizationLevel})
             }
     
         }catch{
@@ -86,10 +88,11 @@ router.delete('/delete/:id', checkAuthenticated, authDeleteProject, async(req, r
 
 router.get('/show', checkAuthenticated,  async( req, res) => {
         let machines = []
+        const user = req.user
         try{
             machines = await Machine.find().sort({createdAt: 'desc'}).exec()
             if (!req.timedout) { 
-                res.render('machines/show', {machines: machines})
+                res.render('machines/show', {machines: machines, authorizationLevel: user.authorizationLevel})
             }
         }catch{
             if (!req.timedout) { 
@@ -103,9 +106,10 @@ router.get('/show', checkAuthenticated,  async( req, res) => {
 //Will probably make this new index once project expands
 router.get('/:id', checkAuthenticated, async (req,res) => {
         try{
+            const user = req.user
             const machine = await Machine.findById(req.params.id)
             if(!req.timedout){
-                res.render('indexMachines', {machine: machine})
+                res.render('indexMachines', {machine: machine, authorizationLevel: user.authorizationLevel})
             }
         }catch{
             if (!req.timedout) { 
@@ -118,8 +122,9 @@ router.get('/:id', checkAuthenticated, async (req,res) => {
 router.get('/edit/:id', checkAuthenticated, authEditProject, async (req, res) => {
         try{
             const machine = await Machine.findById(req.params.id)
+            const user = req.user
             if (!req.timedout) { 
-                res.render('machines/edit', {machine: machine})
+                res.render('machines/edit', {machine: machine, authorizationLevel: user.authorizationLevel})
             }
         }catch {
             if (!req.timedout) { 

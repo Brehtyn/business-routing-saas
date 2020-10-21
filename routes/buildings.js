@@ -6,19 +6,20 @@ const { checkAuthenticated } = require('../permissions/basicAuth')
 const { canEditBuilding, canDeleteBuilding, canCreateBuilding} = require('../permissions/buildingAuth')
 //index to create buildings
 router.get('/', checkAuthenticated, (req, res) => {
+    const user = req.user
     if(!req.timedout){
-        res.render('buildings/index')
+        res.render('buildings/index', {authorizationLevel: user.authorizationLevel})
     }
 })
 
 //page to delete buildings
 router.get('/delete', checkAuthenticated, authDeleteLocation, async (req, res) => {
         let buildings = []
-
+        const user = req.user
         try{
             buildings = await Building.find().sort({createdAt: 'desc'}).exec()
             if(!req.timedout){
-                res.render('buildings/delete', {buildings: buildings})
+                res.render('buildings/delete', {buildings: buildings, authorizationLevel: user.authorizationLevel})
             }
         }catch{
             if(!req.timedout){
@@ -30,11 +31,11 @@ router.get('/delete', checkAuthenticated, authDeleteLocation, async (req, res) =
 //Gets all buildings
 router.get('/show', checkAuthenticated, async (req, res) => {
         let buildings = []
-
+        const user = req.user
         try{
             buildings = await Building.find().sort({createdAt: 'desc'}).exec()
             if (!req.timedout) { 
-                res.render('buildings/show', {buildings: buildings})               
+                res.render('buildings/show', {buildings: buildings, authorizationLevel: user.authorizationLevel})               
             }
     
         }catch{
@@ -46,8 +47,9 @@ router.get('/show', checkAuthenticated, async (req, res) => {
 
 //New Machine Route, just the form for making a new machine
 router.get('/new',checkAuthenticated, authCreateLocation, async (req,res) => {
+    const user = req.user
     if(!req.timedout){
-        res.render('buildings/new', {building: new Building()})
+        res.render('buildings/new', {building: new Building(), authorizationLevel: user.authorizationLevel})
     }
 })
 
@@ -88,7 +90,7 @@ router.post('/new',checkAuthenticated, authCreateLocation, async (req,res) => {
 //Probably will get fixed in the views instead of on here but we shall see
 router.get('/:id', checkAuthenticated, async (req,res) => {
         let machines = []
-
+        const user = req.user
         try{
             const building = await Building.findById(req.params.id)
             const location = building.location
@@ -101,7 +103,7 @@ router.get('/:id', checkAuthenticated, async (req,res) => {
             }).sort({createdAt: 'desc'}).limit(10).exec()
 
             if (!req.timedout) { 
-                res.render('indexBuildings', {building: building, machines: machines})                
+                res.render('indexBuildings', {building: building, machines: machines, authorizationLevel: user.authorizationLevel})                
             }
         }catch{
             if (!req.timedout) { 
@@ -132,9 +134,10 @@ router.delete('/delete/:id', checkAuthenticated, authDeleteLocation, async(req, 
 //Edit Building Route
 router.get('/edit/:id', checkAuthenticated, authEditLocation, async (req, res) => {
         try{
+            const user = req.user
             const building = await Building.findById(req.params.id)
             if (!req.timedout) { 
-                res.render('buildings/edit', {building: building})
+                res.render('buildings/edit', {building: building, authorizationLevel: user.authorizationLevel})
             }
         }catch {
             if (!req.timedout) { 
@@ -149,7 +152,6 @@ router.put('/edit/:id',checkAuthenticated, authEditLocation, async (req, res) =>
             Wednesday: req.body.wednesday,
             Thursday: req.body.thursday,
             Friday: req.body.friday }
-    
         try{
             const building = await Building.findById(req.params.id)
             building.location = req.body.location,

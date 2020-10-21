@@ -8,7 +8,8 @@ const { canEditPost, canDeletePost, canCreatePost, canViewPost} = require('../pe
 
 router.get('/new', checkAuthenticated,authViewPost, async (req, res) => {
     if(!req.timedout){
-        res.render('posts/new', {post: new Posts()})
+        const user = req.user
+        res.render('posts/new', {post: new Posts(), authorizationLevel: user.authorizationLevel})
     }
 })
 
@@ -36,9 +37,10 @@ router.post('/new', checkAuthenticated,authCreatePost, async( req, res) => {
 
 router.get('/:id', checkAuthenticated,authViewPost, async (req, res) => {
         try{
+            const user = req.user
             const post = await Posts.findById(req.params.id)
             if (!req.timedout) { 
-                res.render('posts/show', {post:post})
+                res.render('posts/show', {post:post, authorizationLevel: user.authorizationLevel})
             }
         }catch(err){
             console.log(err)
@@ -50,9 +52,10 @@ router.get('/:id', checkAuthenticated,authViewPost, async (req, res) => {
 
 router.get('/edit/:id', checkAuthenticated,authEditPost, async(req, res) =>{
         try{
+            const user = req.user
             const post = await Posts.findById(req.params.id)
             if (!req.timedout) { 
-                res.render('posts/edit', {post:post})
+                res.render('posts/edit', {post:post, authorizationLevel: user.authorizationLevel})
             }
         }catch(err){
             console.log(err)

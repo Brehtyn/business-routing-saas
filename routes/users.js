@@ -9,13 +9,14 @@ const { canEditUser, canDeleteUser, canCreateUser, canViewUser} = require('../pe
 router.get('/', checkAuthenticated, authViewUser, async (req, res) =>{
         let user = req.user
         if(!req.timedout){
-            res.render('users', {user: user})
+            res.render('users', {user: user, authorizationLevel: user.authorizationLevel})
         }
 })
 
 //Get all users route
 router.get('/all', checkAuthenticated, authViewUser, async (req, res) =>{
         let users = []
+        const user = req.user
         try{
             users = await User.find().sort({createdAt: 'desc'}).exec()
             console.log(users)
@@ -24,15 +25,16 @@ router.get('/all', checkAuthenticated, authViewUser, async (req, res) =>{
             users = []
         }
         if(!req.timedout){
-            res.render('users/all', {users: users})
+            res.render('users/all', {users: users, authorizationLevel: user.authorizationLevel})
         }
 })
 
 //New user route page
 router.get('/new', checkAuthenticated, authCreateUser, async(req, res) =>{
         try{
+            const user = req.user
             if(!req.timedout){
-                res.render('users/new',  {user: new User()})
+                res.render('users/new',  {user: new User(), authorizationLevel: user.authorizationLevel})
             }
             }catch(err){
                 console.log(err)
@@ -70,7 +72,7 @@ router.get('/:id', checkAuthenticated, authViewUser, async (req, res) =>{
     try{
         const user = await User.findById(req.params.id)
         if(!req.timedout){
-            res.render('users/show', {user: user})
+            res.render('users/show', {user: user, authorizationLevel: user.authorizationLevel})
         }
     }catch{
         if(!req.timedout){
@@ -100,7 +102,7 @@ router.get('/edit/:id', checkAuthenticated,authEditUser, async(req, res) =>{
     try{
         const user = await User.findById(req.params.id)
         if(!req.timedout){
-            res.render('users/show', {user: user})
+            res.render('users/show', {user: user, authorizationLevel: user.authorizationLevel})
         }
     }catch{
         if(!req.timedout){

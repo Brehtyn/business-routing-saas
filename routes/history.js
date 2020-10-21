@@ -7,10 +7,11 @@ const { checkAuthenticated } = require('../permissions/basicAuth')
 //this one will show the existing that you are going to email
 router.get('/', checkAuthenticated, async (req, res) => {
         try{
+            const user = req.user
             //should only find the latest document
             const history = await History.find().sort({createdAt: 'desc'}).limit(1).exec()
             if (!req.timedout) { 
-                res.render('history/index',{ history: history })                
+                res.render('history/index',{ history: history, authorizationLevel: user.authorizationLevel })                
             }
         }catch{
             if (!req.timedout) { 
