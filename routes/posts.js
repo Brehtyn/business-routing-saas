@@ -7,45 +7,59 @@ const { canEditPost, canDeletePost, canCreatePost, canViewPost} = require('../pe
 
 
 router.get('/new', checkAuthenticated,authViewPost, async (req, res) => {
+    if(!req.timedout){
         res.render('posts/new', {post: new Posts()})
+    }
 })
 
 router.post('/new', checkAuthenticated,authCreatePost, async( req, res) => {
-    try{
-        const post = new Posts({
-            post: req.body.post,
-            createdBy: req.user.name,
-            createdAt: new Date(req.body.createdAt),
-            asset_number: req.body.asset_number,
-            location: req.body.location,
-            status: req.body.status
-        })
-        const newPost = await post.save()
-        res.redirect(`/posts/${newPost._id}`)
-    }catch(err){
-        console.log(err)
-        res.redirect('/posts/new')
-    }
+        try{
+            const post = new Posts({
+                post: req.body.post,
+                createdBy: req.user.name,
+                createdAt: new Date(req.body.createdAt),
+                asset_number: req.body.asset_number,
+                location: req.body.location,
+                status: req.body.status
+            })
+            const newPost = await post.save()
+            if (!req.timedout) { 
+                res.redirect(`/posts/${newPost._id}`)
+            }
+        }catch(err){
+            console.log(err)
+            if (!req.timedout) { 
+                res.redirect('/posts/new')
+            }
+        }
 })
 
 router.get('/:id', checkAuthenticated,authViewPost, async (req, res) => {
-    try{
-        const post = await Posts.findById(req.params.id)
-        res.render('posts/show', {post:post})
-    }catch(err){
-        console.log(err)
-        res.redirect('/posts/:id')
-    }
+        try{
+            const post = await Posts.findById(req.params.id)
+            if (!req.timedout) { 
+                res.render('posts/show', {post:post})
+            }
+        }catch(err){
+            console.log(err)
+            if (!req.timedout) { 
+                res.redirect('/posts/:id') 
+            }
+        }
 })
 
 router.get('/edit/:id', checkAuthenticated,authEditPost, async(req, res) =>{
-    try{
-        const post = await Posts.findById(req.params.id)
-        res.render('posts/edit', {post:post})
-    }catch(err){
-        console.log(err)
-        res.redirect('/posts/edit/:id')
-    }
+        try{
+            const post = await Posts.findById(req.params.id)
+            if (!req.timedout) { 
+                res.render('posts/edit', {post:post})
+            }
+        }catch(err){
+            console.log(err)
+            if (!req.timedout) { 
+                res.redirect('/posts/edit/:id')
+            }
+        }
 })
 
 router.post('/edit/:id', checkAuthenticated,authEditPost, async (req, res) => {
@@ -53,12 +67,16 @@ router.post('/edit/:id', checkAuthenticated,authEditPost, async (req, res) => {
             const post = await Posts.findById(req.params.id)
             
             post.post = req.body.post
-            const newPost = await post.save()    
-            res.redirect(`/posts/${post._id}`)
+            const newPost = await post.save()
+            if (!req.timedout) { 
+                res.redirect(`/posts/${post._id}`)
+            }    
     
         }catch(err){
             console.log(err)
-            res.redirect('/')
+            if (!req.timedout) { 
+                res.redirect('/') 
+            }
         }
 })
 
@@ -79,39 +97,51 @@ router.post('/:id', checkAuthenticated,authViewPost, async (req, res) => {
                         console.log(success);
                     }
                 })
-    
-            res.redirect(`/posts/${post._id}`)
+
+                if (!req.timedout) { 
+                    res.redirect(`/posts/${post._id}`)
+                }
     
         }catch(err){
             console.log(err)
-            res.redirect('/')
+            if (!req.timedout) { 
+                res.redirect('/')
+            }
         }
 })
 
 router.put('/transfer/:id',checkAuthenticated, async (req, res) => {
-    try{
-        const post = await Posts.findById(req.params.id)
-        if(post.status == "HOLDING"){
-            post.status = "PENDING"
-        }else{
-            post.status = "HOLDING"
+        try{
+            const post = await Posts.findById(req.params.id)
+            if(post.status == "HOLDING"){
+                post.status = "PENDING"
+            }else{
+                post.status = "HOLDING"
+            }
+            await post.save()
+            if (!req.timedout) { 
+                res.redirect('/')
+            }
+        } catch{
+            if (!req.timedout) { 
+                res.redirect('/')  
+            }
         }
-        await post.save()
-        res.redirect('/')
-    } catch{
-        res.redirect('/')
-    }
 })
 
 
 router.delete('/delete/:id',checkAuthenticated,authDeletePost, async (req, res) => {
-    try{
-        const post = await Posts.findById(req.params.id)
-        await post.remove()
-        res.redirect(`${req.body.url}`)
-    } catch {
-        res.redirect('/')
-    }
+        try{
+            const post = await Posts.findById(req.params.id)
+            await post.remove()
+            if (!req.timedout) { 
+                res.redirect(`${req.body.url}`)
+            }
+        } catch {
+            if (!req.timedout) { 
+                res.redirect('/')
+            }
+        }
 })
 
 //checks if user is authorized to edit project

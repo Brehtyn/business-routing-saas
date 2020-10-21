@@ -7,30 +7,36 @@ const { canEditUser, canDeleteUser, canCreateUser, canViewUser} = require('../pe
 
 //Users index route
 router.get('/', checkAuthenticated, authViewUser, async (req, res) =>{
-    let user = req.user
-    res.render('users', {user: user})
+        let user = req.user
+        if(!req.timedout){
+            res.render('users', {user: user})
+        }
 })
 
 //Get all users route
 router.get('/all', checkAuthenticated, authViewUser, async (req, res) =>{
-    let users = []
-    try{
-        users = await User.find().sort({createdAt: 'desc'}).exec()
-        console.log(users)
-    } catch(err){
-        console.log(err)
-        users = []
-    }
-    res.render('users/all', {users: users})
+        let users = []
+        try{
+            users = await User.find().sort({createdAt: 'desc'}).exec()
+            console.log(users)
+        } catch(err){
+            console.log(err)
+            users = []
+        }
+        if(!req.timedout){
+            res.render('users/all', {users: users})
+        }
 })
 
 //New user route page
 router.get('/new', checkAuthenticated, authCreateUser, async(req, res) =>{
-    try{
-    res.render('users/new',  {user: new User()})
-    }catch(err){
-        console.log(err)
-    }
+        try{
+            if(!req.timedout){
+                res.render('users/new',  {user: new User()})
+            }
+            }catch(err){
+                console.log(err)
+            }
 })
 
 //New user Route
@@ -48,10 +54,14 @@ router.post('/new', checkAuthenticated, authCreateUser, async(req, res) =>{
         })
 
         const newUser = await user.save()
-        res.redirect(`/users/${newUser._id}`)
+        if(!req.timedout){
+            res.redirect(`/users/${newUser._id}`)
+        }
     }catch(err){
         console.log(err)
-        res.redirect('/users')
+        if(!req.timedout){
+            res.redirect('/users')
+        }
     }
 })
 
@@ -59,9 +69,13 @@ router.post('/new', checkAuthenticated, authCreateUser, async(req, res) =>{
 router.get('/:id', checkAuthenticated, authViewUser, async (req, res) =>{
     try{
         const user = await User.findById(req.params.id)
-        res.render('users/show', {user: user})
+        if(!req.timedout){
+            res.render('users/show', {user: user})
+        }
     }catch{
-        res.redirect('/users')
+        if(!req.timedout){
+            res.redirect('/users')
+        }      
     }
 })
 
@@ -70,10 +84,14 @@ router.delete('/delete/:id', checkAuthenticated,authDeleteUser, async(req, res) 
     try{
         const user = await User.findById(req.params.id)
         await user.remove()
-        res.redirect('/users')
+        if(!req.timedout){
+            res.redirect('/users')
+        }
     }catch(err){
         console.log(err)
-        res.redirect('/users')
+        if(!req.timedout){
+            res.redirect('/users')
+        }
     }
 })
 
@@ -81,9 +99,13 @@ router.delete('/delete/:id', checkAuthenticated,authDeleteUser, async(req, res) 
 router.get('/edit/:id', checkAuthenticated,authEditUser, async(req, res) =>{
     try{
         const user = await User.findById(req.params.id)
-        res.render('users/show', {user: user})
+        if(!req.timedout){
+            res.render('users/show', {user: user})
+        }
     }catch{
-        res.redirect('/')
+        if(!req.timedout){
+            res.redirect('/')
+        }
     }
 })
 
@@ -99,8 +121,9 @@ router.post('/edit/:id', checkAuthenticated,authEditUser, async(req, res) =>{
             user.group = req.body.group
 
         await user.save()
-        res.redirect(`/users/${user._id}`)
-
+        if(!req.timedout){
+            res.redirect(`/users/${user._id}`)
+        }
     }catch(err){
         console.log(err)
     }

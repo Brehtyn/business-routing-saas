@@ -6,48 +6,59 @@ const { checkAuthenticated } = require('../permissions/basicAuth')
 const { canEditBuilding, canDeleteBuilding, canCreateBuilding} = require('../permissions/buildingAuth')
 //index to create buildings
 router.get('/', checkAuthenticated, (req, res) => {
-    res.render('buildings/index')
+    if(!req.timedout){
+        res.render('buildings/index')
+    }
 })
 
 //page to delete buildings
 router.get('/delete', checkAuthenticated, authDeleteLocation, async (req, res) => {
-    let buildings = []
+        let buildings = []
 
-    try{
-        buildings = await Building.find().sort({createdAt: 'desc'}).exec()
-        res.render('buildings/delete', {buildings: buildings})
-
-    }catch{
-        res.redirect('/')
-    }
+        try{
+            buildings = await Building.find().sort({createdAt: 'desc'}).exec()
+            if(!req.timedout){
+                res.render('buildings/delete', {buildings: buildings})
+            }
+        }catch{
+            if(!req.timedout){
+                res.redirect('/')
+            }
+        }
 })
 
 //Gets all buildings
 router.get('/show', checkAuthenticated, async (req, res) => {
-    let buildings = []
+        let buildings = []
 
-    try{
-        buildings = await Building.find().sort({createdAt: 'desc'}).exec()
-        res.render('buildings/show', {buildings: buildings})
-
-    }catch{
-        res.redirect('/')
-    }
+        try{
+            buildings = await Building.find().sort({createdAt: 'desc'}).exec()
+            if (!req.timedout) { 
+                res.render('buildings/show', {buildings: buildings})               
+            }
+    
+        }catch{
+            if (!req.timedout) { 
+                res.redirect('/')                
+            }
+        }
 })
 
 //New Machine Route, just the form for making a new machine
 router.get('/new',checkAuthenticated, authCreateLocation, async (req,res) => {
-    res.render('buildings/new', {building: new Building()})
+    if(!req.timedout){
+        res.render('buildings/new', {building: new Building()})
+    }
 })
 
 // //creates the machine by sending it to the database
 router.post('/new',checkAuthenticated, authCreateLocation, async (req,res) => {
-    let drop_days = { Monday: req.body.monday, 
-                    Tuesday: req.body.tuesday,
-                    Wednesday: req.body.wednesday,
-                    Thursday: req.body.thursday,
-                    Friday: req.body.friday }
-    try{
+        let drop_days = { Monday: req.body.monday, 
+            Tuesday: req.body.tuesday,
+            Wednesday: req.body.wednesday,
+            Thursday: req.body.thursday,
+            Friday: req.body.friday }
+        try{
         const building = new Building({
             location: req.body.location,
             short_name: req.body.short_name,
@@ -64,87 +75,104 @@ router.post('/new',checkAuthenticated, authCreateLocation, async (req,res) => {
         })
 
         const newBuilding = await building.save()
-        res.redirect(`${newBuilding.id}`)
-    }catch(err){
+        if (!req.timedout) { 
+            res.redirect(`${newBuilding.id}`)    
+        }
+        }catch(err){
         console.log(err)
-    }
+        }
 })
 
 
 //Fix this route and find better name than indexHome but first get all shit working
 //Probably will get fixed in the views instead of on here but we shall see
 router.get('/:id', checkAuthenticated, async (req,res) => {
-    let machines = []
+        let machines = []
 
-    try{
-        const building = await Building.findById(req.params.id)
-        const location = building.location
-        machines = await Machine.find({location: location}, function (err, docs) {
-            if(err){
-                console.log(err)
-            }else{
-                console.log("First function call : ", docs)
+        try{
+            const building = await Building.findById(req.params.id)
+            const location = building.location
+            machines = await Machine.find({location: location}, function (err, docs) {
+                if(err){
+                    console.log(err)
+                }else{
+                    console.log("First function call : ", docs)
+                }
+            }).sort({createdAt: 'desc'}).limit(10).exec()
+
+            if (!req.timedout) { 
+                res.render('indexBuildings', {building: building, machines: machines})                
             }
-        }).sort({createdAt: 'desc'}).limit(10).exec()
-
-        res.render('indexBuildings', {building: building, machines: machines})
-    }catch{
-        res.redirect('/')
-    }
+        }catch{
+            if (!req.timedout) { 
+                res.redirect('/')                
+            }
+        }
 })
 
 router.delete('/delete/:id', checkAuthenticated, authDeleteLocation, async(req, res) =>{
-    try{
-        const building = await Building.findById(req.params.id)
-        await building.remove()
-        res.redirect('/buildings')
-    } catch {
-        if(building == null){
-            res.redirect('/')
+        try{
+            const building = await Building.findById(req.params.id)
+            await building.remove()
+            res.redirect('/buildings')
+        } catch {
+            if(building == null){
+                if (!req.timedout) { 
+                    res.redirect('/')      
+                }
+            }
+            else{
+                if (!req.timedout) { 
+                    res.redirect('/buildings/delete')
+                }
+            }
         }
-        else{
-            console.log('could not remove book')
-            res.redirect('/buildings/delete')
-        }
-    }
 })
 
 //Edit Building Route
 router.get('/edit/:id', checkAuthenticated, authEditLocation, async (req, res) => {
-    try{
-        const building = await Building.findById(req.params.id)
-        res.render('buildings/edit', {building: building})
-    }catch {
-        res.redirect('/buildings')
-    }
+        try{
+            const building = await Building.findById(req.params.id)
+            if (!req.timedout) { 
+                res.render('buildings/edit', {building: building})
+            }
+        }catch {
+            if (!req.timedout) { 
+                res.redirect('/buildings')   
+            }
+        }
 })
 
 router.put('/edit/:id',checkAuthenticated, authEditLocation, async (req, res) => {
-    let drop_days = { Monday: req.body.monday, 
-        Tuesday: req.body.tuesday,
-        Wednesday: req.body.wednesday,
-        Thursday: req.body.thursday,
-        Friday: req.body.friday }
-
-    try{
-        const building = await Building.findById(req.params.id)
-        building.location = req.body.location,
-        building.address = req.body.address,
-        building.short_name = req.body.short_name,
-        building.building_type = req.body.building_type,
-        building.telephone_number = req.body.telephone_number,
-        building.tech_service = req.body.tech_service,
-        building.front_desk = req.body.front_desk,
-        building.numberOfMachines = req.body.numberOfMachines,
-        building.cash_can_access = req.body.cash_can_access,
-        building.vault = req.body.vault,
-        building.card_printer = req.body.card_printer
-        building.drop_days = drop_days
-        await building.save()
-        res.redirect(`/buildings/${building._id}`)
-    } catch{
-        res.redirect('/buildings')
-    }
+        let drop_days = { Monday: req.body.monday, 
+            Tuesday: req.body.tuesday,
+            Wednesday: req.body.wednesday,
+            Thursday: req.body.thursday,
+            Friday: req.body.friday }
+    
+        try{
+            const building = await Building.findById(req.params.id)
+            building.location = req.body.location,
+            building.address = req.body.address,
+            building.short_name = req.body.short_name,
+            building.building_type = req.body.building_type,
+            building.telephone_number = req.body.telephone_number,
+            building.tech_service = req.body.tech_service,
+            building.front_desk = req.body.front_desk,
+            building.numberOfMachines = req.body.numberOfMachines,
+            building.cash_can_access = req.body.cash_can_access,
+            building.vault = req.body.vault,
+            building.card_printer = req.body.card_printer
+            building.drop_days = drop_days
+            await building.save()
+            if (!req.timedout) { 
+                res.redirect(`/buildings/${building._id}`)
+            }
+        } catch{
+            if (!req.timedout) { 
+                res.redirect('/buildings')  
+            }
+        }
 })
 
 //checks if user is authorized to edit project

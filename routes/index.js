@@ -8,7 +8,7 @@ const initializePassport = require('../public/passport-config')
 const flash = require('express-flash')
 const { checkAuthenticated } = require('../permissions/basicAuth')
 const { create } = require('../models/posts')
-
+const timeout = require('connect-timeout')
 
 initializePassport(
     passport,
@@ -17,7 +17,7 @@ initializePassport(
 )
 
 //index router page
-router.get('/', checkAuthenticated, async (req, res) => {
+router.get('/', checkAuthenticated,async (req, res) => {
     let postsPending = []
     let postsHolding = []
     let buildingsDrop = []
@@ -71,7 +71,9 @@ router.get('/', checkAuthenticated, async (req, res) => {
 
 
     var user = req.user
-     res.render('index', { buildings: buildings, buildingsDrop, user: user, postsPending: postsPending, postsHolding: postsHolding, url:'/'})
+    if (!req.timedout) { 
+        res.render('index', { buildings: buildings, buildingsDrop, user: user, postsPending: postsPending, postsHolding: postsHolding, url:'/'})
+    }
     }catch{
         //Making this catch block redirect to the login page gives an error because it never logs the user out
         //so the user is still authenticated which would redirect it back to the home page in turn redirecting back
@@ -103,17 +105,23 @@ router.post('/login', checkNotAuthenticated, passport.authenticate('local', {
                     return res.redirect('/');
                   });
             }catch{
-                res.redirect('/login')
+                if (!req.timedout) { 
+                    res.redirect('/login')
+                }
             }
         }
         if(req.isAuthenticated() === false){
-            res.redirect('/login')
+            if (!req.timedout) { 
+                res.redirect('/login')                
+            }
         }
     })
 
 //login page
 router.get('/login', checkNotAuthenticated, (req, res) => {
-    res.render('login')
+    if(!req.timedout){
+        res.render('login')
+    }
 })
 
 function checkNotAuthenticated(req, res, next){
@@ -135,5 +143,6 @@ function castDay(day) {
     
     return weekday[day.getDay()];
 }
+
 
 module.exports = router
