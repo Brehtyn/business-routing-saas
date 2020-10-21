@@ -6,20 +6,17 @@
 
   <div id="manager"> <a href="/machines/edit/<%= machine._id%>">Edit</a> </div>
 
-  <div class="machine_header">
-    <div id="left_side">
-      <br/>
-      <h3> Status: <%= machine.status %> </h3>
-      <h3> Owner: <%= machine.ownershipType %> </h3>
-    </div>
-    <div id="right_side">
-      <img id="map" src="/assets/machines/<%= machine.machine_model %>.jpg" height="80%" width="40%"
-        alt="picture of slot machine">
-    </div>
+  <div id="left_side">
+    <br />
+    <h3> Status: <%= machine.status %> </h3>
+    <h3> Owner: <%= machine.ownershipType %> </h3>
+  </div>
+  <div id="right_side">
+    <img id="header_pic" src="/assets/machines/<%= machine.machine_model %>.jpg" height="80%" width="40%"
+      alt="picture of slot machine">
   </div>
 
-
-  <h2>Overview: </h2>
+  <h2> Overview: </h2>
   <div class="text_bubble">
     <div id="machine_overview">Konomi Asset ID: <%= machine.asset_number %></div>
     <div id="machine_overview">Machine Model: <%= machine.machine_model %></div>
@@ -32,10 +29,10 @@
     <div id="machine_overview">Machine Database-ID: <%= machine._id  %> </div>
   </div>
 
-  <h2>Datasheet: </h2>
   <div class="content_bubble">
+  <h2>Datasheet: </h2>
     <object data="/assets/datasheets/default.pdf" alt="machine datasheet in pdf" type="application/pdf"
-    id="machine_datasheet">
+      id="machine_datasheet">
       <p> It appears you don't have a PDF plugin for this browser.
         No biggie... you can <a href="/assets/datasheets/default.pdf">click here to
           download the PDF file.</a></p>

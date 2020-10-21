@@ -40,6 +40,32 @@
     document.getElementById("popup_form").style.display = "none";
     document.getElementById("form_background").style.display = "none";
   }
+
+  function user_createOpen() {
+    document.getElementById("user_create").style.display = "block";
+  }
+  function user_createClose() {
+    document.getElementById("user_create").style.display = "none";
+  }
+  function building_createOpen() {
+    document.getElementById("building_create").style.display = "block";
+  }
+  function building_createClose() {
+    document.getElementById("building_create").style.display = "none";
+  }
+  function post_createOpen() {
+    document.getElementById("post_create").style.display = "block";
+  }
+  function post_createClose() {
+    document.getElementById("post_create").style.display = "none";
+  }
+  function machine_createOpen() {
+    document.getElementById("machine_create").style.display = "block";
+  }
+  function machine_createClose() {
+    document.getElementById("machine_create").style.display = "none";
+  }
+
   function users_options() {
     if (user_toggle == 0) {
       user_toggle++;
@@ -88,44 +114,66 @@
             <button id="control_header" onclick="users_options()"> Users </button>
             <div id="users_controls">
               <a href="/users/all"><button id="btn_default"> Master List </button></a>
-              <a href="/users/new"><button id="btn_accept"> Create New </button></a>
+              <button onclick="user_createOpen()" id="btn_accept"> Create New </button>
+              <div class="create_form" id="user_create">
+                <form>
+
+
+
+                  <button onclick="user_createClose()"> Cancel </button>
+              </div>
+              </form>
             </div>
           </div>
           <div id="form_element">
             <button id="control_header" onclick="building_options()"> Buildings </button>
             <div id="building_controls">
-              <a href="/buildings/new"><button id="btn_accept"> Create New </button></a>
+              <button onclick="building_createOpen()" id="btn_accept"> Create New </button>
+              <div class="create_form" id="building_create">
+                <form>
 
+
+
+                  <button onclick="building_createClose()"> Cancel </button>
+                </form>
+              </div>
               <a href="/buildings/delete"><button id="btn_cancel"> Delete Page</button></a>
             </div>
           </div>
           <div id="form_element">
             <button id="control_header" onclick="machine_options()"> Machines </button>
             <div id="machine_controls">
-              <a href="/machines/new"><button id="btn_accept"> Create New </button></a>
-
-              <form action="/machines/new" method="POST">
-                <%- include('formfieldMachine') %>
-                <button type="submit">Create Machine</button>
-                <a href="/machines">Cancel</a>
-              </form>
-
+              <button onclick="machine_createOpen()" id="btn_accept"> Create New </button>
+              <div class="create_form" id="machine_create">
+                <form>
+                  <%- include('formfieldMachine') %>
+                  <button type="submit"> Create Machine </button>
+                  <button onclick="machine_createClose()"> Cancel </button>
+                </form>
+              </div>
               <a href="/machines/delete"><button id="btn_cancel"> Delete Page</button></a>
             </div>
           </div>
         </div>
 
         <div id="form_element">
-          <a href="/posts/new"> <button id="btn_accept"> New Post </button> </a>
+          <button onclick="post_createOpen()"id="btn_accept" > New Post </button>
+          <div class="create_form" id="post_create">
+            <form>
+              
+              
+              
+              <button onclick="post_createClose()"> Cancel </button>
+            </form>
+          </div>
         </div>
 
         <a href="/logout"><button id="btn_cancel" style="margin-right: 20px;"> Log Out </button></a>
 
         <button id="btn_default" onclick="closeForm()"> Close </button>
-
       </div>
-      <div id="form_background"></div>
 
+      <div id="form_background"></div>
       </p>
     </div>
 

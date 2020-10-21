@@ -64,9 +64,9 @@ a:active {
     position: fixed;
     top:10%;
     left:50%;
-    margin-left: -172px;
+    margin-left: -205px;
     background-color:white;
-    width:300px;
+    width:350px;
     padding: 20px 20px 10px 20px;
     z-index: 9;
   }
@@ -94,7 +94,7 @@ a:active {
     font-size: 18px;
     letter-spacing: 3px;
   }
-  #building_controls, #machine_controls, #users_controls, #popup_form{
+  #building_controls, #machine_controls, #users_controls, #popup_form, #user_create, #building_create, #machine_create, #post_create{
     display:none;
   }
   /*button styling*/
@@ -159,6 +159,23 @@ a:active {
   }
   #user_controls:hover {
     cursor: pointer;
+  }
+  .create_form {
+    width:97%;
+    height:100%;
+    float:left;
+    margin-top:10px;
+    margin-bottom:10px;
+    border-color:green;
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 4px 4px 11px #000;
+    -webkit-box-shadow: 4px 4px 11px #000;
+    box-shadow: 4px 4px 11px #000;
+    border-style: inset;
+    border-width:5px;
+    color:black;
   }
   #post_count {
     float: left;
@@ -333,10 +350,6 @@ a:active {
     height:500px;
     width:100%;
   }
-  .machine_header{
-    width: 100%;
-    padding-bottom: 50px;
-  }
   #user_overview {
     text-align:left;
     margin-bottom:10px;
@@ -349,6 +362,15 @@ a:active {
     height: 250px;
     margin: 18px;
     margin-bottom: 50px;
+  }
+  #header_pic {
+    -moz-box-shadow: 4px 4px 17px #000;
+    -webkit-box-shadow: 4px 4px 17px #000;
+    box-shadow: 4px 4px 17px #000;
+    -moz-border-radius: 21px;
+    -webkit-border-radius: 21px;
+    border-radius: 21px;
+    padding:5px;
   }
 }
 
