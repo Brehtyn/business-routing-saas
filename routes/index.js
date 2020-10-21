@@ -72,7 +72,7 @@ router.get('/', checkAuthenticated,async (req, res) => {
 
     var user = req.user
     if (!req.timedout) { 
-        res.render('index', { buildings: buildings, buildingsDrop, user: user, postsPending: postsPending, postsHolding: postsHolding, url:'/'})
+        res.render('index', { buildings: buildings, buildingsDrop, user: user, postsPending: postsPending, postsHolding: postsHolding, url:'/', postHoldingCount: postHoldingCount, postPendingCount: postPendingCount })
     }
     }catch{
         //Making this catch block redirect to the login page gives an error because it never logs the user out
