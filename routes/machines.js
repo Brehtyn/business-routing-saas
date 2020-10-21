@@ -7,121 +7,151 @@ const { canEditMachine, canDeleteMachine, canCreateMachine} = require('../permis
 
 //index to create machines
 router.get('/', checkAuthenticated, async (req, res) => {
-    res.render('machines/index')
+    if(!req.timedout){
+        res.render('machines/index')
+    }
 })
 
 //index to create new machines
 router.get('/new',checkAuthenticated, authCreateProject,  async(req, res) =>{
-    res.render('machines/new', {machine: new Machine()})
+    if(!req.timedout){
+        res.render('machines/new', {machine: new Machine()})
+    }
 })
 
 //creates new machine
 router.post('/new', checkAuthenticated, authCreateProject, async(req, res) =>{
-    try{
-        const machine = new Machine({
-            location: req.body.location,
-            machine_model: req.body.machine_model,
-            asset_number: req.body.asset_number,
-            status: req.body.status,
-            urgent: req.body.urgent,
-            ownershipType: req.body.ownershipType,
-            cabinet_license_number: req.body.cabinet_license_number,
-            datasheet: req.body.datasheet,
-            description: req.body.description,
-            createdAt: new Date(req.body.createdAt)
-        })
-
-        const newMachine = await machine.save()
-        res.redirect(`/machines/${newMachine._id}`)
-
-    }catch(err){
-        console.log(err)
-    }
+        try{
+            const machine = new Machine({
+                location: req.body.location,
+                machine_model: req.body.machine_model,
+                asset_number: req.body.asset_number,
+                status: req.body.status,
+                urgent: req.body.urgent,
+                ownershipType: req.body.ownershipType,
+                cabinet_license_number: req.body.cabinet_license_number,
+                datasheet: req.body.datasheet,
+                description: req.body.description,
+                createdAt: new Date(req.body.createdAt)
+            })
+    
+            const newMachine = await machine.save()
+            if (!req.timedout) { 
+                res.redirect(`/machines/${newMachine._id}`)
+            }
+        }catch(err){
+            console.log(err)
+        }
 })
 
 //to delete a machine
 router.get('/delete', checkAuthenticated, authDeleteProject,async  (req, res) => {
-    let machines = []
+        let machines = []
 
-    try{
-        machines = await Machine.find().sort({createdAt: 'desc'}).exec()
-        res.render('machines/delete', {machines: machines})
-
-    }catch{
-        res.redirect('/')
-    }
+        try{
+            machines = await Machine.find().sort({createdAt: 'desc'}).exec()
+            if (!req.timedout) { 
+                res.render('machines/delete', {machines: machines})
+            }
+    
+        }catch{
+            if (!req.timedout) { 
+                res.redirect('/')
+            }
+        }
 })
 
 router.delete('/delete/:id', checkAuthenticated, authDeleteProject, async(req, res) =>{
-    try{
-        const machine = await Machine.findById(req.params.id)
-        await machine.remove()
-        res.redirect('/machines')
-    } catch {
-        if(machine == null){
-            res.redirect('/')
+        try{
+            const machine = await Machine.findById(req.params.id)
+            await machine.remove()
+            if (!req.timedout) { 
+                res.redirect('/machines')
+            }
+        } catch {
+            if(machine == null){
+                if (!req.timedout) { 
+                    res.redirect('/')
+                }
+            }
+            else{
+                if (!req.timedout) { 
+                    res.redirect('/machines/delete')
+                }
+            }
         }
-        else{
-            console.log('could not remove book')
-            res.redirect('/machines/delete')
-        }
-    }
 })
 
 //to get all machines
 
 router.get('/show', checkAuthenticated,  async( req, res) => {
-    let machines = []
-    try{
-        machines = await Machine.find().sort({createdAt: 'desc'}).exec()
-        res.render('machines/show', {machines: machines})
-    }catch{
-        res.redirect('/')
-    }
+        let machines = []
+        try{
+            machines = await Machine.find().sort({createdAt: 'desc'}).exec()
+            if (!req.timedout) { 
+                res.render('machines/show', {machines: machines})
+            }
+        }catch{
+            if (!req.timedout) { 
+                res.redirect('/')
+            }
+        }
 })
 
 //gets all machines
 //Have to fix this route eventually with indexMachines
 //Will probably make this new index once project expands
 router.get('/:id', checkAuthenticated, async (req,res) => {
-    try{
-        const machine = await Machine.findById(req.params.id)
-        res.render('indexMachines', {machine: machine})
-    }catch{
-        res.redirect('/')
-    }
+        try{
+            const machine = await Machine.findById(req.params.id)
+            if(!req.timedout){
+                res.render('indexMachines', {machine: machine})
+            }
+        }catch{
+            if (!req.timedout) { 
+                res.redirect('/')
+            }
+        }
 })
 
 //Edit Building Route
 router.get('/edit/:id', checkAuthenticated, authEditProject, async (req, res) => {
-    try{
-        const machine = await Machine.findById(req.params.id)
-        res.render('machines/edit', {machine: machine})
-    }catch {
-        res.redirect('/machines')
-    }
+        try{
+            const machine = await Machine.findById(req.params.id)
+            if (!req.timedout) { 
+                res.render('machines/edit', {machine: machine})
+            }
+        }catch {
+            if (!req.timedout) { 
+                res.redirect('/machines') 
+            }
+        }
 })
 
 router.put('/edit/:id', checkAuthenticated, authEditProject, async (req, res) => {
-    try{
-        const machine = await Machine.findById(req.params.id)
-        machine.city = req.body.city,
-        machine.location = req.body.location,
-        machine.asset_number = req.body.asset_number,
-        machine.machine_model = req.body.machine_model,
-        machine.status = machine.status,
-        machine.urgent = machine.urgent,
-        machine.ownershipType = req.body.ownershipType,
-        machine.cabinet_license_number = req.body.cabinet_license_number,
-        machine.datasheet = req.body.datasheet,
-        machine.description = req.body.description,
-        createdAt = new Date(req.body.createdAt)
-        await machine.save()
-        res.redirect(`/machines/${machine._id}`)
-    } catch(err){
-        console.log(err)
-        res.redirect('/machines')
-    }
+        try{
+            const machine = await Machine.findById(req.params.id)
+            machine.city = req.body.city,
+            machine.location = req.body.location,
+            machine.asset_number = req.body.asset_number,
+            machine.machine_model = req.body.machine_model,
+            machine.status = machine.status,
+            machine.urgent = machine.urgent,
+            machine.ownershipType = req.body.ownershipType,
+            machine.cabinet_license_number = req.body.cabinet_license_number,
+            machine.datasheet = req.body.datasheet,
+            machine.description = req.body.description,
+            createdAt = new Date(req.body.createdAt)
+            await machine.save()
+            if (!req.timedout) { 
+                res.redirect(`/machines/${machine._id}`)
+            }
+        } catch(err){
+            console.log(err)
+            if (!req.timedout) { 
+                res.redirect('/machines')
+            }
+        }
 })
 
 //checks if user is authorized to edit project
