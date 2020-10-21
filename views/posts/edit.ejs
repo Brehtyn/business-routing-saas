@@ -1,8 +1,11 @@
-<h2>Edit Post</h2>
+<link href="/stylesheets/style.css" rel="stylesheet" type="text/css" />
+
+<div class="wrapper">
 <form action="/posts/edit/<%= post._id %>" method="POST">
-    <label>Post : </label>
+    <label>Main Issue : </label>
     <input type="text" name="post" value="<%= post.post %>">
     <br />
-    <a href="/posts">Cancel</a>
     <button type="submit">Update Post</button>
+    <a href="/">Cancel</a>
 </form>
+</div>

@@ -6,24 +6,17 @@
   src:url(.../assets/BebasNeue)
 }
 
-/* unvisited link */
 a:link {
   color:black;
 }
-
-/* visited link */
 a:visited {
   color:black;
 }
-
-/* mouse over link */
 a:hover {
-  color:lightcoral;
+  color:grey;
 }
-
-/* selected link */
 a:active {
-  color:red;
+  color:yellow;
 }
 
 /*  ~~~~~~~~~~~~~~~~~~~~~~~  PC Viewing  ~~~~~~~~~~~~~~~~~~~~~~~  */
@@ -44,30 +37,17 @@ a:active {
     width:800px;
     font-size: 20px;
   }
-  .title{
-    padding: 50px 0 50px 0;
-    
-  }
   h1, h2 {    
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-align: left;
-    padding-left: 50px;
-    padding-top: 10px;
-  }
+    padding-top: 30px ;
+    text-decoration: underline;
 
-  #popup_form {
-    display:none;
   }
-  .popup_form {
-    display: none;
-    position: fixed;
-    top:10%;
-    left:50%;
-    margin-left: -172px;
-    background-color:white;
-    width:300px;
-    padding: 20px 20px 10px 20px;
-    z-index: 9;
+  /* red-rounded border */
+  .popup_form, #control_header, .text_bubble, .individual_delete_wrapper, 
+  .individual_user_wrapper, .individual_machine_wrapper, .individual_desk_wrapper, 
+  .individual_location_wrapper, #map, #machine_datasheet {
+    border-color:#d60019;
     -moz-border-radius: 55px;
     -webkit-border-radius: 55px;
     border-radius: 55px;
@@ -77,7 +57,18 @@ a:active {
     border-style: inset;
     border-width:5px;
     background-color: #fff;
-    border-color:#d60019;
+  }
+  /*pop-up javascript styling*/
+  .popup_form {
+    display: none;
+    position: fixed;
+    top:10%;
+    left:50%;
+    margin-left: -205px;
+    background-color:white;
+    width:350px;
+    padding: 20px 20px 10px 20px;
+    z-index: 9;
   }
   #form_element {
     margin-bottom:10px;
@@ -102,51 +93,99 @@ a:active {
     font-family: inherit;
     font-size: 18px;
     letter-spacing: 3px;
-    -moz-border-radius: 55px;
-    -webkit-border-radius: 55px;
-    border-radius: 55px;
+  }
+  #building_controls, #machine_controls, #users_controls, #popup_form, #user_create, #building_create, #machine_create, #post_create{
+    display:none;
+  }
+  /*button styling*/
+  #btn_accept, #btn_cancel, #btn_delete, #btn_default {
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top:10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+  }
+  #btn_accept {
+    background-color: #4CAF50;
+  }
+  #btn_cancel {
+    background-color: red;
+  }
+  #btn_delete {
+    background-color: red;
+    padding: 12px 16px;
+    margin-top:0px;
+  }
+  #btn_default {
+    background-color: black;
+  }
+  /*header partial (navbar)*/
+  .nav_bar {
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    height: 50px;
+    background-image: url(../assets/nav_bar.jpg);
+    background-repeat: repeat-x;
+    margin-top: -8px;
+    margin-left: -8px;
+    letter-spacing: 1px;
+    color: white;
+  }
+  .left_nav {
+    float: left;
+    padding-left: 50px;
+  }
+  .right_nav {
+    float: right;
+    padding-right: 50px;
+    padding-top: 1px;
+  }
+  #nav_link {
+    text-decoration: none;
+    color: white;
+  }
+  #user_controls {
+    padding: none;
+    margin: none;
+    border: none;
+    font: inherit;
+    background: inherit;
+    color: inherit;
+    margin-left: -5px;
+  }
+  #user_controls:hover {
+    cursor: pointer;
+  }
+  .create_form {
+    width:97%;
+    height:100%;
+    float:left;
+    margin-top:10px;
+    margin-bottom:10px;
+    border-color:green;
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
     -moz-box-shadow: 4px 4px 11px #000;
     -webkit-box-shadow: 4px 4px 11px #000;
     box-shadow: 4px 4px 11px #000;
     border-style: inset;
     border-width:5px;
-    border-color:#d60019;
+    color:black;
   }
-  #building_controls, #machine_controls, #users_controls{
-    display:none;
+  #post_count {
+    float: left;
+    padding-left: 10px;
   }
-  #btn_accept {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px 20px;
-    border: none;
-    cursor: pointer;
-    margin-top:10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
+  #clock {
+    float: left;
+    padding-left: 10px;
   }
-  #btn_cancel {
-    background-color: red;
-    margin-top:10px;
-    color: white;
-    padding: 16px 20px;
-    border: none;
-    cursor: pointer;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-  }
-  #btn_delete {
-    background-color: red;
-    color: white;
-    padding: 12px 16px;
-    border: none;
-    cursor: crosshair;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-  }
+  /*  ~~~~~~~~~~~~~~~~~~~~~~~  PC-Main Content  ~~~~~~~~~~~~~~~~~~~~~~~  */
   .content_bubble {
     width: 750px;
     height: 100%;
@@ -161,25 +200,16 @@ a:active {
     margin-bottom: 20px;
     padding: 20px;
     padding-top: 30px;
-    -moz-border-radius: 55px;
-    -webkit-border-radius: 55px;
-    border-radius: 55px;
-    -moz-box-shadow: 4px 4px 11px #000;
-    -webkit-box-shadow: 4px 4px 11px #000;
-    box-shadow: 4px 4px 11px #000;
-    border-style: inset;
-    border-width:5px;
-    background-color: #fff;
-    border-color:#d60019;
     float:left;
   }
   .database_wrapper {
     width:762px;
     height: 100%;
-    border-style:double;
+    border-style: double;
     border-width: 5px;
     margin-left: 14.5px;
-    background-color:grey; 
+    color:white;
+    background-image:url(../assets/stripped_bg.jpg);
   }
   .database_label {
     text-align: left;
@@ -199,6 +229,7 @@ a:active {
     background-color: #fff;
     text-align: left;
     padding-left:20px;
+    color:black;
   }
   .post_buttons {
     float:right;
@@ -218,20 +249,44 @@ a:active {
     cursor: pointer;
   }
   #comment {
-    width: 350px;
-    height: 10vh;
+    width: 100%;
+    height: 45px;
     text-align: center;
     font-family: 'Tahoma','Arial', 'Arial Narrow', Arial, sans-serif;
     font-size: 20px;
+    -moz-box-shadow: 4px 4px 17px #000;
+    -webkit-box-shadow: 4px 4px 17px #000;
+    box-shadow: 4px 4px 17px #000;
+  }
+  .comment_wrapper {
+    width:95%;
+    height: 100%;
+    border-style:double;
+    border-width: 5px;
+    margin-left: 14.5px;
+    color:white;
+    background-image:url(../assets/stripped_bg.jpg);
   }
   .database_comment {
-    width:742px;
+    width:95%;
     height:100%;
     border-style:solid;
     border-width:2px;
-    margin-left:3px;
+    margin-left:9px;
     padding:5px;
     background-color: #fff;
+    color:black;
+  }
+  #left_side {
+    float: left;
+    width:330px;
+    height:200px;
+    padding-left:70px;
+  }
+  #right_side {
+    float: left;
+    width:400px;
+    height:200px;
   }
   .individual_delete_wrapper {
     text-align: center;
@@ -239,34 +294,6 @@ a:active {
     width: 200px;
     height: 150px;
     margin: 18px;
-    -moz-border-radius: 55px;
-    -webkit-border-radius: 55px;
-    border-radius: 55px;
-    -moz-box-shadow: 4px 4px 14px #000;
-    -webkit-box-shadow: 4px 4px 14px #000;
-    box-shadow: 4px 4px 14px #000;
-    background-color: #fff;
-    border-style: inset;
-    border-width:5px;
-    border-color:#d60019;
-    margin-bottom: 50px;
-  }
-  .individual_user_wrapper {
-    text-align: center;
-    float:left;
-    width: 326px;
-    height: 250px;
-    margin: 18px;
-    -moz-border-radius: 55px;
-    -webkit-border-radius: 55px;
-    border-radius: 55px;
-    -moz-box-shadow: 4px 4px 14px #000;
-    -webkit-box-shadow: 4px 4px 14px #000;
-    box-shadow: 4px 4px 14px #000;
-    background-color: #fff;
-    border-style: inset;
-    border-width:5px;
-    border-color:#d60019;
     margin-bottom: 50px;
   }
   #location_overview {
@@ -282,21 +309,12 @@ a:active {
     margin: 19px;
     font-weight: 600;
     letter-spacing: 1px;
-    -moz-border-radius: 55px;
-    -webkit-border-radius: 55px;
-    border-radius: 55px;
-    -moz-box-shadow: 4px 4px 11px #000;
-    -webkit-box-shadow: 4px 4px 11px #000;
-    box-shadow: 4px 4px 11px #000;
-    border-style: inset;
-    border-width:5px;
-    background-color: #fff;
-    border-color:#d60019;
   }
   #location_pic {
     height:50px;
     width:140px;
     margin-top: 30px;
+    margin-bottom:13px;
   }
   .individual_desk_wrapper {
     text-align: center;
@@ -305,16 +323,6 @@ a:active {
     height: 100px;
     margin: 19px;
     padding-top:30px;
-    -moz-border-radius: 55px;
-    -webkit-border-radius: 55px;
-    border-radius: 55px;
-    -moz-box-shadow: 4px 4px 14px #000;
-    -webkit-box-shadow: 4px 4px 14px #000;
-    box-shadow: 4px 4px 14px #000;
-    background-color: #fff;
-    border-style: inset;
-    border-width:5px;
-    border-color:#d60019;
   }
   #machine_overview {
     text-align:left;
@@ -328,16 +336,6 @@ a:active {
     height: 500px;
     margin: 19px;
     padding-top:20px;
-    -moz-border-radius: 55px;
-    -webkit-border-radius: 55px;
-    border-radius: 10px;
-    -moz-box-shadow: 4px 4px 14px #000;
-    -webkit-box-shadow: 4px 4px 14px #000;
-    box-shadow: 4px 4px 14px #000;
-    background-color: #fff;
-    border-style: inset;
-    border-width:5px;
-    border-color:#d60019;
   }
   #machine_pic {
     height:280px;
@@ -352,24 +350,27 @@ a:active {
     height:500px;
     width:100%;
   }
-  .machine_header{
-    height:100px;
-    width: 100%;
-  }
-  #left_side {
-    float: left;
-    width:300px;
-    height:100px;
-  }
-  #right_side {
-    float: right;
-    width:300px;
-    height:100px;
-  }
   #user_overview {
     text-align:left;
     margin-bottom:10px;
     padding-left:25px;
+  }
+  .individual_user_wrapper {
+    text-align: center;
+    float:left;
+    width: 326px;
+    height: 250px;
+    margin: 18px;
+    margin-bottom: 50px;
+  }
+  #header_pic {
+    -moz-box-shadow: 4px 4px 17px #000;
+    -webkit-box-shadow: 4px 4px 17px #000;
+    box-shadow: 4px 4px 17px #000;
+    -moz-border-radius: 21px;
+    -webkit-border-radius: 21px;
+    border-radius: 21px;
+    padding:5px;
   }
 }
 

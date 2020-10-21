@@ -2,36 +2,23 @@
 
 <div class="wrapper">
 
-  <p id="right_side">
-    Welcome <%= user.name %>! <br />
-    <a href="/logout"> Log Out </a>
-  </p>
-
-    <a id="post_buttons">
-      <form method="POST" action="/history" method="POST">
-        <button id="post_buttons" type="submit">New History Document</button>
-      </form>
-    </a>
-    <a id="post_buttons" href="/history">Current History Document</a>
-  
-
-  <h1>Pending: </h1>
+  <h1>Pending </h1>
   <div class="database_wrapper">
     <div class="database_label"> Time | Location | Asset | Issue : </div>
 
     <% postsPending.forEach(post => {%>
     <div class="database_item">
 
-      <%= post.location %>
-      #<%= post.asset_number %>
-      : <%= post.post %>
+      <a href="/buildings/<%= buildings._id %>"> <%= post.location %></a>
+      <a href="/machines/"> #<%= post.asset_number %></a>
+      : <a href="/posts/<%= post._id %>"> <%= post.post %> </a>
 
       <div class="post_buttons">
         <a href="/posts/<%= post._id %>"><img src="/assets/comment.png" height="30px" alt="comment button"></a>
         <a href="/posts/edit/<%= post._id %>"><img src="/assets/edit.png" height="30px" alt="edit button"></a>
         <a id="post_buttons">
           <form method="POST" action="/posts/delete/<%= post._id %>?_method=DELETE" method="POST">
-            <input style="display: none;" type="text" name="url" value="<%= url %>"> 
+            <input style="display: none;" type="text" name="url" value="<%= url %>">
             <button id="post_buttons" type="submit"><img src="/assets/trash.png" height="30px"
                 alt="trash button"></button>
             </input>
@@ -45,7 +32,8 @@
         </a>
         <a id="post_buttons">
           <form action="/history/update/<%= post._id %>?_method=PUT" method="POST">
-            <button id="post_buttons" type="submit"><img src="/assets/complete.png" height="30px" alt="complete button"></button>
+            <button id="post_buttons" type="submit"><img src="/assets/complete.png" height="30px"
+                alt="complete button"></button>
           </form>
         </a>
       </div>
@@ -54,35 +42,36 @@
     <% }) %>
   </div>
 
-  <h1>Holding: </h1>
+  <h1>Holding </h1>
   <div class="database_wrapper">
     <div class="database_label"> Date | Location | Asset | Issue : </div>
-    
+
     <% postsHolding.forEach(post => {%>
     <div class="database_item">
 
-      <%= post.location %>
-      # <%= post.asset_number %>
-      : <%= post.post %>
+      <a href="/"> <%= post.location %></a>
+      <a href="/"> #<%= post.asset_number %></a>
+      : <a href="/posts/<%= post._id %>"> <%= post.post %> </a>
 
       <div class="post_buttons">
         <a href="/posts/<%= post._id %>"><img src="/assets/comment.png" height="30px" alt="comment button"></a>
         <a href="/posts/edit/<%= post._id %>"><img src="/assets/edit.png" height="30px" alt="edit button"></a>
         <a id="post_buttons">
           <form method="POST" action="/posts/delete/<%= post._id %>?_method=DELETE">
-            <button  id="post_buttons" type="submit"><img src="/assets/trash.png" height="30px"
+            <button id="post_buttons" type="submit"><img src="/assets/trash.png" height="30px"
                 alt="trash button"></button>
           </form>
         </a>
         <a id="post_buttons">
           <form action="/posts/transfer/<%= post._id %>?_method=PUT" method="POST">
-            <button  id="post_buttons" type="submit"><img src="/assets/transfer.png" height="30px"
+            <button id="post_buttons" type="submit"><img src="/assets/transfer.png" height="30px"
                 alt="transfer button"></button>
           </form>
         </a>
         <a id="post_buttons">
           <form action="/history/update/<%= post._id %>?_method=PUT" method="POST">
-            <button id="post_buttons" type="submit"><img src="/assets/complete.png" height="30px" alt="complete button"></button>
+            <button id="post_buttons" type="submit"><img src="/assets/complete.png" height="30px"
+                alt="complete button"></button>
           </form>
         </a>
       </div>
@@ -91,14 +80,23 @@
     <% }) %>
   </div>
 
-  <h2>Drops Today: </h1>
-    <div class="content_bubble">
-      <%- include('partials/allBuildings.ejs', {buildings: buildingsDrop}) %>
-    </div>
+  <h1>Drops </h1>
+  <div class="content_bubble">
+    <%- include('partials/allBuildings.ejs', {buildings: buildingsDrop}) %>
+  </div>
 
-    <h2>Locations : </h1>
-      <div class="content_bubble">
-        <%- include('partials/allBuildings.ejs') %>
-      </div>
+  <h1>Locations </h1>
+  <div class="content_bubble">
+    <%- include('partials/allBuildings.ejs') %>
+  </div>
+
+  <div class="content_bubble">
+    <a href="/history">Current History Document</a>
+    <a>
+      <form method="POST" action="/history" method="POST">
+        <button  type="submit">New History Document</button>
+      </form>
+    </a>
+  </div>
 
 </div>

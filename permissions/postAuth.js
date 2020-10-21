@@ -6,8 +6,8 @@ function canViewPost(user) {
     return(
         user.authorizationLevel === "ADMIN" ||
         user.authorizationLevel === "MANAGER" ||
-        user.authorizationLevel == "TECH"   ||
-        user.authorizationLevel == "BART"      )
+        user.authorizationLevel == "TECH"
+        )
 }
 
 function canEditPost(user) {
@@ -31,8 +31,8 @@ function canDeletePost(user) {
     return (
         user.authorizationLevel === "ADMIN" ||
         user.authorizationLevel === "MANAGER" ||
-        user.authorizationLevel == "TECH"   ||
-        user.authorizationLevel == "BART"    )
+        user.authorizationLevel == "TECH" 
+    )
 }
 
 
