@@ -69,6 +69,7 @@ a:active {
     width:350px;
     padding: 20px 20px 10px 20px;
     z-index: 9;
+    border-color:black;
   }
   #form_element {
     margin-bottom:10px;
