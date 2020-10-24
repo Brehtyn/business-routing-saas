@@ -21,7 +21,7 @@ const buildingSchema = new mongoose.Schema({
             type: Number,
             required: true
         },
-        tech_service: {
+        tech_service: { //FULL,CONTRACT,DROP
             type: String,
             required: true
         },

@@ -6,10 +6,16 @@ const { checkAuthenticated } = require('../permissions/basicAuth')
 const { canEditUser, canDeleteUser, canCreateUser, canViewUser} = require('../permissions/userAuth')
 
 //Users index route
-router.get('/', checkAuthenticated, authViewUser, async (req, res) =>{
+router.get('/', checkAuthenticated, async (req, res) =>{
         let user = req.user
+        //res.send(`${user}`)
         if(!req.timedout){
-            res.render('users', {user: user, authorizationLevel: user.authorizationLevel})
+            try{
+                res.render('users/index', {user: user, authorizationLevel: user.authorizationLevel})
+            }catch(err)
+            {
+                console.log(err)
+            }
         }
 })
 
