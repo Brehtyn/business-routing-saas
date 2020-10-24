@@ -18,11 +18,8 @@ router.post('/new', checkAuthenticated,authCreatePost, async( req, res) => {
             const post = new Posts({
                 post: req.body.post,
                 createdBy: req.user.name,
-                createdAt: new Date(req.body.createdAt),
                 asset_number: req.body.asset_number,
-                location: req.body.location,
-                status: req.body.status
-            })
+                location: req.body.location            })
             const newPost = await post.save()
             if (!req.timedout) { 
                 res.redirect(`/posts/${newPost._id}`)

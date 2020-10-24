@@ -114,18 +114,26 @@
             <button id="control_header" onclick="users_options()"> Users </button>
             <div id="users_controls">
               <a href="/users/all"><button id="btn_default"> Master List </button></a>
-              <a href="/users/new"><button id="btn_accept"> Create New </button></a>
-            </div>
+                <button onclick="user_createOpen()" id="btn_accept"> Create New </button>
+                <div class="create_form" id="user_create">
+                    <form action="/users/new" method="POST">
+                      <%- include('formfieldUser') %>
+                      <button type="submit">Create</button>
+                      <button onclick="user_createClose()"> Cancel </button>
+                    </form>
+                </div>            
           </div>
+        </div>
           <div id="form_element">
             <button id="control_header" onclick="building_options()"> Buildings </button>
             <div id="building_controls">
               <button onclick="building_createOpen()" id="btn_accept"> Create New </button>
               <div class="create_form" id="building_create">
-               
-                  <a href="../buildings/new.ejs">Create</a>
-                  <button onclick="building_createClose()"> Cancel </button>
-              
+                  <form action="/buildings/new" method="POST">
+                    <%- include('formfieldBuilding') %>
+                    <button type="submit">Create</button>
+                    <button onclick="building_createClose()"> Cancel </button>
+                  </form>
               </div>
               <a href="/buildings/delete"><button id="btn_cancel"> Delete Page</button></a>
             </div>
@@ -149,11 +157,10 @@
         <div id="form_element">
           <button onclick="post_createOpen()"id="btn_accept" > New Post </button>
           <div class="create_form" id="post_create">
-            <form>
-              
-              
-              
-              <button onclick="post_createClose()"> Cancel </button>
+              <form action="/posts/new" method="POST">
+                <%- include('formfieldPost') %>
+                <button type="submit">Create Post</button>
+                <button onclick="post_createClose()"> Cancel </button>
             </form>
           </div>
         </div>

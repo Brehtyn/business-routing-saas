@@ -69,10 +69,6 @@ router.post('/new',checkAuthenticated, authCreateLocation, async (req,res) => {
             telephone_number: req.body.telephone_number,
             tech_service: req.body.tech_service,
             cash_can_access: req.body.cash_can_access,
-            numberOfMachines: req.body.numberOfMachines,
-            vault: req.body.vault,
-            card_printer: req.body.card_printer,
-            front_desk: req.body.front_desk,
             drop_days: drop_days
         })
 

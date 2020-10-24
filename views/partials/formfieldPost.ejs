@@ -1,17 +1,11 @@
 <div>
     <label>Location : </label>
-    <input type="text" name="location" value="<%= post.location %>">
+    <input type="text" name="location">
     <br />
     <label>Asset# : </label>
-    <input type="text" name="asset_number" value="<%= post.asset_number %>">
+    <input type="text" name="asset_number">
     <br />
     <label>Post : </label>
-    <input type="text" name="post" value="<%= post.post %>">
+    <input type="text" name="post">
     <br />
-
-    <div>
-        <label>Date :</label>
-        <input type="date" name="createdAt"
-            value="<%= post.createdAt == null ? '' : post.createdAt.toISOString().split('T')[0] %>">
-    </div>
 </div>
