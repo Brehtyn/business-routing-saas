@@ -114,15 +114,7 @@
             <button id="control_header" onclick="users_options()"> Users </button>
             <div id="users_controls">
               <a href="/users/all"><button id="btn_default"> Master List </button></a>
-              <button onclick="user_createOpen()" id="btn_accept"> Create New </button>
-              <div class="create_form" id="user_create">
-                <form>
-
-
-
-                  <button onclick="user_createClose()"> Cancel </button>
-              </div>
-              </form>
+              <a href="/users/new"><button id="btn_accept"> Create New </button></a>
             </div>
           </div>
           <div id="form_element">
@@ -130,12 +122,10 @@
             <div id="building_controls">
               <button onclick="building_createOpen()" id="btn_accept"> Create New </button>
               <div class="create_form" id="building_create">
-                <form>
-
-
-
+               
+                  <a href="../buildings/new.ejs">Create</a>
                   <button onclick="building_createClose()"> Cancel </button>
-                </form>
+              
               </div>
               <a href="/buildings/delete"><button id="btn_cancel"> Delete Page</button></a>
             </div>
@@ -145,11 +135,9 @@
             <div id="machine_controls">
               <button onclick="machine_createOpen()" id="btn_accept"> Create New </button>
               <div class="create_form" id="machine_create">
-                <form>
                   <%- include('formfieldMachine') %>
                   <button type="submit"> Create Machine </button>
                   <button onclick="machine_createClose()"> Cancel </button>
-                </form>
               </div>
               <a href="/machines/delete"><button id="btn_cancel"> Delete Page</button></a>
             </div>
