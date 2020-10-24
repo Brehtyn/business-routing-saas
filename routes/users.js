@@ -6,7 +6,7 @@ const { checkAuthenticated } = require('../permissions/basicAuth')
 const { canEditUser, canDeleteUser, canCreateUser, canViewUser} = require('../permissions/userAuth')
 
 //Users index route
-router.get('/', checkAuthenticated, async (req, res) =>{
+router.get('/', checkAuthenticated,authViewUser, async (req, res) =>{
         let user = req.user
         //res.send(`${user}`)
         if(!req.timedout){

@@ -34,7 +34,6 @@ router.post('/new', checkAuthenticated, authCreateProject, async(req, res) =>{
                 cabinet_license_number: req.body.cabinet_license_number,
                 datasheet: req.body.datasheet,
                 description: req.body.description,
-                createdAt: new Date(req.body.createdAt)
             })
     
             const newMachine = await machine.save()

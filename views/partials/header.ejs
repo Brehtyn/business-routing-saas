@@ -135,9 +135,11 @@
             <div id="machine_controls">
               <button onclick="machine_createOpen()" id="btn_accept"> Create New </button>
               <div class="create_form" id="machine_create">
-                  <%- include('formfieldMachine') %>
-                  <button type="submit"> Create Machine </button>
+                  <form action="/machines/new" method="POST">
+                    <%- include('formfieldMachine') %>
+                    <button type="submit">Create Machine</button>
                   <button onclick="machine_createClose()"> Cancel </button>
+                </form>
               </div>
               <a href="/machines/delete"><button id="btn_cancel"> Delete Page</button></a>
             </div>
