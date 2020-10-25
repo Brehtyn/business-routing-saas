@@ -127,6 +127,18 @@ router.delete('/delete/:id', checkAuthenticated, authDeleteLocation, async(req, 
         }
 })
 
+router.get('/location/:location',checkAuthenticated, async (req, res) => {
+    var buildinglocation = req.params.location
+    try{
+        //works for findone bc returns object not object array
+        const building = await Building.findOne({location: buildinglocation})
+        console.log(building)
+        res.redirect(`/buildings/${building._id}`)
+    }catch(err){
+        res.redirect('/buildings')
+    }
+})
+
 //Edit Building Route
 router.get('/edit/:id', checkAuthenticated, authEditLocation, async (req, res) => {
         try{

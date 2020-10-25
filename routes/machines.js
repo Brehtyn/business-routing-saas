@@ -83,6 +83,17 @@ router.delete('/delete/:id', checkAuthenticated, authDeleteProject, async(req, r
         }
 })
 
+router.get('/asset/:asset',checkAuthenticated, async (req, res) => {
+    var machineasset = req.params.asset
+    try{
+        //works for findone bc returns object not object array
+        const machine = await Machine.findOne({asset_number: machineasset})
+        res.redirect(`/machines/${machine._id}`)
+    }catch(err){
+        res.redirect('/machines')
+    }
+})
+
 //to get all machines
 
 router.get('/show', checkAuthenticated,  async( req, res) => {
@@ -145,7 +156,7 @@ router.put('/edit/:id', checkAuthenticated, authEditProject, async (req, res) =>
             machine.cabinet_license_number = req.body.cabinet_license_number,
             machine.datasheet = req.body.datasheet,
             machine.description = req.body.description,
-            createdAt = new Date(req.body.createdAt)
+            machine.createdAt = new Date(req.body.createdAt)
             await machine.save()
             if (!req.timedout) { 
                 res.redirect(`/machines/${machine._id}`)
