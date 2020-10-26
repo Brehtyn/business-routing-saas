@@ -1,0 +1,50 @@
+<h2> Full Service : </h2>
+<div class="content_bubble">
+    <div>
+    <% if (buildings!= null) { %>
+        <%  buildings.forEach(building => { %>
+            <% if(building.tech_service === 'FULL') { %> 
+                <div class="individual_location_wrapper">
+                    <a href="/buildings/<%= building._id%>"> 
+                    <div id="location_pic"> <img src="/assets/locations/<%= building.building_type %>.jpg" height="50px" width="120px" alt="building image"> </div>
+                    <%= building.short_name  %> </a>
+                </div>
+            <% } %>
+        <% }) %>
+    <% } %>
+    </div>
+</div>
+
+<h2> Contract Service : </h2>
+<div class="content_bubble">
+    <div>
+    <% if (buildings!= null) { %>
+        <%  buildings.forEach(building => { %>
+            <% if(building.tech_service === 'CONTRACT') { %> 
+                <div class="individual_location_wrapper">
+                    <a href="/buildings/<%= building._id%>"> 
+                    <div id="location_pic"> <img src="/assets/locations/<%= building.building_type %>.jpg" height="50px" width="120px" alt="building image"> </div>
+                    <%= building.short_name  %> </a>
+                </div>
+            <% } %>
+        <% }) %>
+    <% } %>
+    </div>
+</div>
+
+<h2> Drop Service : </h2>
+<div class="content_bubble">
+    <div>
+    <% if (buildings!= null) { %>
+        <%  buildings.forEach(building => { %>
+            <% if(building.tech_service === 'DROP') { %> 
+                <div class="individual_location_wrapper">
+                    <a href="/buildings/<%= building._id%>"> 
+                    <div id="location_pic"> <img src="/assets/locations/<%= building.building_type %>.jpg" height="50px" width="120px" alt="building image"> </div>
+                    <%= building.short_name  %> </a>
+                </div>
+            <% } %>
+        <% }) %>
+    <% } %>
+    </div>
+</div>
