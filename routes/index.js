@@ -60,7 +60,6 @@ router.get('/', checkAuthenticated,async (req, res) => {
         }
     }})
 
-    buildings = await Building.find({})
         buildings.forEach(building => {
             building.drop_days.forEach(dropdayobj => {
                 if(dropdayobj[`${today}`]){

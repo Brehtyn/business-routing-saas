@@ -144,8 +144,10 @@ router.get('/edit/:id', checkAuthenticated, authEditLocation, async (req, res) =
         try{
             const user = req.user
             const building = await Building.findById(req.params.id)
+            const dropDays = building.drop_days
+            console.log(dropDays[0])
             if (!req.timedout) { 
-                res.render('buildings/edit', {building: building, authorizationLevel: user.authorizationLevel})
+                res.render('buildings/edit', {building: building, authorizationLevel: user.authorizationLevel, dropDays: dropDays})
             }
         }catch {
             if (!req.timedout) { 
@@ -178,8 +180,9 @@ router.put('/edit/:id',checkAuthenticated, authEditLocation, async (req, res) =>
             if (!req.timedout) { 
                 res.redirect(`/buildings/${building._id}`)
             }
-        } catch{
+        } catch(err){
             if (!req.timedout) { 
+                console.log(err)
                 res.redirect('/buildings')  
             }
         }
