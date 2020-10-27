@@ -1,10 +1,6 @@
 @charset "UTF-8";
 /* CSS Document */
 
-/*  ~~~~~~~~~~~~~~~~~~~~~~~  PC Viewing  ~~~~~~~~~~~~~~~~~~~~~~~  */
-
-@media screen and (min-width:845px) {
-
   body{
   background-image: url(../assets/login.jpg);
   background-repeat: no-repeat;
@@ -105,10 +101,3 @@
   .nav_bar {
     display: none;
   }
-}
-
-/*  ~~~~~~~~~~~~~~~~~~~~~~~  Mobile Viewing  ~~~~~~~~~~~~~~~~~~~~~~~  */
-
-@media screen and (max-width:844px) {
-
-}
