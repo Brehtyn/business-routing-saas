@@ -13,10 +13,10 @@ a:visited {
   color:black;
 }
 a:hover {
-  color:grey;
+  color:red;
 }
 a:active {
-  color:yellow;
+  color:grey;
 }
 
 /*  ~~~~~~~~~~~~~~~~~~~~~~~  PC Viewing  ~~~~~~~~~~~~~~~~~~~~~~~  */

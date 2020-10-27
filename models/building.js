@@ -23,7 +23,8 @@ const buildingSchema = new mongoose.Schema({
         },
         tech_service: { //FULL,CONTRACT,DROP
             type: String,
-            required: true
+            required: true,
+            default:"FULL"
         },
         cash_can_access: {
             type: Boolean
