@@ -3,11 +3,8 @@
 <br />
 
 <form action="/posts/<%= post._id %> " method="POST">
-    <textarea name="comment" id="comment" placeholder="'additional comment text here'"></textarea>
+    <textarea name="comment" id="comment" required="text" placeholder="'additional comment text here'"></textarea>
     <br /> <br />
-    <button id="btn_accept" type="submit"> Comment </button>
+    <button style="margin-left:225px; float:left;" id="btn_accept" type="submit"> Comment </button>
 </form>
-<br/> <br/>
-<form action="/">
-    <button id="btn_cancel"> Go Back </button>
-</form>
+<a href="/"><button style="margin-left:50px; float:left;" id="btn_cancel"> Go Back </button></a>
