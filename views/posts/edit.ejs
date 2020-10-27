@@ -3,10 +3,11 @@
 
 <div class="wrapper">
 <form action="/posts/edit/<%= post._id %>" method="POST">
-    <label>Main Issue : </label>
+    <br/>
+    <label>Post Title : </label>
     <input type="text" name="post" value="<%= post.post %>">
-    <br />
-    <button type="submit">Update Post</button>
-    <a href="/">Cancel</a>
+    <br />  <br/>
+    <button id="btn_accept" type="submit">Update</button>
+    <a href="/"><button id="btn_cancel">Cancel</button></a>
 </form>
 </div>
