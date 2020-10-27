@@ -4,10 +4,8 @@
 <div class="wrapper">
     <div class="content_bubble"> 
     <% users.forEach(user => {%>
-
         <%- include('show', {user: user}) %>
         <a href="/users/<%= user._id %>"></a>
-
     <% }) %>
 </div>
 </div>
