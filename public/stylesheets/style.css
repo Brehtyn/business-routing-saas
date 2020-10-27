@@ -503,6 +503,7 @@ a:active {
     }
     .left_nav {
       float: center;
+      font-size: 15px;
     }
     .right_nav {
       display:none;
