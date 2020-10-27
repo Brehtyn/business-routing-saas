@@ -519,7 +519,7 @@ a:active {
       font: inherit;
       background: inherit;
       color: inherit;
-      margin-left: -5px;
+      margin-left: -10px;
     }
     #user_controls:hover {
       cursor: pointer;
