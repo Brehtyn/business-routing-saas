@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /* CSS Document */
 
-  body{
+body{
   background-image: url(../assets/login.jpg);
   background-repeat: no-repeat;
   background-position:top;
@@ -16,10 +16,6 @@
   }
   .wrapper {
     text-align: center;
-  }
-  .top_padding {
-    height:20vh;
-    width:100%;
   }
   .title{
     font-size: 32px;
@@ -100,4 +96,25 @@
   }
   .nav_bar {
     display: none;
+  }
+/*  ~~~~~~~~~~~~~~~~~~~~~~~  PC Viewing  ~~~~~~~~~~~~~~~~~~~~~~~  */
+
+@media screen and (min-width:845px) {
+
+  .top_padding {
+    height:20vh;
+    width:100%;
+  }
+ 
+}
+
+/*  ~~~~~~~~~~~~~~~~~~~~~~~  Mobile Viewing  ~~~~~~~~~~~~~~~~~~~~~~~  */
+
+@media screen and (max-width:844px) {
+
+    .top_padding {
+      height:10vh;
+      width:100%;
+    }
+   
   }
