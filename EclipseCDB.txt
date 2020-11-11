@@ -1,0 +1,10 @@
+// save til later 
+
+-scrap data for weekly reports
+-make google map intergrated
+-annoucments rotating div	
+-prepopulate drop menus
+-"nothing to show" if holding/pending partials empty
+-user edited user page
+-user shiftypes
+-add all machinetypes
